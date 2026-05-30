@@ -1075,17 +1075,11 @@ footer{background:var(--dark);padding:60px 52px 36px;}
   <div id="adminAuthScreen">
     <div style="text-align:center;margin-bottom:28px;">
       <div style="color:rgba(247,244,239,.4);font-size:12px;letter-spacing:2px;margin-bottom:8px;">ACESSO RESTRITO</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);">Acesso administrativo</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);">Informe sua senha de acesso</div>
     </div>
     <div class="admin-auth-form">
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <input type="text" id="adminEmailInput" placeholder="E-mail de administrador" autocomplete="username email" aria-label="E-mail do painel admin"
-               style="background:rgba(247,244,239,.06);border:1px solid rgba(247,244,239,.14);color:var(--cream);padding:13px 17px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;width:100%;transition:border .2s;"
-               onkeydown="if(event.key==='Enter') document.getElementById('adminPassInput').focus()">
-        <input type="password" id="adminPassInput" placeholder="Senha" autocomplete="current-password" aria-label="Senha do painel admin"
-               style="background:rgba(247,244,239,.06);border:1px solid rgba(247,244,239,.14);color:var(--cream);padding:13px 17px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;width:100%;transition:border .2s;"
-               onkeydown="if(event.key==='Enter') doAdminLogin()">
-      </div>
+      <input type="password" id="adminPasswordInput" placeholder="Seu e-mail de administrador" type="email" aria-label="Senha do painel admin"
+             onkeydown="if(event.key==='Enter') doAdminLogin()">
       <button onclick="doAdminLogin()" style="background:var(--gold);color:var(--navy);border:none;padding:13px;font-size:11px;letter-spacing:2.5px;font-weight:500;cursor:pointer;">
         ENTRAR
       </button>
@@ -1138,8 +1132,8 @@ footer{background:var(--dark);padding:60px 52px 36px;}
    2. Crie a Edge Function seguindo o arquivo edge-function.ts gerado
    3. Configure o Supabase Auth para o e-mail admin
    ══════════════════════════════════════════════════════════════════ */
-const SUPABASE_URL = 'COLE_AQUI_SUA_PROJECT_URL';
-const SUPABASE_KEY = 'COLE_AQUI_SUA_ANON_KEY';
+const SUPABASE_URL = 'https://iqjimkiwyixxtvpgwdun.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlxamlta2l3eWl4eHR2cGd3ZHVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjUwODQsImV4cCI6MjA5NTc0MTA4NH0.oqfDA2AAyjstPL6Ct0QsP3uY5ryjnHOPvYEGJUnJBFI';
 // A anon key é pública por design — sem risco com RLS configurado.
 // NUNCA coloque a service_role key aqui.
 
@@ -1287,60 +1281,47 @@ function openAdmin(){
   document.getElementById('adminAuthScreen').style.display = 'block';
   document.getElementById('adminContent').style.display = 'none';
   document.getElementById('adminAuthError').style.display = 'none';
-  document.getElementById('adminEmailInput').value = '';
-  document.getElementById('adminPassInput').value = '';
+  document.getElementById('adminPasswordInput').value = '';
   document.getElementById('adminPanel').classList.add('open');
-  setTimeout(()=> document.getElementById('adminEmailInput').focus(), 100);
+  setTimeout(()=> document.getElementById('adminPasswordInput').focus(), 100);
 }
 
 async function doAdminLogin(){
-  const email = document.getElementById('adminEmailInput').value.trim();
-  const senha = document.getElementById('adminPassInput').value;
+  const email = document.getElementById('adminPasswordInput').value.trim();
   const errEl = document.getElementById('adminAuthError');
   errEl.style.display = 'none';
 
-  if(!email || !senha){
-    errEl.textContent = 'Preencha e-mail e senha.';
-    errEl.style.display = 'block';
-    return;
-  }
-
-  if(!db || SUPABASE_URL === 'COLE_AQUI_SUA_PROJECT_URL'){
+  if(!db){
     errEl.textContent = 'Supabase não configurado. Configure SUPABASE_URL e SUPABASE_KEY.';
     errEl.style.display = 'block';
     return;
   }
 
-  // Autenticação via e-mail + senha — a senha fica SOMENTE no Supabase Auth,
-  // nunca escrita no código HTML. O código só envia o que o usuário digitou.
-  const { data, error } = await db.auth.signInWithPassword({ email, password: senha });
+  // Autenticação via Magic Link — nenhuma senha fica no código HTML
+  const { error } = await db.auth.signInWithOtp({
+    email: email,
+    options: { shouldCreateUser: false }
+  });
 
   if(error){
-    errEl.textContent = 'E-mail ou senha incorretos. Tente novamente.';
-    errEl.style.display = 'block';
-    document.getElementById('adminPassInput').value = '';
-    return;
-  }
-
-  // Verifica que o e-mail é o autorizado (camada extra de proteção no front)
-  const ADMIN_EMAIL = 'consultoriatonus@gmail.com';
-  if(data.user.email !== ADMIN_EMAIL){
-    await db.auth.signOut();
-    errEl.textContent = 'Acesso não autorizado para este e-mail.';
+    errEl.textContent = 'Erro: ' + error.message + '. Verifique se o e-mail está autorizado no Supabase.';
     errEl.style.display = 'block';
     return;
   }
 
-  // Login bem-sucedido — exibe painel
-  adminAutenticado = true;
-  document.getElementById('adminAuthScreen').style.display = 'none';
-  document.getElementById('adminContent').style.display = 'block';
-  carregarLeads();
+  // Oculta form e mostra mensagem de espera
+  document.getElementById('adminAuthScreen').innerHTML = `
+    <div style="text-align:center;padding:40px 0;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--cream);margin-bottom:16px;">Magic Link enviado!</div>
+      <p style="color:rgba(247,244,239,.5);font-size:14px;line-height:1.7;">
+        Enviamos um link de acesso para <strong style="color:var(--gold);">${email}</strong>.<br>
+        Abra o e-mail e clique no link — você será redirecionado automaticamente.
+      </p>
+    </div>`;
 }
 
 function closeAdmin(){
   adminAutenticado = false;
-  if(db) db.auth.signOut().catch(()=>{});
   document.getElementById('adminPanel').classList.remove('open');
 }
 
