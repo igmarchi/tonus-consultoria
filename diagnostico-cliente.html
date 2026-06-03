@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonus Consultoria — Diagnóstico</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B3A5C;--navy2:#0f2540;--cream:#f7f4ef;--gold:#c8973a;--gold-lt:#f5edda;--border:#e2ddd4;--surface:#fff;--muted:#7a8090;--ink:#0d1117;--slate:#3d4a5c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+
+/* HEADER */
+.header{background:var(--navy);padding:0;border-bottom:3px solid var(--gold);}
+.header-inner{max-width:860px;margin:0 auto;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;}
+.brand{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);letter-spacing:1px;}
+.brand span{display:block;font-size:11px;font-weight:300;color:rgba(247,244,239,.5);letter-spacing:2px;font-family:'DM Sans',sans-serif;}
+.header-tag{font-size:11px;letter-spacing:2px;font-weight:500;color:rgba(247,244,239,.5);text-transform:uppercase;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy2) 0%,var(--navy) 100%);padding:56px 40px;text-align:center;}
+.hero-inner{max-width:620px;margin:0 auto;}
+.hero-eye{font-size:11px;letter-spacing:3px;font-weight:600;color:var(--gold);margin-bottom:16px;text-transform:uppercase;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,42px);font-weight:300;color:var(--cream);line-height:1.25;margin-bottom:16px;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero p{font-size:15px;color:rgba(247,244,239,.6);line-height:1.75;margin-bottom:32px;}
+.hero-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.chip{background:rgba(200,151,58,.12);border:1px solid rgba(200,151,58,.3);color:var(--gold);font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;}
+
+/* TIPO SELETOR */
+.tipo-section{max-width:860px;margin:0 auto;padding:48px 40px 0;}
+.tipo-label{font-size:11px;letter-spacing:2.5px;font-weight:600;color:var(--muted);text-transform:uppercase;margin-bottom:16px;}
+.tipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;}
+.tipo-card{border:2px solid var(--border);border-radius:14px;padding:28px 24px;cursor:pointer;transition:all .22s;background:var(--surface);}
+.tipo-card:hover{border-color:var(--gold);background:var(--gold-lt);}
+.tipo-card.selected{border-color:var(--gold);background:var(--gold-lt);}
+.tipo-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.tipo-card p{font-size:13px;color:var(--muted);line-height:1.6;}
+.tipo-icon{font-size:28px;margin-bottom:10px;}
+.tipo-check{display:none;float:right;color:var(--gold);font-size:20px;font-weight:700;}
+.tipo-card.selected .tipo-check{display:block;}
+
+/* FORM */
+.form-section{max-width:860px;margin:0 auto;padding:0 40px 80px;}
+.progress-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:40px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease;}
+.bloco{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:20px;overflow:hidden;transition:box-shadow .2s;}
+.bloco:hover{box-shadow:0 2px 12px rgba(27,58,92,.06);}
+.bloco-header{padding:20px 28px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;}
+.bloco-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold);opacity:.6;line-height:1;min-width:32px;}
+.bloco-info h3{font-size:15px;font-weight:600;color:var(--navy);}
+.bloco-info p{font-size:12px;color:var(--muted);margin-top:2px;}
+.bloco-chevron{margin-left:auto;color:var(--muted);font-size:18px;transition:transform .2s;}
+.bloco.open .bloco-chevron{transform:rotate(180deg);}
+.bloco-body{display:none;padding:0 28px 28px;border-top:1px solid var(--border);}
+.bloco.open .bloco-body{display:block;}
+.pergunta{padding:20px 0;border-bottom:1px solid #f0ece4;}
+.pergunta:last-child{border-bottom:none;}
+.p-enunciado{font-size:14px;font-weight:500;color:var(--slate);margin-bottom:4px;line-height:1.6;}
+.p-num{display:inline-flex;align-items:center;justify-content:center;background:var(--navy);color:var(--gold);font-size:10px;font-weight:700;width:22px;height:22px;border-radius:50%;margin-right:8px;flex-shrink:0;}
+.p-obrig{color:var(--gold);font-size:12px;margin-left:4px;}
+.resposta-area{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 16px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);background:#fafaf8;min-height:72px;resize:vertical;transition:border-color .2s;margin-top:10px;line-height:1.65;}
+.resposta-area:focus{outline:none;border-color:var(--gold);background:#fff;}
+.resposta-area::placeholder{color:#b0a898;}
+
+/* DADOS PESSOAIS */
+.dados-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:20px 0;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.field input,.field select{border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);background:#fafaf8;transition:border-color .2s;}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);background:#fff;}
+.field input::placeholder{color:#b0a898;}
+
+/* BOTÃO */
+.btn-submit{display:block;width:100%;background:var(--navy);color:var(--cream);border:none;border-radius:10px;padding:18px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s,transform .1s;margin-top:32px;letter-spacing:.5px;}
+.btn-submit:hover{background:var(--navy2);transform:translateY(-1px);}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+/* PRIVACIDADE */
+.privacidade{font-size:12px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6;}
+
+/* MODAL EXPORTAR */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,16,30,.8);backdrop-filter:blur(6px);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--surface);border-radius:16px;padding:40px;max-width:640px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid var(--border);}
+.modal h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--navy);margin-bottom:8px;}
+.modal p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.codigo-box{background:#0d1117;color:#e2ddd4;font-family:'Courier New',monospace;font-size:12px;padding:20px;border-radius:8px;overflow-x:auto;max-height:180px;overflow-y:auto;line-height:1.5;margin-bottom:16px;word-break:break-all;}
+.modal-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-copiar{flex:1;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:14px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity .2s;}
+.btn-copiar:hover{opacity:.85;}
+.btn-fechar{background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:8px;padding:14px 20px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;}
+.btn-fechar:hover{border-color:var(--navy);color:var(--navy);}
+.sucesso-tag{display:none;background:#d6f0d6;color:#1a5c1a;font-size:13px;font-weight:600;padding:8px 16px;border-radius:6px;text-align:center;margin-top:8px;}
+.sucesso-tag.show{display:block;}
+
+/* OBRIGATORIO AVISO */
+.aviso-obrig{background:var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:var(--navy);margin-bottom:24px;line-height:1.55;}
+
+@media(max-width:600px){
+  .header-inner{padding:16px 20px;}
+  .hero{padding:40px 20px;}
+  .tipo-grid{grid-template-columns:1fr;}
+  .tipo-section,.form-section{padding-left:20px;padding-right:20px;}
+  .dados-grid{grid-template-columns:1fr;}
+  .modal{padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand">TONUS<span>CONSULTORIA</span></div>
+    <div class="header-tag">Diagnóstico Confidencial</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eye">Diagnóstico Tonus</div>
+    <h1>Vamos entender onde você está — e traçar o caminho para o <em>equilíbrio</em>.</h1>
+    <p>Responda com honestidade. Não existe resposta certa ou errada — quanto mais verdadeiro você for, mais preciso será o diagnóstico e mais assertivo o plano de ação.</p>
+    <div class="hero-chips">
+      <span class="chip">⏱ 15 a 20 min</span>
+      <span class="chip">🔒 Confidencial</span>
+      <span class="chip">📋 Sem certo ou errado</span>
+    </div>
+  </div>
+</div>
+
+<div class="tipo-section">
+  <div class="tipo-label">Antes de começar — qual é o seu perfil?</div>
+  <div class="tipo-grid">
+    <div class="tipo-card" id="card-pj" onclick="selecionarTipo('pj')">
+      <span class="tipo-check">✓</span>
+      <div class="tipo-icon">🏢</div>
+      <h3>Tenho um negócio</h3>
+      <p>MEI, empresa, comércio, serviço ou qualquer negócio próprio. O diagnóstico avalia a saúde da sua empresa.</p>
+    </div>
+    <div class="tipo-card" id="card-pf" onclick="selecionarTipo('pf')">
+      <span class="tipo-check">✓</span>
+      <div class="tipo-icon">👤</div>
+      <h3>Sou pessoa física</h3>
+      <p>Profissional, autônomo ou qualquer pessoa que quer organizar as finanças pessoais e planejar o futuro.</p>
+    </div>
+  </div>
+</div>
+
+<div class="form-section" id="form-section" style="display:none;">
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <div class="aviso-obrig">💡 Responda com suas próprias palavras — não há respostas certas. As perguntas marcadas com <strong style="color:var(--gold)">*</strong> são importantes, mas você pode pular qualquer uma que preferir.</div>
+  <div id="form-content"></div>
+  <button class="btn-submit" id="btn-submit" onclick="exportar()">Finalizar e Enviar Diagnóstico →</button>
+  <div class="privacidade">🔒 Seus dados são confidenciais e serão usados exclusivamente pela Tonus Consultoria para elaborar seu diagnóstico personalizado.</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)fecharModal()">
+  <div class="modal">
+    <h2 id="modal-titulo">Diagnóstico Enviado! ✓</h2>
+    <p id="modal-desc">Seu diagnóstico foi recebido com sucesso! Nossa equipe vai analisar e preparar o seu resultado personalizado. Em breve entraremos em contato.</p>
+    <div id="modal-codigo-section">
+      <div class="codigo-box" id="codigo-box"></div>
+      <div id="sucesso-tag" class="sucesso-tag">✓ Código copiado! Agora é só enviar para a Tonus Consultoria.</div>
+      <div class="modal-btns">
+        <button class="btn-copiar" onclick="copiarCodigo()">📋 Copiar Código de Backup</button>
+        <button class="btn-fechar" onclick="fecharModal()">Fechar</button>
+      </div>
+    </div>
+    <div id="modal-btns-simples" style="margin-top:20px;">
+      <button class="btn-copiar" onclick="fecharModal()" style="background:var(--navy);color:var(--cream);">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let tipo = null;
+
+const PERGUNTAS_PJ = [
+  { bloco:'Sobre o seu negócio', sub:'Contexto e história', emoji:'🧭', perguntas:[
+    { id:'pj-1-1', txt:'Como surgiu a ideia do seu negócio? Como chegou até aqui?', obrig:true },
+    { id:'pj-1-2', txt:'O que você faz exatamente? Quem é o seu cliente típico?', obrig:true },
+    { id:'pj-1-3', txt:'Qual é o maior orgulho que você tem do seu negócio hoje?' },
+    { id:'pj-1-4', txt:'Se pudesse mudar uma coisa no seu negócio agora, o que seria?', obrig:true },
+    { id:'pj-1-5', txt:'Onde imagina esse negócio daqui a 3 anos?', obrig:true },
+  ]},
+  { bloco:'Financeiro', sub:'Dinheiro, custos e controle', emoji:'💰', perguntas:[
+    { id:'pj-2-1', txt:'Qual é o faturamento médio mensal aproximado? (uma faixa já ajuda)', obrig:true },
+    { id:'pj-2-2', txt:'Você sabe quanto sobra de lucro no final do mês?', obrig:true },
+    { id:'pj-2-3', txt:'O dinheiro da empresa e o seu pessoal estão separados? Como funciona hoje?', obrig:true },
+    { id:'pj-2-4', txt:'Você sabe o que vai entrar e sair de dinheiro nos próximos 30 dias?' },
+    { id:'pj-2-5', txt:'Tem clientes que devem para você? Qual é a situação da inadimplência?' },
+    { id:'pj-2-6', txt:'O negócio tem dívidas ou empréstimos ativos? Com quem e em qual situação?', obrig:true },
+    { id:'pj-2-7', txt:'Você sabe o custo real de cada produto ou serviço? O preço que cobra cobre todos os custos?', obrig:true },
+    { id:'pj-2-8', txt:'Em qual mês o negócio vai melhor? E pior? Por quê?' },
+  ]},
+  { bloco:'Operação', sub:'Como o negócio funciona no dia a dia', emoji:'⚙️', perguntas:[
+    { id:'pj-3-1', txt:'O que acontece se você ficar 2 semanas sem trabalhar? O negócio consegue continuar?', obrig:true },
+    { id:'pj-3-2', txt:'Existe algum processo documentado — o modo de fazer as coisas está escrito em algum lugar?' },
+    { id:'pj-3-3', txt:'Quais tarefas só você consegue fazer? Por quê isso ainda é assim?', obrig:true },
+    { id:'pj-3-4', txt:'Você usa algum sistema ou ferramenta de gestão (aplicativo, planilha, ERP)?' },
+    { id:'pj-3-5', txt:'Como é feito o controle de estoque, agenda ou produção hoje?' },
+  ]},
+  { bloco:'Equipe e Pessoas', sub:'Estrutura, liderança e delegação', emoji:'👥', perguntas:[
+    { id:'pj-4-1', txt:'Tem funcionários? Quantos e como são contratados (CLT, autônomo, informal)?', obrig:true },
+    { id:'pj-4-2', txt:'Qual é a maior dificuldade com a sua equipe hoje?', obrig:true },
+    { id:'pj-4-3', txt:'As pessoas sabem exatamente o que precisam fazer? Você precisa repetir muito as coisas?' },
+    { id:'pj-4-4', txt:'Você consegue delegar? Sente dificuldade em confiar tarefas para outras pessoas?', obrig:true },
+    { id:'pj-4-5', txt:'Como você descreveria a cultura da empresa — o time veste a camisa?' },
+  ]},
+  { bloco:'Vendas e Clientes', sub:'Como os clientes chegam e voltam', emoji:'📈', perguntas:[
+    { id:'pj-5-1', txt:'Como os clientes chegam até você hoje? (indicação, Google, redes sociais, outro?)', obrig:true },
+    { id:'pj-5-2', txt:'Qual é o valor médio de cada venda? Quantas vendas faz por mês aproximadamente?' },
+    { id:'pj-5-3', txt:'Tem clientes que voltam com frequência? Com que regularidade eles retornam?', obrig:true },
+    { id:'pj-5-4', txt:'Você já perdeu clientes por preço? Por que acha que perde clientes?' },
+    { id:'pj-5-5', txt:'Quem é o seu maior concorrente? O que você acha que eles fazem melhor do que você?' },
+  ]},
+  { bloco:'Planejamento e Gestão', sub:'Metas, decisões e visão de futuro', emoji:'🎯', perguntas:[
+    { id:'pj-6-1', txt:'Você tem metas definidas para o negócio? Estão escritas e você as acompanha?', obrig:true },
+    { id:'pj-6-2', txt:'Você faz algum tipo de planejamento — mensal, trimestral ou anual?', obrig:true },
+    { id:'pj-6-3', txt:'Você toma decisões com base em dados ou mais pela intuição? Explique.' },
+    { id:'pj-6-4', txt:'Quais indicadores (números) você acompanha regularmente no negócio?' },
+    { id:'pj-6-5', txt:'Você se reúne com a equipe regularmente para alinhamentos? Como é a comunicação interna?' },
+  ]},
+];
+
+const PERGUNTAS_PF = [
+  { bloco:'Sobre você', sub:'Contexto e objetivos', emoji:'🧭', perguntas:[
+    { id:'pf-1-1', txt:'Como você descreveria a sua relação com dinheiro? Sempre foi assim?', obrig:true },
+    { id:'pf-1-2', txt:'Qual é o principal objetivo financeiro que você quer alcançar nos próximos 3 anos?', obrig:true },
+    { id:'pf-1-3', txt:'O que te impede de alcançar esses objetivos hoje?', obrig:true },
+    { id:'pf-1-4', txt:'Você já tentou organizar as finanças antes? O que funcionou ou não funcionou?' },
+  ]},
+  { bloco:'Saúde Financeira', sub:'Controle, dívidas e poupança', emoji:'💰', perguntas:[
+    { id:'pf-2-1', txt:'Você sabe exatamente quanto ganha por mês (valor líquido)?', obrig:true },
+    { id:'pf-2-2', txt:'Você sabe para onde vai o seu dinheiro todo mês? Tem algum controle de gastos?', obrig:true },
+    { id:'pf-2-3', txt:'No final do mês sobra dinheiro ou falta antes do fim?', obrig:true },
+    { id:'pf-2-4', txt:'Você tem dívidas? Cartão de crédito, empréstimos ou financiamentos?', obrig:true },
+    { id:'pf-2-5', txt:'Você tem alguma reserva financeira guardada? Quanto, aproximadamente?', obrig:true },
+    { id:'pf-2-6', txt:'Você usa o cartão de crédito como complemento de renda ou consegue pagar a fatura inteira todo mês?' },
+  ]},
+  { bloco:'Renda e Carreira', sub:'Estabilidade e crescimento', emoji:'💼', perguntas:[
+    { id:'pf-3-1', txt:'Qual é a sua fonte de renda principal? Ela é estável ou variável?', obrig:true },
+    { id:'pf-3-2', txt:'Você tem outras fontes de renda? (freelance, aluguel, investimentos, outros)' },
+    { id:'pf-3-3', txt:'Se perdesse sua renda principal hoje, quanto tempo conseguiria se manter com o que tem?', obrig:true },
+    { id:'pf-3-4', txt:'Você tem algum plano para aumentar sua renda nos próximos 12 meses?' },
+  ]},
+  { bloco:'Hábitos e Comportamento', sub:'Consumo e educação financeira', emoji:'🧠', perguntas:[
+    { id:'pf-4-1', txt:'Você compra por impulso com frequência? Consegue distinguir desejo de necessidade?', obrig:true },
+    { id:'pf-4-2', txt:'Você tem assinaturas ou gastos recorrentes que talvez nem se lembre mais que tem?' },
+    { id:'pf-4-3', txt:'Você consegue dizer não para um gasto não planejado? Como você lida com isso?' },
+    { id:'pf-4-4', txt:'Você tem algum conhecimento sobre investimentos? Já investe em alguma coisa?' },
+  ]},
+  { bloco:'Proteção e Segurança', sub:'Seguros e reservas', emoji:'🛡️', perguntas:[
+    { id:'pf-5-1', txt:'Você tem seguro de saúde, vida ou invalidez?', obrig:true },
+    { id:'pf-5-2', txt:'Se ficasse doente ou incapacitado por 3 meses sem trabalhar, como ficaria sua situação financeira?' },
+    { id:'pf-5-3', txt:'Você tem algum bem que precisa proteger — imóvel, carro, equipamentos importantes?' },
+  ]},
+  { bloco:'Planejamento de Futuro', sub:'Metas, investimentos e sonhos', emoji:'🎯', perguntas:[
+    { id:'pf-6-1', txt:'Você pensa na aposentadoria? Tem algum plano ou contribuição específica para isso?', obrig:true },
+    { id:'pf-6-2', txt:'Você tem algum sonho financeiro grande — casa própria, viagem, negócio, estudo? Tem prazo?', obrig:true },
+    { id:'pf-6-3', txt:'Você investe regularmente? Em quê? (poupança, CDB, fundos, ações, outros)' },
+    { id:'pf-6-4', txt:'Você tem um orçamento mensal escrito que realmente segue?', obrig:true },
+    { id:'pf-6-5', txt:'Você conversa sobre dinheiro com seu parceiro ou família? As finanças são compartilhadas?' },
+  ]},
+];
+
+function selecionarTipo(t) {
+  tipo = t;
+  document.querySelectorAll('.tipo-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('card-'+t).classList.add('selected');
+  renderForm();
+  document.getElementById('form-section').style.display = 'block';
+  setTimeout(() => document.getElementById('form-section').scrollIntoView({behavior:'smooth', block:'start'}), 100);
+}
+
+function renderForm() {
+  const perguntas = tipo === 'pj' ? PERGUNTAS_PJ : PERGUNTAS_PF;
+  let html = '';
+
+  if (tipo === 'pj') {
+    html += `<div class="bloco open" id="bloco-dados">
+      <div class="bloco-header" onclick="toggleBloco('bloco-dados')">
+        <div class="bloco-num">00</div>
+        <div class="bloco-info"><h3>📋 Dados do seu negócio</h3><p>Informações básicas de identificação</p></div>
+        <span class="bloco-chevron">▾</span>
+      </div>
+      <div class="bloco-body">
+        <div class="dados-grid">
+          <div class="field"><label>Nome do negócio <span style="color:var(--gold)">*</span></label><input type="text" id="d-nome" placeholder="Como chama seu negócio?" oninput="atualizarProgress()"></div>
+          <div class="field"><label>Seu nome <span style="color:var(--gold)">*</span></label><input type="text" id="d-resp" placeholder="Seu nome completo" oninput="atualizarProgress()"></div>
+          <div class="field"><label>E-mail <span style="color:var(--gold)">*</span></label><input type="email" id="d-email" placeholder="Seu melhor e-mail" autocomplete="email" oninput="atualizarProgress()"></div>
+          <div class="field"><label>Segmento / Ramo <span style="color:var(--gold)">*</span></label><input type="text" id="d-segmento" placeholder="Ex: Comércio, Serviços, Indústria..." oninput="atualizarProgress()"></div>
+          <div class="field"><label>Há quanto tempo no mercado?</label><input type="text" id="d-tempo" placeholder="Ex: 3 anos, 8 meses..." oninput="atualizarProgress()"></div>
+          <div class="field"><label>Cidade / Estado</label><input type="text" id="d-cidade" placeholder="Ex: Campinas, SP" oninput="atualizarProgress()"></div>
+          <div class="field"><label>Como nos conheceu?</label>
+            <select id="d-origem" oninput="atualizarProgress()">
+              <option value="">Selecione...</option>
+              <option>Indicação de amigo/familiar</option>
+              <option>Instagram / Redes sociais</option>
+              <option>LinkedIn</option>
+              <option>Google</option>
+              <option>Indicação de cliente Tonus</option>
+              <option>Outro</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  } else {
+    html += `<div class="bloco open" id="bloco-dados">
+      <div class="bloco-header" onclick="toggleBloco('bloco-dados')">
+        <div class="bloco-num">00</div>
+        <div class="bloco-info"><h3>📋 Seus dados</h3><p>Informações básicas de identificação</p></div>
+        <span class="bloco-chevron">▾</span>
+      </div>
+      <div class="bloco-body">
+        <div class="dados-grid">
+          <div class="field"><label>Seu nome <span style="color:var(--gold)">*</span></label><input type="text" id="d-resp" placeholder="Nome completo" oninput="atualizarProgress()"></div>
+          <div class="field"><label>E-mail <span style="color:var(--gold)">*</span></label><input type="email" id="d-email" placeholder="Seu melhor e-mail" autocomplete="email" oninput="atualizarProgress()"></div>
+          <div class="field"><label>Profissão / ocupação <span style="color:var(--gold)">*</span></label><input type="text" id="d-segmento" placeholder="Ex: Engenheiro, Professora, Autônomo..." oninput="atualizarProgress()"></div>
+          <div class="field"><label>Faixa de renda mensal</label><input type="text" id="d-renda" placeholder="Ex: R$ 3.000 a R$ 5.000" oninput="atualizarProgress()"></div>
+          <div class="field"><label>Cidade / Estado</label><input type="text" id="d-cidade" placeholder="Ex: São Paulo, SP" oninput="atualizarProgress()"></div>
+          <div class="field"><label>Estado civil / Dependentes</label><input type="text" id="d-familia" placeholder="Ex: Casado, 2 filhos" oninput="atualizarProgress()"></div>
+          <div class="field"><label>Como nos conheceu?</label>
+            <select id="d-origem" oninput="atualizarProgress()">
+              <option value="">Selecione...</option>
+              <option>Indicação de amigo/familiar</option>
+              <option>Instagram / Redes sociais</option>
+              <option>LinkedIn</option>
+              <option>Google</option>
+              <option>Indicação de cliente Tonus</option>
+              <option>Outro</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  perguntas.forEach((bloco, bi) => {
+    html += `<div class="bloco open" id="bloco-${bi}">
+      <div class="bloco-header" onclick="toggleBloco('bloco-${bi}')">
+        <div class="bloco-num">${String(bi+1).padStart(2,'0')}</div>
+        <div class="bloco-info"><h3>${bloco.emoji} ${bloco.bloco}</h3><p>${bloco.sub}</p></div>
+        <span class="bloco-chevron">▾</span>
+      </div>
+      <div class="bloco-body">`;
+    bloco.perguntas.forEach((p, pi) => {
+      html += `<div class="pergunta">
+        <div class="p-enunciado"><span class="p-num">${pi+1}</span>${p.txt}${p.obrig?'<span class="p-obrig"> *</span>':''}</div>
+        <textarea class="resposta-area" id="${p.id}" placeholder="Escreva aqui sua resposta..." oninput="atualizarProgress()"></textarea>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  document.getElementById('form-content').innerHTML = html;
+  atualizarProgress();
+}
+
+function toggleBloco(id) {
+  const bloco = document.getElementById(id);
+  bloco.classList.toggle('open');
+}
+
+function atualizarProgress() {
+  const perguntas = tipo === 'pj' ? PERGUNTAS_PJ : PERGUNTAS_PF;
+  const total = perguntas.reduce((s,b) => s + b.perguntas.filter(p=>p.obrig).length, 0);
+  let preenchidas = 0;
+  perguntas.forEach(b => b.perguntas.filter(p=>p.obrig).forEach(p => {
+    if (document.getElementById(p.id)?.value.trim().length > 5) preenchidas++;
+  }));
+  const pct = Math.round(preenchidas / total * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+function coletarDados() {
+  const dados = { tipo, ts: new Date().toISOString(), dados: {}, respostas: {} };
+  ['d-nome','d-resp','d-email','d-segmento','d-tempo','d-cidade','d-origem','d-renda','d-familia'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) dados.dados[id] = el.value.trim();
+  });
+  const perguntas = tipo === 'pj' ? PERGUNTAS_PJ : PERGUNTAS_PF;
+  perguntas.forEach(b => b.perguntas.forEach(p => {
+    const el = document.getElementById(p.id);
+    if (el) dados.respostas[p.id] = el.value.trim();
+  }));
+  return dados;
+}
+
+async function exportar() {
+  const nome = document.getElementById('d-resp')?.value.trim();
+  if (!nome) { alert('Por favor, preencha pelo menos seu nome antes de finalizar.'); return; }
+
+  const cfg = MODO_CONFIG[DIAGNOSTICO_MODO] || MODO_CONFIG.gratuito;
+  const btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Salvando...';
+
+  const dados = coletarDados();
+  dados.modo = DIAGNOSTICO_MODO;
+
+  // Salva no Supabase (silencioso em caso de falha)
+  const supId = await salvarNoSupabase(dados);
+  if (supId) dados.supabase_id = supId;
+
+  const jsonStr = JSON.stringify(dados);
+  const codigo = btoa(unescape(encodeURIComponent(jsonStr)));
+
+  // Atualiza modal conforme modo
+  document.getElementById('modal-titulo').textContent = cfg.modal_titulo;
+  document.getElementById('modal-desc').textContent = cfg.modal_desc;
+  const codigoSection = document.getElementById('modal-codigo-section');
+  if (codigoSection) codigoSection.style.display = cfg.modal_codigo ? 'block' : 'none';
+  if (cfg.modal_codigo) document.getElementById('codigo-box').textContent = codigo;
+
+  document.getElementById('modal').classList.add('open');
+  btn.disabled = false;
+  btn.textContent = cfg.btn;
+}
+
+function copiarCodigo() {
+  const codigo = document.getElementById('codigo-box').textContent;
+  navigator.clipboard.writeText(codigo).then(() => {
+    document.getElementById('sucesso-tag').classList.add('show');
+    setTimeout(() => document.getElementById('sucesso-tag').classList.remove('show'), 3000);
+  });
+}
+
+function fecharModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+// ══ MODO DO DIAGNÓSTICO ══════════════════════════════════════
+// Altere esta linha para controlar o comportamento:
+// 'gratuito'     → acesso direto, como está hoje
+// 'lista_espera' → cliente preenche mas entra em fila
+// 'pago'         → exibe tela de pagamento antes do formulário (futuro)
+const DIAGNOSTICO_MODO = 'gratuito';
+
+// Textos que mudam conforme o modo
+const MODO_CONFIG = {
+  gratuito: {
+    badge: '🎁 Gratuito por tempo limitado',
+    btn: 'Finalizar e Enviar Diagnóstico →',
+    modal_titulo: 'Diagnóstico Enviado! ✓',
+    modal_desc: 'Seu diagnóstico foi recebido com sucesso! Nossa equipe vai analisar e preparar o seu resultado personalizado. Em breve entraremos em contato.',
+    modal_codigo: true, // mostra código de backup
+  },
+  lista_espera: {
+    badge: '📋 Vagas limitadas — lista de espera',
+    btn: 'Entrar na Lista de Espera →',
+    modal_titulo: 'Você está na lista! ✓',
+    modal_desc: 'Recebemos seu cadastro! Você entrou na lista de espera para o diagnóstico gratuito da Tonus Consultoria. Entraremos em contato assim que sua vaga for liberada.',
+    modal_codigo: false,
+  },
+  pago: {
+    badge: '💳 Diagnóstico completo',
+    btn: 'Continuar para pagamento →',
+    modal_titulo: 'Quase lá!',
+    modal_desc: 'Seu formulário foi salvo. Conclua o pagamento para garantir seu diagnóstico.',
+    modal_codigo: false,
+  },
+};
+
+
+const SUPA_URL = 'https://iqjimkiwyixxtvpgwdun.supabase.co';
+const EDGE_SALVAR = SUPA_URL + '/functions/v1/salvar-diagnostico';
+
+// Inicializa badge e botão conforme modo
+window.addEventListener('load', () => {
+  const cfg = MODO_CONFIG[DIAGNOSTICO_MODO] || MODO_CONFIG.gratuito;
+  const btn = document.getElementById('btn-submit');
+  if (btn) btn.textContent = cfg.btn;
+  const cs = document.getElementById('modal-codigo-section');
+  const bs = document.getElementById('modal-btns-simples');
+  if (cs) cs.style.display = cfg.modal_codigo ? 'block' : 'none';
+  if (bs) bs.style.display = cfg.modal_codigo ? 'none' : 'block';
+});
+
+async function salvarNoSupabase(dados) {
+  try {
+    const resp = await fetch(EDGE_SALVAR, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tipo: dados.tipo,
+        nome: dados.dados['d-resp'] || dados.dados['d-nome'] || '',
+        email: dados.dados['d-email'] || '',
+        segmento: dados.dados['d-segmento'] || '',
+        cidade: dados.dados['d-cidade'] || '',
+        origem: dados.dados['d-origem'] || '',
+        dados_extras: {
+          tempo: dados.dados['d-tempo'] || '',
+          renda: dados.dados['d-renda'] || '',
+          familia: dados.dados['d-familia'] || '',
+        },
+        respostas: dados.respostas,
+      })
+    });
+    const r = await resp.json();
+    return r.id || null;
+  } catch(e) {
+    console.warn('Supabase indisponível — modo offline:', e);
+    return null;
+  }
+}
+
+</script>
+</body>
+</html>
