@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SEO PRIMÁRIO
+════════════════════════════════════════════════════════════════════ -->
+<title>Diagnóstico Empresarial Gratuito para MEI e PME | Tonus Consultoria</title>
+<meta name="description" content="Faça o diagnóstico empresarial gratuito da Tonus Consultoria: 8 a 12 minutos, confidencial, sem compromisso. Descubra os pontos de desequilíbrio do seu negócio ou das suas finanças pessoais e receba um plano de ação.">
+<meta name="keywords" content="diagnóstico empresarial gratuito, diagnóstico financeiro, consultoria MEI, consultoria PME, Tonus Consultoria, Pirassununga">
+<meta name="author" content="Tonus Consultoria">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tonusconsultoria.com.br/diagnostico-cliente.html">
+
+<!-- ══════════════════════════════════════════════════════════════════
+     OPEN GRAPH (WhatsApp, Facebook, LinkedIn)
+════════════════════════════════════════════════════════════════════ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tonusconsultoria.com.br/diagnostico-cliente.html">
+<meta property="og:title" content="Diagnóstico Empresarial Gratuito | Tonus Consultoria">
+<meta property="og:description" content="8 a 12 minutos, confidencial, sem compromisso. Descubra os pontos de desequilíbrio do seu negócio ou das suas finanças pessoais e receba um plano de ação real.">
+<meta property="og:image" content="https://tonusconsultoria.com.br/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Tonus Consultoria">
+
+<!-- ══════════════════════════════════════════════════════════════════
+     TWITTER CARD
+════════════════════════════════════════════════════════════════════ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Diagnóstico Empresarial Gratuito | Tonus Consultoria">
+<meta name="twitter:description" content="8 a 12 minutos, confidencial, sem compromisso. Descubra os pontos de desequilíbrio do seu negócio e receba um plano de ação.">
+<meta name="twitter:image" content="https://tonusconsultoria.com.br/og-image.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B3A5C;--navy2:#0f2540;--cream:#f7f4ef;--gold:#c8973a;--gold-lt:#f5edda;--border:#e2ddd4;--surface:#fff;--muted:#7a8090;--ink:#0d1117;--slate:#3d4a5c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+
+/* HEADER */
+.header{background:var(--navy);padding:0;border-bottom:3px solid var(--gold);}
+.header-inner{max-width:860px;margin:0 auto;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;}
+.brand{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);letter-spacing:1px;}
+.brand span{display:block;font-size:11px;font-weight:300;color:rgba(247,244,239,.5);letter-spacing:2px;font-family:'DM Sans',sans-serif;}
+.header-tag{font-size:11px;letter-spacing:2px;font-weight:500;color:rgba(247,244,239,.5);text-transform:uppercase;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy2) 0%,var(--navy) 100%);padding:56px 40px;text-align:center;}
+.hero-inner{max-width:620px;margin:0 auto;}
+.hero-eye{font-size:11px;letter-spacing:3px;font-weight:600;color:var(--gold);margin-bottom:16px;text-transform:uppercase;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,42px);font-weight:300;color:var(--cream);line-height:1.25;margin-bottom:16px;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero p{font-size:15px;color:rgba(247,244,239,.6);line-height:1.75;margin-bottom:32px;}
+.hero-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.chip{background:rgba(200,151,58,.12);border:1px solid rgba(200,151,58,.3);color:var(--gold);font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;}
+
+/* TIPO SELETOR */
+.tipo-section{max-width:860px;margin:0 auto;padding:48px 40px 0;}
+.tipo-label{font-size:11px;letter-spacing:2.5px;font-weight:600;color:var(--muted);text-transform:uppercase;margin-bottom:16px;}
+.tipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;}
+.tipo-card{border:2px solid var(--border);border-radius:14px;padding:28px 24px;cursor:pointer;transition:all .22s;background:var(--surface);}
+.tipo-card:hover{border-color:var(--gold);background:var(--gold-lt);}
+.tipo-card.selected{border-color:var(--gold);background:var(--gold-lt);}
+.tipo-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.tipo-card p{font-size:13px;color:var(--muted);line-height:1.6;}
+.tipo-icon{font-size:28px;margin-bottom:10px;}
+.tipo-check{display:none;float:right;color:var(--gold);font-size:20px;font-weight:700;}
+.tipo-card.selected .tipo-check{display:block;}
+
+/* FORM */
+.form-section{max-width:860px;margin:0 auto;padding:0 40px 80px;}
+.progress-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:40px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease;}
+.bloco{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:20px;overflow:hidden;transition:box-shadow .2s;}
+.bloco:hover{box-shadow:0 2px 12px rgba(27,58,92,.06);}
+.bloco-header{padding:20px 28px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;}
+.bloco-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold);opacity:.6;line-height:1;min-width:32px;}
+.bloco-info h3{font-size:15px;font-weight:600;color:var(--navy);}
+.bloco-info p{font-size:12px;color:var(--muted);margin-top:2px;}
+.bloco-chevron{margin-left:auto;color:var(--muted);font-size:18px;transition:transform .2s;}
+.bloco.open .bloco-chevron{transform:rotate(180deg);}
+.bloco-body{display:none;padding:0 28px 28px;border-top:1px solid var(--border);}
+.bloco.open .bloco-body{display:block;}
+.pergunta{padding:20px 0;border-bottom:1px solid #f0ece4;}
+.pergunta:last-child{border-bottom:none;}
+.p-enunciado{font-size:14px;font-weight:500;color:var(--slate);margin-bottom:4px;line-height:1.6;}
+.p-num{display:inline-flex;align-items:center;justify-content:center;background:var(--navy);color:var(--gold);font-size:10px;font-weight:700;width:22px;height:22px;border-radius:50%;margin-right:8px;flex-shrink:0;}
+.p-obrig{color:var(--gold);font-size:12px;margin-left:4px;}
+.resposta-area{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 16px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);background:#fafaf8;min-height:72px;resize:vertical;transition:border-color .2s;margin-top:10px;line-height:1.65;}
+.resposta-area:focus{outline:none;border-color:var(--gold);background:#fff;}
+.resposta-area::placeholder{color:#b0a898;}
+
+/* DADOS PESSOAIS */
+.dados-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:20px 0;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.field input,.field select{border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);background:#fafaf8;transition:border-color .2s;}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);background:#fff;}
+.field input::placeholder{color:#b0a898;}
+
+/* BOTÃO */
+.btn-submit{display:block;width:100%;background:var(--navy);color:var(--cream);border:none;border-radius:10px;padding:18px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s,transform .1s;margin-top:16px;letter-spacing:.5px;}
+.btn-submit:hover{background:var(--navy2);transform:translateY(-1px);}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+/* NAVEGAÇÃO POR ETAPAS */
+.form-nav-top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.btn-voltar{background:transparent;color:var(--navy);border:1.5px solid var(--border);border-radius:8px;padding:10px 18px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:border-color .2s;}
+.btn-voltar:hover{border-color:var(--navy);}
+.step-indicator{flex:1;text-align:center;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.erro-etapa{display:none;background:#f5ddd5;color:#b84b28;border-radius:8px;padding:12px 16px;font-size:13px;font-weight:600;margin-top:14px;text-align:center;}
+.erro-etapa.show{display:block;}
+
+/* SELEÇÃO RÁPIDA (CHIPS DE RESPOSTA — nome diferente do .chip do hero, de propósito) */
+.chip-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.chip-opcao{background:#fafaf8;border:1.5px solid var(--border);border-radius:20px;padding:9px 16px;font-size:13px;font-weight:500;color:var(--slate);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;}
+.chip-opcao:hover{border-color:var(--gold);}
+.chip-opcao.selected{background:var(--navy);border-color:var(--navy);color:var(--cream);font-weight:600;}
+
+/* QUER APROFUNDAR (OPCIONAL, COLAPSÁVEL) */
+.aprofundar-toggle{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--gold);cursor:pointer;margin-top:6px;user-select:none;}
+.aprofundar-toggle:hover{text-decoration:underline;}
+.aprofundar-body{display:none;margin-top:6px;}
+.aprofundar-body.open{display:block;}
+
+/* VALIDAÇÃO */
+.campo-erro .p-enunciado{color:var(--rust,#b84b28);}
+.campo-erro .resposta-area,.campo-erro .chip-group{border-radius:8px;outline:2px solid #d97a5a;outline-offset:4px;}
+.campo-erro.field input{border-color:#d97a5a;}
+
+/* PRIVACIDADE */
+.privacidade{font-size:12px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6;}
+
+/* MODAL EXPORTAR */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,16,30,.8);backdrop-filter:blur(6px);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--surface);border-radius:16px;padding:40px;max-width:640px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid var(--border);}
+.modal h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--navy);margin-bottom:8px;}
+.modal p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.codigo-box{background:#0d1117;color:#e2ddd4;font-family:'Courier New',monospace;font-size:12px;padding:20px;border-radius:8px;overflow-x:auto;max-height:180px;overflow-y:auto;line-height:1.5;margin-bottom:16px;word-break:break-all;}
+.modal-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-copiar{flex:1;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:14px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity .2s;}
+.btn-copiar:hover{opacity:.85;}
+.btn-fechar{background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:8px;padding:14px 20px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;}
+.btn-fechar:hover{border-color:var(--navy);color:var(--navy);}
+.sucesso-tag{display:none;background:#d6f0d6;color:#1a5c1a;font-size:13px;font-weight:600;padding:8px 16px;border-radius:6px;text-align:center;margin-top:8px;}
+.sucesso-tag.show{display:block;}
+
+/* OBRIGATORIO AVISO */
+.aviso-obrig{background:var(--gold-lt);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:var(--navy);margin-bottom:24px;line-height:1.55;}
+
+@media(max-width:600px){
+  .header-inner{padding:16px 20px;}
+  .hero{padding:40px 20px;}
+  .tipo-grid{grid-template-columns:1fr;}
+  .tipo-section,.form-section{padding-left:20px;padding-right:20px;}
+  .dados-grid{grid-template-columns:1fr;}
+  .modal{padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand">TONUS<span>CONSULTORIA</span></div>
+    <div class="header-tag">Diagnóstico Confidencial</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eye">Diagnóstico Tonus</div>
+    <h1>Vamos entender onde você está — e traçar o caminho para o <em>equilíbrio</em>.</h1>
+    <p>Responda com honestidade. Não existe resposta certa ou errada — quanto mais verdadeiro você for, mais preciso será o diagnóstico e mais assertivo o plano de ação.</p>
+    <div class="hero-chips">
+      <span class="chip">⏱ 8 a 12 min</span>
+      <span class="chip">🔒 Confidencial</span>
+      <span class="chip">💾 Progresso salvo automaticamente</span>
+    </div>
+  </div>
+</div>
+
+<div class="tipo-section">
+  <div class="tipo-label">Antes de começar — qual é o seu perfil?</div>
+  <div class="tipo-grid">
+    <div class="tipo-card" id="card-pj" onclick="selecionarTipo('pj')">
+      <span class="tipo-check">✓</span>
+      <div class="tipo-icon">🏢</div>
+      <h3>Tenho um negócio</h3>
+      <p>MEI, empresa, comércio, serviço ou qualquer negócio próprio. O diagnóstico avalia a saúde da sua empresa.</p>
+    </div>
+    <div class="tipo-card" id="card-pf" onclick="selecionarTipo('pf')">
+      <span class="tipo-check">✓</span>
+      <div class="tipo-icon">👤</div>
+      <h3>Sou pessoa física</h3>
+      <p>Profissional, autônomo ou qualquer pessoa que quer organizar as finanças pessoais e planejar o futuro.</p>
+    </div>
+  </div>
+</div>
+
+<div class="form-section" id="form-section" style="display:none;">
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <div class="aviso-obrig">💡 Responda com suas próprias palavras — não há respostas certas. As perguntas marcadas com <strong style="color:var(--gold)">*</strong> são as essenciais para o seu diagnóstico; o resto fica em "Quer contar mais?", disponível se você quiser aprofundar. Seu progresso é salvo automaticamente — pode ir com calma.</div>
+  <div id="form-content"></div>
+  <div class="form-nav-top">
+    <button class="btn-voltar" id="btn-voltar" onclick="voltarEtapa()" style="display:none;">← Voltar</button>
+    <div class="step-indicator" id="step-indicator">Etapa 1</div>
+  </div>
+  <button class="btn-submit" id="btn-submit" onclick="avancarOuFinalizar()">Continuar →</button>
+  <div class="erro-etapa" id="erro-etapa">⚠️ Preencha os campos destacados antes de continuar (ou informe pelo menos um e-mail ou WhatsApp válido).</div>
+  <div class="privacidade">🔒 Seus dados são confidenciais e serão usados exclusivamente pela Tonus Consultoria para elaborar seu diagnóstico personalizado.</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)fecharModal()">
+  <div class="modal">
+    <h2 id="modal-titulo">Diagnóstico Enviado! ✓</h2>
+    <p id="modal-desc">Seu diagnóstico foi recebido com sucesso! Nossa equipe vai analisar e preparar o seu resultado personalizado. Em breve entraremos em contato.</p>
+    <div id="modal-codigo-section">
+      <div class="codigo-box" id="codigo-box"></div>
+      <div id="sucesso-tag" class="sucesso-tag">✓ Código copiado! Agora é só enviar para a Tonus Consultoria.</div>
+      <div class="modal-btns">
+        <button class="btn-copiar" onclick="copiarCodigo()">📋 Copiar Código de Backup</button>
+        <button class="btn-fechar" onclick="fecharModal()">Fechar</button>
+      </div>
+    </div>
+    <div id="modal-btns-simples" style="margin-top:20px;">
+      <button class="btn-copiar" onclick="fecharModal()" style="background:var(--navy);color:var(--cream);">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let tipo = null;
+
+// Cada pergunta pode ser: texto (dissertativa, padrão), select (escolha única) ou
+// multiselect (múltipla escolha) — sempre em chips, sem digitar. "obrig" decide se
+// aparece direto na etapa ou dentro de "Quer contar mais? (opcional)".
+const PERGUNTAS_PJ = [
+  { bloco:'Sobre o seu negócio', sub:'Contexto e história', emoji:'🧭', perguntas:[
+    { id:'pj-1-1', txt:'Como surgiu a ideia do seu negócio? Como chegou até aqui?' },
+    { id:'pj-1-2', txt:'O que você faz exatamente? Quem é o seu cliente típico?', obrig:true },
+    { id:'pj-1-3', txt:'Qual é o maior orgulho que você tem do seu negócio hoje?' },
+    { id:'pj-1-4', txt:'Se pudesse mudar uma coisa no seu negócio agora, o que seria?', obrig:true },
+    { id:'pj-1-5', txt:'Onde imagina esse negócio daqui a 3 anos?' },
+  ]},
+  { bloco:'Financeiro', sub:'Dinheiro, custos e controle', emoji:'💰', perguntas:[
+    { id:'pj-2-1', txt:'Qual é o faturamento médio mensal aproximado?', obrig:true, tipo:'select', opcoes:['Até R$ 5 mil','R$ 5 a 15 mil','R$ 15 a 40 mil','R$ 40 a 100 mil','Acima de R$ 100 mil'] },
+    { id:'pj-2-2', txt:'Você sabe quanto sobra de lucro no final do mês?', obrig:true, tipo:'select', opcoes:['Sim, sei exatamente','Tenho uma ideia aproximada','Não sei dizer'] },
+    { id:'pj-2-3', txt:'O dinheiro da empresa e o seu pessoal estão separados?', obrig:true, tipo:'select', opcoes:['Sim, totalmente separados','Mais ou menos','Não, é tudo junto'] },
+    { id:'pj-2-4', txt:'Você sabe o que vai entrar e sair de dinheiro nos próximos 30 dias?', tipo:'select', opcoes:['Sim','Mais ou menos','Não'] },
+    { id:'pj-2-5', txt:'Tem clientes que devem para você? Qual é a situação da inadimplência?', tipo:'select', opcoes:['Não tenho inadimplência','Um pouco','Bastante, é um problema'] },
+    { id:'pj-2-6', txt:'O negócio tem dívidas ou empréstimos ativos?', obrig:true, tipo:'select', opcoes:['Não tenho dívidas','Tenho, sob controle','Tenho, e me preocupa'] },
+    { id:'pj-2-7', txt:'Você sabe o custo real de cada produto ou serviço? O preço cobre todos os custos?', obrig:true, tipo:'select', opcoes:['Sim, calculo tudo','Mais ou menos','Não sei'] },
+    { id:'pj-2-8', txt:'Em qual mês o negócio vai melhor? E pior? Por quê?' },
+  ]},
+  { bloco:'Operação', sub:'Como o negócio funciona no dia a dia', emoji:'⚙️', perguntas:[
+    { id:'pj-3-1', txt:'O que acontece se você ficar 2 semanas sem trabalhar?', obrig:true, tipo:'select', opcoes:['O negócio para completamente','Funciona, mas com dificuldade','Funciona numa boa sem mim'] },
+    { id:'pj-3-2', txt:'Existe algum processo documentado — o modo de fazer as coisas está escrito em algum lugar?', tipo:'select', opcoes:['Sim, documentado','Só na minha cabeça','Não existe processo'] },
+    { id:'pj-3-3', txt:'Quais tarefas só você consegue fazer? Por quê isso ainda é assim?', obrig:true },
+    { id:'pj-3-4', txt:'Você usa algum sistema ou ferramenta de gestão (aplicativo, planilha, ERP)?', tipo:'select', opcoes:['Sim, uso sistema/ERP','Uso planilhas','Não uso nada'] },
+    { id:'pj-3-5', txt:'Como é feito o controle de estoque, agenda ou produção hoje?' },
+  ]},
+  { bloco:'Equipe e Pessoas', sub:'Estrutura, liderança e delegação', emoji:'👥', perguntas:[
+    { id:'pj-4-1', txt:'Tem funcionários? Quantos?', obrig:true, tipo:'select', opcoes:['Não tenho funcionários','1 a 3 funcionários','4 a 10 funcionários','Mais de 10 funcionários'] },
+    { id:'pj-4-2', txt:'Qual é a maior dificuldade com a sua equipe hoje?', obrig:true },
+    { id:'pj-4-3', txt:'As pessoas sabem exatamente o que precisam fazer? Você precisa repetir muito as coisas?', tipo:'select', opcoes:['Sim, está claro para todos','Preciso repetir bastante','Não tenho equipe'] },
+    { id:'pj-4-4', txt:'Você consegue delegar? Sente dificuldade em confiar tarefas para outras pessoas?', obrig:true, tipo:'select', opcoes:['Delego bem','Tenho dificuldade','Não confio em delegar'] },
+    { id:'pj-4-5', txt:'Como você descreveria a cultura da empresa — o time veste a camisa?' },
+  ]},
+  { bloco:'Vendas e Clientes', sub:'Como os clientes chegam e voltam', emoji:'📈', perguntas:[
+    { id:'pj-5-1', txt:'Como os clientes chegam até você hoje?', obrig:true, tipo:'multiselect', opcoes:['Indicação','Google','Redes sociais','Loja física / ponto físico','Outro'] },
+    { id:'pj-5-2', txt:'Qual é o valor médio de cada venda? Quantas vendas faz por mês aproximadamente?' },
+    { id:'pj-5-3', txt:'Tem clientes que voltam com frequência?', obrig:true, tipo:'select', opcoes:['Sim, a maioria retorna','Às vezes','Quase não retornam'] },
+    { id:'pj-5-4', txt:'Você já perdeu clientes por preço? Por que acha que perde clientes?', tipo:'select', opcoes:['Sim, é comum','Às vezes','Raramente ou nunca'] },
+    { id:'pj-5-5', txt:'Quem é o seu maior concorrente? O que você acha que eles fazem melhor do que você?' },
+  ]},
+  { bloco:'Planejamento e Gestão', sub:'Metas, decisões e visão de futuro', emoji:'🎯', perguntas:[
+    { id:'pj-6-1', txt:'Você tem metas definidas para o negócio? Estão escritas e você as acompanha?', obrig:true, tipo:'select', opcoes:['Sim, escritas e acompanhadas','Tenho na cabeça, não escrevo','Não tenho metas definidas'] },
+    { id:'pj-6-2', txt:'Você faz algum tipo de planejamento — mensal, trimestral ou anual?', obrig:true, tipo:'select', opcoes:['Sim, regularmente','Às vezes','Não faço planejamento'] },
+    { id:'pj-6-3', txt:'Você toma decisões com base em dados ou mais pela intuição?', tipo:'select', opcoes:['Mais por dados','Mais por intuição','Um equilíbrio dos dois'] },
+    { id:'pj-6-4', txt:'Quais indicadores (números) você acompanha regularmente no negócio?' },
+    { id:'pj-6-5', txt:'Você se reúne com a equipe regularmente para alinhamentos?', tipo:'select', opcoes:['Sim, regularmente','De vez em quando','Não / não tenho equipe'] },
+  ]},
+];
+
+const PERGUNTAS_PF = [
+  { bloco:'Sobre você', sub:'Contexto e objetivos', emoji:'🧭', perguntas:[
+    { id:'pf-1-1', txt:'Como você descreveria a sua relação com dinheiro? Sempre foi assim?', obrig:true },
+    { id:'pf-1-2', txt:'Qual é o principal objetivo financeiro que você quer alcançar nos próximos 3 anos?', obrig:true, tipo:'select', opcoes:['Quitar dívidas','Montar reserva de emergência','Comprar um imóvel','Se aposentar bem','Outro objetivo'] },
+    { id:'pf-1-3', txt:'O que te impede de alcançar esses objetivos hoje?', obrig:true },
+    { id:'pf-1-4', txt:'Você já tentou organizar as finanças antes? O que funcionou ou não funcionou?', tipo:'select', opcoes:['Sim, e funcionou por um tempo','Já tentei, mas não deu certo','Nunca tentei de forma organizada'] },
+  ]},
+  { bloco:'Saúde Financeira', sub:'Controle, dívidas e poupança', emoji:'💰', perguntas:[
+    { id:'pf-2-1', txt:'Você sabe exatamente quanto ganha por mês (valor líquido)?', obrig:true, tipo:'select', opcoes:['Sim, sei exatamente','Tenho uma ideia aproximada','Não sei ao certo'] },
+    { id:'pf-2-2', txt:'Você sabe para onde vai o seu dinheiro todo mês? Tem algum controle de gastos?', obrig:true, tipo:'select', opcoes:['Sim, controlo tudo','Controlo mais ou menos','Não tenho controle'] },
+    { id:'pf-2-3', txt:'No final do mês sobra dinheiro ou falta antes do fim?', obrig:true, tipo:'select', opcoes:['Sobra dinheiro','Fica no zero a zero','Falta antes do fim do mês'] },
+    { id:'pf-2-4', txt:'Você tem dívidas? Cartão de crédito, empréstimos ou financiamentos?', obrig:true, tipo:'select', opcoes:['Não tenho dívidas','Tenho, sob controle','Tenho, e me preocupa'] },
+    { id:'pf-2-5', txt:'Você tem alguma reserva financeira guardada?', obrig:true, tipo:'select', opcoes:['Sim, reserva confortável','Tenho um pouco','Não tenho reserva'] },
+    { id:'pf-2-6', txt:'Você usa o cartão de crédito como complemento de renda ou consegue pagar a fatura inteira todo mês?', tipo:'select', opcoes:['Pago a fatura inteira sempre','Às vezes parcelo/uso limite','Uso o cartão pra complementar renda'] },
+  ]},
+  { bloco:'Renda e Carreira', sub:'Estabilidade e crescimento', emoji:'💼', perguntas:[
+    { id:'pf-3-1', txt:'Qual é a sua fonte de renda principal? Ela é estável ou variável?', obrig:true, tipo:'select', opcoes:['Emprego CLT / renda estável','Autônomo / renda variável','Múltiplas fontes de renda'] },
+    { id:'pf-3-2', txt:'Você tem outras fontes de renda?', tipo:'multiselect', opcoes:['Freelance','Aluguel','Investimentos','Nenhuma outra fonte'] },
+    { id:'pf-3-3', txt:'Se perdesse sua renda principal hoje, quanto tempo conseguiria se manter com o que tem?', obrig:true, tipo:'select', opcoes:['Menos de 1 mês','1 a 3 meses','3 a 6 meses','Mais de 6 meses'] },
+    { id:'pf-3-4', txt:'Você tem algum plano para aumentar sua renda nos próximos 12 meses?' },
+  ]},
+  { bloco:'Hábitos e Comportamento', sub:'Consumo e educação financeira', emoji:'🧠', perguntas:[
+    { id:'pf-4-1', txt:'Você compra por impulso com frequência? Consegue distinguir desejo de necessidade?', obrig:true, tipo:'select', opcoes:['Raramente compro por impulso','Às vezes','Compro por impulso com frequência'] },
+    { id:'pf-4-2', txt:'Você tem assinaturas ou gastos recorrentes que talvez nem se lembre mais que tem?', tipo:'select', opcoes:['Sim, provavelmente tenho','Já revisei e não tenho','Não sei dizer'] },
+    { id:'pf-4-3', txt:'Você consegue dizer não para um gasto não planejado? Como você lida com isso?' },
+    { id:'pf-4-4', txt:'Você tem algum conhecimento sobre investimentos? Já investe em alguma coisa?', tipo:'select', opcoes:['Já invisto regularmente','Tenho pouco conhecimento','Não invisto e não entendo'] },
+  ]},
+  { bloco:'Proteção e Segurança', sub:'Seguros e reservas', emoji:'🛡️', perguntas:[
+    { id:'pf-5-1', txt:'Você tem seguro de saúde, vida ou invalidez?', obrig:true, tipo:'multiselect', opcoes:['Seguro saúde','Seguro de vida','Seguro invalidez','Nenhum seguro'] },
+    { id:'pf-5-2', txt:'Se ficasse doente ou incapacitado por 3 meses sem trabalhar, como ficaria sua situação financeira?' },
+    { id:'pf-5-3', txt:'Você tem algum bem que precisa proteger — imóvel, carro, equipamentos importantes?', tipo:'multiselect', opcoes:['Imóvel','Carro','Equipamentos de trabalho','Não se aplica'] },
+  ]},
+  { bloco:'Planejamento de Futuro', sub:'Metas, investimentos e sonhos', emoji:'🎯', perguntas:[
+    { id:'pf-6-1', txt:'Você pensa na aposentadoria? Tem algum plano ou contribuição específica para isso?', obrig:true, tipo:'select', opcoes:['Sim, tenho plano ativo','Penso, mas não fiz nada ainda','Não penso nisso ainda'] },
+    { id:'pf-6-2', txt:'Você tem algum sonho financeiro grande — casa própria, viagem, negócio, estudo? Tem prazo?', obrig:true },
+    { id:'pf-6-3', txt:'Você investe regularmente? Em quê?', tipo:'select', opcoes:['Sim, regularmente','De vez em quando','Não invisto'] },
+    { id:'pf-6-4', txt:'Você tem um orçamento mensal escrito que realmente segue?', obrig:true, tipo:'select', opcoes:['Sim, tenho e sigo','Tenho, mas não sigo à risca','Não tenho orçamento'] },
+    { id:'pf-6-5', txt:'Você conversa sobre dinheiro com seu parceiro ou família? As finanças são compartilhadas?' },
+  ]},
+];
+
+// Campos de identificação (etapa 0). Substituem o HTML fixo de antes — assim
+// coletarDados(), a validação por etapa e a renderização usam a mesma fonte.
+const CAMPOS_DADOS_PJ = [
+  { id:'d-nome', label:'Nome do negócio', obrig:true, placeholder:'Como chama seu negócio?' },
+  { id:'d-resp', label:'Seu nome', obrig:true, placeholder:'Seu nome completo' },
+  { id:'d-email', label:'E-mail', obrig:true, tipoCampo:'email', placeholder:'Seu melhor e-mail', autocomplete:'email' },
+  { id:'d-whatsapp', label:'WhatsApp (recomendado)', obrig:false, tipoCampo:'tel', placeholder:'(11) 9.1234-5678', autocomplete:'tel' },
+  { id:'d-segmento', label:'Segmento / Ramo', obrig:true, placeholder:'Ex: Comércio, Serviços, Indústria...' },
+  { id:'d-tempo', label:'Há quanto tempo no mercado?', obrig:false, placeholder:'Ex: 3 anos, 8 meses...' },
+  { id:'d-cidade', label:'Cidade / Estado', obrig:false, placeholder:'Ex: Campinas, SP' },
+  { id:'d-origem', label:'Como nos conheceu?', obrig:false, tipoCampo:'select-nativo', opcoes:['Indicação de amigo/familiar','Instagram / Redes sociais','LinkedIn','Google','Indicação de cliente Tonus','Outro'] },
+];
+const CAMPOS_DADOS_PF = [
+  { id:'d-resp', label:'Seu nome', obrig:true, placeholder:'Nome completo' },
+  { id:'d-email', label:'E-mail', obrig:true, tipoCampo:'email', placeholder:'Seu melhor e-mail', autocomplete:'email' },
+  { id:'d-whatsapp', label:'WhatsApp (recomendado)', obrig:false, tipoCampo:'tel', placeholder:'(11) 9.1234-5678', autocomplete:'tel' },
+  { id:'d-segmento', label:'Profissão / ocupação', obrig:true, placeholder:'Ex: Engenheiro, Professora, Autônomo...' },
+  { id:'d-renda', label:'Faixa de renda mensal', obrig:false, placeholder:'Ex: R$ 3.000 a R$ 5.000' },
+  { id:'d-cidade', label:'Cidade / Estado', obrig:false, placeholder:'Ex: São Paulo, SP' },
+  { id:'d-familia', label:'Estado civil / Dependentes', obrig:false, placeholder:'Ex: Casado, 2 filhos' },
+  { id:'d-origem', label:'Como nos conheceu?', obrig:false, tipoCampo:'select-nativo', opcoes:['Indicação de amigo/familiar','Instagram / Redes sociais','LinkedIn','Google','Indicação de cliente Tonus','Outro'] },
+];
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+let etapaAtual = 0;
+let TEXTO_BOTAO_FINAL = 'Finalizar e Enviar Diagnóstico →';
+
+function selecionarTipo(t) {
+  tipo = t;
+  document.querySelectorAll('.tipo-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('card-'+t).classList.add('selected');
+  renderForm();
+  document.getElementById('form-section').style.display = 'block';
+  setTimeout(() => document.getElementById('form-section').scrollIntoView({behavior:'smooth', block:'start'}), 100);
+}
+
+function totalEtapas() {
+  return (tipo === 'pj' ? PERGUNTAS_PJ : PERGUNTAS_PF).length + 1; // +1 = etapa de dados
+}
+
+function renderCampoDados(c) {
+  const req = c.obrig ? '<span style="color:var(--gold)">*</span>' : '';
+  if (c.tipoCampo === 'select-nativo') {
+    return `<div class="field" data-obrig="${c.obrig?1:0}"><label>${c.label} ${req}</label>
+      <select id="${c.id}" oninput="atualizarProgress()">
+        <option value="">Selecione...</option>
+        ${c.opcoes.map(o => `<option>${esc(o)}</option>`).join('')}
+      </select></div>`;
+  }
+  return `<div class="field" data-obrig="${c.obrig?1:0}"><label>${c.label} ${req}</label>
+    <input type="${c.tipoCampo==='email'?'email':c.tipoCampo==='tel'?'tel':'text'}" id="${c.id}" placeholder="${esc(c.placeholder)}"
+      ${c.tipoCampo==='tel'?'inputmode="numeric" maxlength="16"':''} ${c.autocomplete?`autocomplete="${c.autocomplete}"`:''} oninput="atualizarProgress()"></div>`;
+}
+
+function renderPergunta(p, pi) {
+  let campo;
+  if (p.tipo === 'select' || p.tipo === 'multiselect') {
+    campo = `<div class="chip-group ${p.tipo==='multiselect'?'multi':''}" data-target="${p.id}">
+      ${p.opcoes.map(o => `<button type="button" class="chip-opcao" data-value="${esc(o)}">${esc(o)}</button>`).join('')}
+    </div><input type="hidden" id="${p.id}">`;
+  } else {
+    campo = `<textarea class="resposta-area" id="${p.id}" placeholder="Escreva aqui sua resposta..." oninput="atualizarProgress()"></textarea>`;
+  }
+  return `<div class="pergunta" data-obrig="${p.obrig?1:0}">
+    <div class="p-enunciado"><span class="p-num">${pi+1}</span>${p.txt}${p.obrig?'<span class="p-obrig"> *</span>':''}</div>
+    ${campo}
+  </div>`;
+}
+
+function renderForm() {
+  const perguntas = tipo === 'pj' ? PERGUNTAS_PJ : PERGUNTAS_PF;
+  const camposDados = tipo === 'pj' ? CAMPOS_DADOS_PJ : CAMPOS_DADOS_PF;
+  let html = '';
+
+  // Etapa 0 — dados de identificação
+  html += `<div class="step" data-step="0">
+    <div class="bloco open">
+      <div class="bloco-header">
+        <div class="bloco-num">00</div>
+        <div class="bloco-info"><h3>📋 ${tipo==='pj'?'Dados do seu negócio':'Seus dados'}</h3><p>Informações básicas de identificação</p></div>
+      </div>
+      <div class="bloco-body" style="display:block;">
+        <div class="dados-grid">${camposDados.map(renderCampoDados).join('')}</div>
+      </div>
+    </div>
+  </div>`;
+
+  // Etapas 1..N — um bloco de perguntas por etapa
+  perguntas.forEach((bloco, bi) => {
+    const obrigatorias = bloco.perguntas.filter(p => p.obrig);
+    const opcionais = bloco.perguntas.filter(p => !p.obrig);
+    html += `<div class="step" data-step="${bi+1}" style="display:none;">
+      <div class="bloco open">
+        <div class="bloco-header">
+          <div class="bloco-num">${String(bi+1).padStart(2,'0')}</div>
+          <div class="bloco-info"><h3>${bloco.emoji} ${bloco.bloco}</h3><p>${bloco.sub}</p></div>
+        </div>
+        <div class="bloco-body" style="display:block;">
+          ${obrigatorias.map((p, i) => renderPergunta(p, i)).join('')}
+          ${opcionais.length ? `
+            <div class="aprofundar-toggle" onclick="toggleAprofundar(this)"><span>▸</span> Quer contar mais? (opcional, ${opcionais.length} ${opcionais.length===1?'pergunta':'perguntas'})</div>
+            <div class="aprofundar-body">
+              ${opcionais.map((p, i) => renderPergunta(p, i)).join('')}
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    </div>`;
+  });
+
+  document.getElementById('form-content').innerHTML = html;
+  mostrarEtapa(0);
+}
+
+function toggleAprofundar(el) {
+  const body = el.nextElementSibling;
+  const abrindo = !body.classList.contains('open');
+  body.classList.toggle('open');
+  el.querySelector('span').textContent = abrindo ? '▾' : '▸';
+}
+
+function mostrarEtapa(n) {
+  etapaAtual = n;
+  document.querySelectorAll('#form-content .step').forEach(s => {
+    s.style.display = (parseInt(s.dataset.step, 10) === n) ? 'block' : 'none';
+  });
+  const total = totalEtapas();
+  const indicador = document.getElementById('step-indicator');
+  if (indicador) indicador.textContent = `Etapa ${n+1} de ${total}`;
+  const btnVoltar = document.getElementById('btn-voltar');
+  if (btnVoltar) btnVoltar.style.display = n === 0 ? 'none' : 'inline-block';
+  const btnSubmit = document.getElementById('btn-submit');
+  if (btnSubmit) btnSubmit.textContent = (n === total - 1) ? TEXTO_BOTAO_FINAL : 'Continuar →';
+  const erro = document.getElementById('erro-etapa');
+  if (erro) erro.classList.remove('show');
+  atualizarProgress();
+  document.getElementById('form-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function voltarEtapa() {
+  if (etapaAtual > 0) mostrarEtapa(etapaAtual - 1);
+}
+
+function validarEtapaAtual() {
+  const stepEl = document.querySelector(`#form-content .step[data-step="${etapaAtual}"]`);
+  if (!stepEl) return true;
+  let ok = true;
+  let primeiroInvalido = null;
+
+  stepEl.querySelectorAll('[data-obrig="1"]').forEach(campo => {
+    const input = campo.querySelector('input, textarea, select');
+    if (input && input.id === 'd-email') return; // e-mail tem regra própria abaixo (e-mail OU WhatsApp)
+    const preenchido = input && input.value.trim().length > (input.tagName === 'TEXTAREA' ? 5 : 0);
+    campo.classList.toggle('campo-erro', !preenchido);
+    if (!preenchido) { ok = false; if (!primeiroInvalido) primeiroInvalido = campo; }
+  });
+
+  // Etapa 0: exige e-mail OU WhatsApp válido (não precisa ser os dois)
+  if (etapaAtual === 0) {
+    const email = document.getElementById('d-email')?.value.trim() || '';
+    const whatsapp = document.getElementById('d-whatsapp')?.value.trim() || '';
+    const emailOk = email.includes('@') && email.includes('.');
+    const whatsappOk = whatsapp.replace(/\D/g, '').length >= 10;
+    if (!emailOk && !whatsappOk) {
+      ok = false;
+      const campoEmail = document.getElementById('d-email')?.closest('.field');
+      const campoWpp = document.getElementById('d-whatsapp')?.closest('.field');
+      campoEmail?.classList.add('campo-erro');
+      campoWpp?.classList.add('campo-erro');
+      if (!primeiroInvalido) primeiroInvalido = campoEmail;
+    }
+  }
+
+  const erro = document.getElementById('erro-etapa');
+  if (erro) erro.classList.toggle('show', !ok);
+  if (!ok && primeiroInvalido) primeiroInvalido.scrollIntoView({behavior:'smooth', block:'center'});
+  return ok;
+}
+
+function avancarOuFinalizar() {
+  if (!validarEtapaAtual()) return;
+  if (etapaAtual < totalEtapas() - 1) {
+    mostrarEtapa(etapaAtual + 1);
+  } else {
+    exportar();
+  }
+}
+
+function atualizarProgress() {
+  const pct = Math.round(((etapaAtual + 1) / totalEtapas()) * 100);
+  const fill = document.getElementById('progress-fill');
+  if (fill) fill.style.width = pct + '%';
+}
+
+function coletarDados() {
+  const dados = { tipo, ts: new Date().toISOString(), dados: {}, respostas: {} };
+  const camposDados = tipo === 'pj' ? CAMPOS_DADOS_PJ : CAMPOS_DADOS_PF;
+  camposDados.forEach(c => {
+    const el = document.getElementById(c.id);
+    if (el) dados.dados[c.id] = el.value.trim();
+  });
+  const perguntas = tipo === 'pj' ? PERGUNTAS_PJ : PERGUNTAS_PF;
+  perguntas.forEach(b => b.perguntas.forEach(p => {
+    const el = document.getElementById(p.id);
+    if (el) dados.respostas[p.id] = el.value.trim();
+  }));
+  return dados;
+}
+
+// Seleção rápida (chips) — clique único, sem digitar. Delegado porque os chips
+// são recriados a cada renderForm().
+document.addEventListener('DOMContentLoaded', () => {
+  const formContent = document.getElementById('form-content');
+  if (!formContent) return;
+  formContent.addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip-opcao');
+    if (!chip) return;
+    const group = chip.closest('.chip-group');
+    const hidden = document.getElementById(group.dataset.target);
+    if (!hidden) return;
+    if (group.classList.contains('multi')) {
+      chip.classList.toggle('selected');
+      hidden.value = [...group.querySelectorAll('.chip-opcao.selected')].map(c => c.dataset.value).join(', ');
+    } else {
+      group.querySelectorAll('.chip-opcao').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      hidden.value = chip.dataset.value;
+    }
+    chip.closest('.pergunta')?.classList.remove('campo-erro');
+    atualizarProgress();
+    hidden.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+});
+
+async function exportar() {
+  const nome = document.getElementById('d-resp')?.value.trim();
+  if (!nome) { alert('Por favor, preencha pelo menos seu nome antes de finalizar.'); return; }
+
+  // Não precisa mais tentar salvar rascunho — daqui pra frente é o envio final.
+  clearTimeout(autosaveTimer);
+
+  const cfg = MODO_CONFIG[DIAGNOSTICO_MODO] || MODO_CONFIG.gratuito;
+  const btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Salvando...';
+
+  const dados = coletarDados();
+  dados.modo = DIAGNOSTICO_MODO;
+
+  // Salva no Supabase (silencioso em caso de falha). Se já existia um rascunho
+  // salvo automaticamente, isso finaliza esse MESMO registro (não cria outro).
+  const supId = await salvarNoSupabase(dados, { status: 'novo', diagnosticoId: diagnosticoIdAtual });
+  if (supId) { dados.supabase_id = supId; diagnosticoIdAtual = supId; }
+
+  const jsonStr = JSON.stringify(dados);
+  const codigo = btoa(unescape(encodeURIComponent(jsonStr)));
+
+  // Atualiza modal conforme modo
+  document.getElementById('modal-titulo').textContent = cfg.modal_titulo;
+  document.getElementById('modal-desc').textContent = cfg.modal_desc;
+  const codigoSection = document.getElementById('modal-codigo-section');
+  if (codigoSection) codigoSection.style.display = cfg.modal_codigo ? 'block' : 'none';
+  if (cfg.modal_codigo) document.getElementById('codigo-box').textContent = codigo;
+
+  document.getElementById('modal').classList.add('open');
+  btn.disabled = false;
+  btn.textContent = cfg.btn;
+}
+
+function copiarCodigo() {
+  const codigo = document.getElementById('codigo-box').textContent;
+  navigator.clipboard.writeText(codigo).then(() => {
+    document.getElementById('sucesso-tag').classList.add('show');
+    setTimeout(() => document.getElementById('sucesso-tag').classList.remove('show'), 3000);
+  });
+}
+
+function fecharModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+// ══ MODO DO DIAGNÓSTICO ══════════════════════════════════════
+// Altere esta linha para controlar o comportamento:
+// 'gratuito'     → acesso direto, como está hoje
+// 'lista_espera' → cliente preenche mas entra em fila
+// 'pago'         → exibe tela de pagamento antes do formulário (futuro)
+const DIAGNOSTICO_MODO = 'gratuito';
+
+// Textos que mudam conforme o modo
+const MODO_CONFIG = {
+  gratuito: {
+    badge: '🎁 Gratuito por tempo limitado',
+    btn: 'Finalizar e Enviar Diagnóstico →',
+    modal_titulo: 'Diagnóstico Enviado! ✓',
+    modal_desc: 'Seu diagnóstico foi recebido com sucesso! Nossa equipe vai analisar e preparar o seu resultado personalizado. Em breve entraremos em contato.',
+    modal_codigo: true, // mostra código de backup
+  },
+  lista_espera: {
+    badge: '📋 Vagas limitadas — lista de espera',
+    btn: 'Entrar na Lista de Espera →',
+    modal_titulo: 'Você está na lista! ✓',
+    modal_desc: 'Recebemos seu cadastro! Você entrou na lista de espera para o diagnóstico gratuito da Tonus Consultoria. Entraremos em contato assim que sua vaga for liberada.',
+    modal_codigo: false,
+  },
+  pago: {
+    badge: '💳 Diagnóstico completo',
+    btn: 'Continuar para pagamento →',
+    modal_titulo: 'Quase lá!',
+    modal_desc: 'Seu formulário foi salvo. Conclua o pagamento para garantir seu diagnóstico.',
+    modal_codigo: false,
+  },
+};
+
+
+const SUPA_URL = 'https://iqjimkiwyixxtvpgwdun.supabase.co';
+const EDGE_SALVAR = SUPA_URL + '/functions/v1/salvar-diagnostico';
+
+// Inicializa badge e botão conforme modo
+window.addEventListener('load', () => {
+  const cfg = MODO_CONFIG[DIAGNOSTICO_MODO] || MODO_CONFIG.gratuito;
+  TEXTO_BOTAO_FINAL = cfg.btn; // só aparece na última etapa — nas demais o botão diz "Continuar →"
+  const cs = document.getElementById('modal-codigo-section');
+  const bs = document.getElementById('modal-btns-simples');
+  if (cs) cs.style.display = cfg.modal_codigo ? 'block' : 'none';
+  if (bs) bs.style.display = cfg.modal_codigo ? 'none' : 'block';
+});
+
+async function salvarNoSupabase(dados, opts = {}) {
+  try {
+    const resp = await fetch(EDGE_SALVAR, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tipo: dados.tipo,
+        nome: dados.dados['d-resp'] || dados.dados['d-nome'] || '',
+        email: dados.dados['d-email'] || '',
+        telefone: dados.dados['d-whatsapp'] || '',
+        segmento: dados.dados['d-segmento'] || '',
+        cidade: dados.dados['d-cidade'] || '',
+        origem: dados.dados['d-origem'] || '',
+        dados_extras: {
+          tempo: dados.dados['d-tempo'] || '',
+          renda: dados.dados['d-renda'] || '',
+          familia: dados.dados['d-familia'] || '',
+        },
+        respostas: dados.respostas,
+        status: opts.status || 'novo',
+        diagnostico_id: opts.diagnosticoId || undefined,
+      })
+    });
+    const r = await resp.json();
+    return r.id || null;
+  } catch(e) {
+    console.warn('Supabase indisponível — modo offline:', e);
+    return null;
+  }
+}
+
+// ══ AUTOSAVE DE RASCUNHO ═══════════════════════════════════════
+// Assim que a pessoa preenche nome + e-mail, começamos a salvar o progresso
+// automaticamente (com uma pausa de alguns segundos depois de parar de digitar),
+// pra não perder o lead se ela fechar a aba antes de clicar em "Finalizar".
+let diagnosticoIdAtual = null;
+let autosaveTimer = null;
+let autosaveEmAndamento = false;
+
+function agendarAutosave() {
+  const nome = document.getElementById('d-resp')?.value.trim();
+  const email = document.getElementById('d-email')?.value.trim();
+  const whatsapp = document.getElementById('d-whatsapp')?.value.trim();
+  const temEmail = email && email.includes('@');
+  const temWhatsapp = whatsapp && whatsapp.replace(/\D/g, '').length >= 10;
+  if (!nome || (!temEmail && !temWhatsapp)) return; // só começa quando dá pra identificar e contatar a pessoa
+  clearTimeout(autosaveTimer);
+  autosaveTimer = setTimeout(autosalvarRascunho, 4000);
+}
+
+async function autosalvarRascunho() {
+  if (autosaveEmAndamento) { agendarAutosave(); return; } // evita duas chamadas ao mesmo tempo
+  autosaveEmAndamento = true;
+  try {
+    const dados = coletarDados();
+    dados.modo = DIAGNOSTICO_MODO;
+    const id = await salvarNoSupabase(dados, { status: 'rascunho', diagnosticoId: diagnosticoIdAtual });
+    if (id) diagnosticoIdAtual = id;
+  } finally {
+    autosaveEmAndamento = false;
+  }
+}
+
+// Escuta qualquer campo digitado dentro do formulário (delegação de evento —
+// funciona mesmo com os campos sendo criados dinamicamente pelo renderForm).
+document.addEventListener('DOMContentLoaded', () => {
+  const formSection = document.getElementById('form-section');
+  if (formSection) formSection.addEventListener('input', agendarAutosave);
+});
+
+// ══ MÁSCARA DE WHATSAPP ═════════════════════════════════════════
+// O campo #d-whatsapp é recriado a cada renderForm(), então a máscara é
+// aplicada por delegação de evento (mesmo padrão do autosave acima).
+document.addEventListener('DOMContentLoaded', () => {
+  const formContent = document.getElementById('form-content');
+  if (!formContent) return;
+  formContent.addEventListener('input', (e) => {
+    if (e.target.id !== 'd-whatsapp') return;
+    let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+    let r = '';
+    if (v.length === 0) r = '';
+    else if (v.length <= 2) r = `(${v}`;
+    else if (v.length <= 3) r = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    else if (v.length <= 7) r = `(${v.slice(0,2)}) ${v.slice(2,3)}.${v.slice(3)}`;
+    else r = `(${v.slice(0,2)}) ${v.slice(2,3)}.${v.slice(3,7)}-${v.slice(7)}`;
+    e.target.value = r;
+  });
+});
+
+</script>
+</body>
+</html>
