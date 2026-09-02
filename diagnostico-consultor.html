@@ -652,7 +652,7 @@ function renderPlano(){
 }
 
 // ══ GERAR RESULTADO ══
-const BASE_URL_RESULTADO = 'https://tonusconsultoria.com.br/diagnostico-resultado.html';
+const BASE_URL_RESULTADO = 'https://www.tonusconsultoria.com.br/diagnostico-resultado.html';
 const EDGE_ENVIAR = 'https://iqjimkiwyixxtvpgwdun.supabase.co/functions/v1/enviar-resultado';
 
 function gerarCodigoResultado(){
@@ -719,7 +719,7 @@ function gerarCodigoResultado(){
 
 function abrirPreviewResultado(){
   const { codigo } = gerarCodigoResultado();
-  const BASE = 'https://tonusconsultoria.com.br/diagnostico-resultado.html';
+  const BASE = 'https://www.tonusconsultoria.com.br/diagnostico-resultado.html';
   const link = `${BASE}?codigo=${encodeURIComponent(codigo)}`;
   window.open(link, '_blank');
 }
