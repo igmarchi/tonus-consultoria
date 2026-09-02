@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://tonusconsultoria.com.br/sitemap.xml
