@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /diagnostico-consultor.html
+Disallow: /diagnostico-resultado.html
+
+Sitemap: https://tonusconsultoria.com.br/sitemap.xml
