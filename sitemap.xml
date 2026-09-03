@@ -66,5 +66,42 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  <!-- BLOG_URLS_START -->  <!-- BLOG_URLS_END -->
+  <!-- BLOG_URLS_START -->
+  <url>
+    <loc>https://www.tonusconsultoria.com.br/blog/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.tonusconsultoria.com.br/blog/fluxo-de-caixa-mei-pirassununga.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tonusconsultoria.com.br/blog/o-que-e-diagnostico-empresarial.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tonusconsultoria.com.br/blog/erros-fluxo-de-caixa-pequena-empresa.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tonusconsultoria.com.br/blog/separar-financas-pessoais-empresa-mei.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tonusconsultoria.com.br/blog/planejamento-estrategico-pequena-empresa-por-onde-comecar.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- BLOG_URLS_END -->
 </urlset>
