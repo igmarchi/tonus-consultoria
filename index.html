@@ -16,12 +16,18 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <!-- ══════════════════════════════════════════════════════════════════
-     SEGURANÇA — Content Security Policy
+     SEGURANÇA
+     X-Content-Type-Options, X-Frame-Options e Permissions-Policy NÃO
+     funcionam via <meta> — todo navegador exige que venham como
+     cabeçalho HTTP de verdade (o Chrome, inclusive, avisa isso no
+     console pro X-Frame-Options). Como o site roda no GitHub Pages
+     (sem suporte a cabeçalho customizado) atrás da Cloudflare, esses
+     3 ficam configurados como Transform Rule (Modify Response Header)
+     no painel da Cloudflare, não aqui. Referrer-Policy é o único dos
+     4 que o navegador aceita via <meta>, por isso continua aqui —
+     funciona mesmo que a regra da Cloudflare falhe por algum motivo.
 ════════════════════════════════════════════════════════════════════ -->
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 
 <!-- ══════════════════════════════════════════════════════════════════
      SEO PRIMÁRIO
