@@ -14,10 +14,11 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-512.png" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="X-Frame-Options" content="DENY">
+<!-- X-Content-Type-Options, X-Frame-Options e Permissions-Policy não
+     funcionam via <meta> (navegador exige cabeçalho HTTP de verdade) —
+     ficam configurados como Transform Rule na Cloudflare, pra todo o
+     site. Referrer-Policy é o único dos 4 que funciona via <meta>. -->
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 
 <title>Reestruturação Operacional — Tonus Consultoria | Pirassununga e Região, SP</title>
 <meta name="description" content="Reestruturação operacional para MEI e PME em Pirassununga e região: mapeamento de processos, eliminação de gargalos e rotinas que não dependem do fundador.">
