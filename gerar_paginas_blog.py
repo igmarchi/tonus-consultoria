@@ -353,7 +353,8 @@ footer{background:var(--dark);padding:52px 52px 32px;margin-top:0;}
 # primeiros posts.
 NAV_LINKS = [
     ("/#sobre", "Sobre"), ("/#fundadores", "Quem somos"), ("/#diagnostico", "Diagnóstico"),
-    ("/#servicos", "Serviços"), ("/#metodo", "Método"), ("/#blog", "Blog"), ("/#noticias", "Notícias"), ("/#contato", "Contato"),
+    ("/#servicos", "Serviços"), ("/#metodo", "Método"), ("/#confianca", "Confiança real"),
+    ("/#blog", "Blog"), ("/#noticias", "Notícias"), ("/#contato", "Contato"),
 ]
 
 def nav_html():
