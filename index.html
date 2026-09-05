@@ -16,18 +16,12 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <!-- ══════════════════════════════════════════════════════════════════
-     SEGURANÇA
-     X-Content-Type-Options, X-Frame-Options e Permissions-Policy NÃO
-     funcionam via <meta> — todo navegador exige que venham como
-     cabeçalho HTTP de verdade (o Chrome, inclusive, avisa isso no
-     console pro X-Frame-Options). Como o site roda no GitHub Pages
-     (sem suporte a cabeçalho customizado) atrás da Cloudflare, esses
-     3 ficam configurados como Transform Rule (Modify Response Header)
-     no painel da Cloudflare, não aqui. Referrer-Policy é o único dos
-     4 que o navegador aceita via <meta>, por isso continua aqui —
-     funciona mesmo que a regra da Cloudflare falhe por algum motivo.
+     SEGURANÇA — Content Security Policy
 ════════════════════════════════════════════════════════════════════ -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 
 <!-- ══════════════════════════════════════════════════════════════════
      SEO PRIMÁRIO
@@ -1448,7 +1442,7 @@ footer{background:var(--dark);padding:60px 52px 36px;}
   <div class="prova-top">
     <div class="eyebrow" aria-hidden="true">Confiança real</div>
     <h2 id="prova-title">Quem já está com a gente.</h2>
-    <p>A Tonus começou em julho de 2026 — e desde então já está com um negócio real de Pirassununga e região sob acompanhamento. Aqui está esse retrato, sem enfeite.</p>
+    <p>A Tonus começou em julho de 2026 — e desde então já são dois negócios reais do interior de SP sob acompanhamento. Aqui está esse retrato, sem enfeite.</p>
   </div>
   <div class="clientes-grid">
     <!-- Para adicionar outro cliente, duplique este bloco .prova-cliente inteiro
@@ -1470,6 +1464,25 @@ footer{background:var(--dark);padding:60px 52px 36px;}
           <a href="/servicos/sistema-de-gestao-sob-medida.html">Sistema de Gestão Sob Medida</a>
           <a href="/servicos/reestruturacao-operacional.html">Reestruturação Operacional</a>
           <a href="/servicos/gestao-financeira.html">Gestão Financeira</a>
+        </div>
+      </div>
+    </div>
+    <div class="prova-cliente">
+      <img class="pc-logo" src="/clientes/loja-magnani-logo.png" alt="Logo da Loja Magnani" loading="lazy" width="84" height="84">
+      <div>
+        <div class="pc-nome-row">
+          <div class="pc-nome">Loja Magnani — Móveis e Decoração</div>
+          <a class="pc-ig" href="https://www.instagram.com/lojamagnani/" target="_blank" rel="noopener noreferrer">
+            <i class="ti ti-brand-instagram" style="font-size:12px;"></i> @lojamagnani
+          </a>
+        </div>
+        <div class="pc-local">Porto Ferreira, SP</div>
+        <div class="pc-desde">CLIENTE DESDE SETEMBRO DE 2026</div>
+        <p class="pc-desc">Loja de móveis tradicional, em atividade desde 1965, sem nenhum controle financeiro estruturado. Implementamos um sistema completo de gestão financeira — fluxo de caixa, estoque, contas a pagar e receber — e um plano de ação em fases para modernizar a operação e aumentar as vendas.</p>
+        <div class="pc-tags">
+          <a href="/servicos/sistema-de-gestao-sob-medida.html">Sistema de Gestão Sob Medida</a>
+          <a href="/servicos/gestao-financeira.html">Gestão Financeira</a>
+          <a href="/servicos/planejamento-estrategico.html">Planejamento Estratégico</a>
         </div>
       </div>
     </div>
