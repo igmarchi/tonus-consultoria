@@ -2893,11 +2893,17 @@ document.addEventListener('DOMContentLoaded', function () {
   async function salvarSupabase(email) {
     try {
       if (!db) throw new Error('db não iniciado');
+      // A tabela `leads` foi feita pro formulário completo "Quero meu
+      // diagnóstico" (nome/whatsapp/tipo/desafio são NOT NULL) — o popup só
+      // coleta e-mail, então preenchemos o resto com valores neutros e
+      // marcamos `origem` pra distinguir esses registros no painel.
       const { error } = await db.from('leads').insert([{
-        nome:   'Exit Intent',
-        email:  email,
-        origem: 'exit_intent',
-        status: 'novo'
+        nome:     'Visitante (pop-up e-book)',
+        email:    email,
+        whatsapp: '',
+        tipo:     'pj',
+        desafio:  'Deixou o e-mail no pop-up de saída para receber o e-book "13 Sinais".',
+        origem:   'exit_intent'
       }]);
       if (error) throw error;
       return true;
