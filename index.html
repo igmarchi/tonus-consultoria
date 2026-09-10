@@ -2731,5 +2731,199 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 </script>
+
+<!-- ═══════════════════════════════════════════
+     POPUP DE SAÍDA — E-book "13 Sinais"
+═══════════════════════════════════════════ -->
+<div id="exitPopup"
+  style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(13,17,23,.9);
+         backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#1B3A5C;border:1px solid rgba(200,151,58,.3);max-width:480px;
+              width:100%;padding:48px 40px;text-align:center;position:relative;">
+
+    <!-- Botão X fechar -->
+    <button id="exitBtnFechar"
+      style="position:absolute;top:16px;right:18px;background:none;border:none;
+             color:rgba(247,244,239,.4);font-size:20px;cursor:pointer;transition:color .2s;"
+      onmouseover="this.style.color='#F7F4EF'"
+      onmouseout="this.style.color='rgba(247,244,239,.4)'">✕</button>
+
+    <!-- Ícone presente -->
+    <div style="font-size:42px;margin-bottom:16px;">🎁</div>
+
+    <!-- Eyebrow -->
+    <div style="font-size:10px;letter-spacing:3px;color:#C8973A;margin-bottom:10px;">
+      MATERIAL EXCLUSIVO E GRATUITO
+    </div>
+
+    <!-- Título -->
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;
+               color:#F7F4EF;margin-bottom:12px;line-height:1.3;">
+      Antes de sair, leve o Checklist da Tonus com você!
+    </h3>
+
+    <!-- Subtítulo -->
+    <p style="color:rgba(247,244,239,.55);font-size:13px;line-height:1.7;margin-bottom:24px;">
+      Um e-book prático com os 13 sinais de que o seu negócio está fora do tônus —
+      e planos de ação concretos para cada um deles.<br>
+      Gratuito, sem enrolação, direto no seu e-mail.
+    </p>
+
+    <!-- Campo e-mail -->
+    <input id="exitEmail" type="email" placeholder="Digite seu e-mail"
+      style="width:100%;background:rgba(247,244,239,.07);border:1px solid rgba(200,151,58,.25);
+             color:#F7F4EF;padding:13px 16px;font-size:13px;font-family:'DM Sans',sans-serif;
+             outline:none;margin-bottom:10px;box-sizing:border-box;transition:border-color .2s;"
+      onfocus="this.style.borderColor='rgba(200,151,58,.6)'"
+      onblur="this.style.borderColor='rgba(200,151,58,.25)'"
+      onkeydown="if(event.key==='Enter') document.getElementById('exitBtnCTA').click()">
+
+    <!-- Mensagem de status -->
+    <div id="exitMsg" style="font-size:12px;margin-bottom:10px;min-height:18px;"></div>
+
+    <!-- Botão principal -->
+    <button id="exitBtnCTA"
+      style="width:100%;background:#C8973A;color:#1B3A5C;border:none;padding:14px;
+             font-size:11px;letter-spacing:2.5px;font-weight:700;cursor:pointer;
+             font-family:'DM Sans',sans-serif;transition:opacity .2s;"
+      onmouseover="this.style.opacity='.85'"
+      onmouseout="this.style.opacity='1'">
+      QUERO O CHECKLIST GRATUITO
+    </button>
+
+    <!-- Botão "Não, obrigado" — borgonha -->
+    <button id="exitBtnRecusar"
+      style="width:100%;background:#6B1F2A;color:#F7F4EF;border:none;padding:14px;
+             font-size:11px;letter-spacing:2.5px;font-weight:700;cursor:pointer;
+             font-family:'DM Sans',sans-serif;margin-top:10px;transition:background .2s;"
+      onmouseover="this.style.background='#7D2433'"
+      onmouseout="this.style.background='#6B1F2A'">
+      NÃO, OBRIGADO — PREFIRO SAIR SEM O MATERIAL.
+    </button>
+
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   POPUP DE SAÍDA — captura e-mail + Brevo (e-book "13 Sinais")
+   Reaproveita o cliente Supabase (`db`) já inicializado acima.
+   Observação: a edge function subscribe-brevo hoje é só o stub padrão do
+   Supabase (auth "publishable/secret", sem integração real com o Brevo) —
+   precisa ser substituída pela versão em subscribe-brevo.ts (salva junto
+   com salvar-diagnostico.ts) e deployada com --no-verify-jwt antes do
+   envio automático do e-book funcionar de ponta a ponta. Até lá, o lead é
+   salvo normalmente na tabela `leads` (origem: exit_intent).
+════════════════════════════════════════════════════════════════════ */
+(function () {
+  const SUBSCRIBE_EDGE = SUPABASE_URL + '/functions/v1/subscribe-brevo';
+
+  let disparado = false;
+
+  function mostrarPopup() {
+    if (disparado) return;
+    disparado = true;
+    document.getElementById('exitPopup').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    if (typeof gtag === 'function') gtag('event', 'exit_popup_exibido');
+  }
+
+  function fecharPopup() {
+    document.getElementById('exitPopup').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  // Desktop: mouse sai pelo topo da página
+  document.addEventListener('mouseleave', function (e) {
+    if (e.clientY <= 10) mostrarPopup();
+  });
+
+  // Mobile: 40s de inatividade (sem gesto de "sair" no celular)
+  let timerMobile = setTimeout(mostrarPopup, 40000);
+  document.addEventListener('touchstart', function () {
+    clearTimeout(timerMobile);
+    timerMobile = setTimeout(mostrarPopup, 40000);
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('exitBtnFechar') .addEventListener('click', fecharPopup);
+    document.getElementById('exitBtnRecusar').addEventListener('click', fecharPopup);
+    document.getElementById('exitBtnCTA')    .addEventListener('click', submeterEmail);
+  });
+
+  async function submeterEmail() {
+    const input = document.getElementById('exitEmail');
+    const msg   = document.getElementById('exitMsg');
+    const btn   = document.getElementById('exitBtnCTA');
+    const email = input.value.trim();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.textContent = '⚠ Digite um e-mail válido.';
+      msg.style.color = '#f87171';
+      input.focus();
+      return;
+    }
+
+    btn.textContent = 'ENVIANDO...';
+    btn.disabled    = true;
+    msg.textContent = '';
+
+    const resultados = await Promise.allSettled([
+      salvarSupabase(email),
+      enviarBrevo(email)
+    ]);
+
+    const supabaseOk = resultados[0].status === 'fulfilled' && resultados[0].value;
+    const brevoOk    = resultados[1].status === 'fulfilled' && resultados[1].value;
+
+    if (supabaseOk || brevoOk) {
+      msg.textContent = '✓ Recebido! Verifique seu e-mail em instantes.';
+      msg.style.color = '#4ade80';
+      btn.textContent = '✓ ENVIADO COM SUCESSO!';
+      if (typeof gtag === 'function') gtag('event', 'exit_popup_email_capturado', { supabase: supabaseOk, brevo: brevoOk });
+      setTimeout(fecharPopup, 2500);
+    } else {
+      msg.textContent = '⚠ Erro ao enviar. Tente pelo WhatsApp.';
+      msg.style.color = '#f87171';
+      btn.textContent = 'QUERO O CHECKLIST GRATUITO';
+      btn.disabled    = false;
+    }
+  }
+
+  async function salvarSupabase(email) {
+    try {
+      if (!db) throw new Error('db não iniciado');
+      const { error } = await db.from('leads').insert([{
+        nome:   'Exit Intent',
+        email:  email,
+        origem: 'exit_intent',
+        status: 'novo'
+      }]);
+      if (error) throw error;
+      return true;
+    } catch (e) {
+      console.error('Supabase exit intent:', e);
+      return false;
+    }
+  }
+
+  async function enviarBrevo(email) {
+    try {
+      const res = await fetch(SUBSCRIBE_EDGE, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ email, nome: 'Visitante' })
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? json.message ?? 'Brevo falhou');
+      return true;
+    } catch (e) {
+      console.error('Brevo:', e);
+      return false;
+    }
+  }
+
+})();
+</script>
 </body>
 </html>

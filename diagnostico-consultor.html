@@ -451,18 +451,16 @@ function renderAvaliacao(){
 }
 
 function descScore(v){
-  if(v<=1.5) return ['Crítico','critico'];
-  if(v<=2.5) return ['Atenção','atencao'];
-  if(v<=3.5) return ['Moderado','atencao'];
-  if(v<=4.5) return ['Bom','bom'];
-  return ['Excelente','bom'];
+  if(v<=2.0) return ['Crítico','critico'];
+  if(v<=3.5) return ['Atenção','atencao'];
+  return ['Bom','bom'];
 }
 
 function atualizarScore(id,val){
   val=parseFloat(val);
   scores[id]=val;
   const [desc]=descScore(val);
-  const cor=val<=2.5?'#b84b28':val<=3.5?'#c8973a':'#1B3A5C';
+  const cor=val<=2.0?'#b84b28':val<=3.5?'#c8973a':'#1B3A5C';
   const sv=document.getElementById('sv-'+id);
   const sd=document.getElementById('sd-'+id);
   const sl=document.getElementById('sl-'+id);
@@ -517,7 +515,7 @@ function renderAnalise(){
   sorted.forEach(d=>{
     const v=scores[d.id];
     const pct=(v/5*100).toFixed(0);
-    const cor=v<=2.5?'#b84b28':v<=3.5?'#c8973a':'#1B3A5C';
+    const cor=v<=2.0?'#b84b28':v<=3.5?'#c8973a':'#1B3A5C';
     barras.innerHTML+=`<div class="bar-row">
       <div class="bar-label">${d.emoji} ${d.label}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${cor}"></div></div>
@@ -545,10 +543,9 @@ function renderAnalise(){
 }
 
 function totalDesc(v,nome){
-  if(v<=2) return `${nome} apresenta vulnerabilidades críticas em múltiplas dimensões. Intervenção especializada urgente.`;
-  if(v<=3) return `${nome} tem estrutura básica mas enfrenta pontos de atenção relevantes que comprometem o crescimento.`;
-  if(v<=4) return `${nome} demonstra boa maturidade com espaço de melhoria em dimensões específicas.`;
-  return `${nome} apresenta alta maturidade. Foco em otimização e escalabilidade.`;
+  if(v<=2.0) return `${nome} apresenta vulnerabilidades críticas em múltiplas dimensões. Intervenção especializada urgente.`;
+  if(v<=3.5) return `${nome} tem estrutura básica mas enfrenta pontos de atenção relevantes que comprometem o crescimento.`;
+  return `${nome} demonstra boa maturidade, com espaço de otimização e escalabilidade.`;
 }
 
 function desenharRadar(){
@@ -607,19 +604,19 @@ function renderPacotes(total){
 }
 
 function pacotesPJ(t){
-  const r=t<=2.5?0:t<=3.8?1:2;
+  const r=t<=2.0?0:t<=3.5?1:2;
   return [
-    {nome:'Diagnóstico & Estabilização',faixa:'Score até 2,5',itens:['Diagnóstico completo 6 dimensões','Plano de emergência financeira','Separação PF/PJ e fluxo de caixa','Processos mínimos documentados','Reuniões semanais'],prazo:'60 a 90 dias',rec:r===0},
-    {nome:'Estruturação & Crescimento',faixa:'Score 2,5 a 3,8',itens:['Diagnóstico e plano completo','Gestão financeira e precificação','Processos e delegação','Planejamento estratégico 12 meses','Indicadores e rotina de gestão','Reuniões quinzenais'],prazo:'90 a 120 dias',rec:r===1},
-    {nome:'Otimização & Escala',faixa:'Score acima de 3,8',itens:['Diagnóstico de oportunidades','Planejamento estratégico médio prazo','Estruturação para crescimento','Indicadores avançados e OKRs','Reuniões mensais'],prazo:'90 dias + acompanhamento',rec:r===2},
+    {nome:'Diagnóstico & Estabilização',faixa:'Score até 2,0',itens:['Diagnóstico completo 6 dimensões','Plano de emergência financeira','Separação PF/PJ e fluxo de caixa','Processos mínimos documentados','Reuniões semanais'],prazo:'60 a 90 dias',rec:r===0},
+    {nome:'Estruturação & Crescimento',faixa:'Score 2,0 a 3,5',itens:['Diagnóstico e plano completo','Gestão financeira e precificação','Processos e delegação','Planejamento estratégico 12 meses','Indicadores e rotina de gestão','Reuniões quinzenais'],prazo:'90 a 120 dias',rec:r===1},
+    {nome:'Otimização & Escala',faixa:'Score acima de 3,5',itens:['Diagnóstico de oportunidades','Planejamento estratégico médio prazo','Estruturação para crescimento','Indicadores avançados e OKRs','Reuniões mensais'],prazo:'90 dias + acompanhamento',rec:r===2},
   ];
 }
 function pacotesPF(t){
-  const r=t<=2.5?0:t<=3.8?1:2;
+  const r=t<=2.0?0:t<=3.5?1:2;
   return [
-    {nome:'Reestruturação Financeira',faixa:'Score até 2,5',itens:['Mapeamento completo de dívidas','Plano de renegociação','Orçamento mensal estruturado','Fundo de emergência','Acompanhamento intensivo'],prazo:'60 a 90 dias',rec:r===0},
-    {nome:'Organização & Educação',faixa:'Score 2,5 a 3,8',itens:['Diagnóstico financeiro completo','Orçamento e controle de gastos','Primeiros investimentos','Proteção e seguros básicos','Metas de médio prazo','Reuniões mensais'],prazo:'90 dias',rec:r===1},
-    {nome:'Planejamento Patrimonial',faixa:'Score acima de 3,8',itens:['Revisão e otimização da carteira','Planejamento de aposentadoria','Metas de longo prazo','Revisão de seguros','Diversificação','Acompanhamento trimestral'],prazo:'90 dias + revisões',rec:r===2},
+    {nome:'Reestruturação Financeira',faixa:'Score até 2,0',itens:['Mapeamento completo de dívidas','Plano de renegociação','Orçamento mensal estruturado','Fundo de emergência','Acompanhamento intensivo'],prazo:'60 a 90 dias',rec:r===0},
+    {nome:'Organização & Educação',faixa:'Score 2,0 a 3,5',itens:['Diagnóstico financeiro completo','Orçamento e controle de gastos','Primeiros investimentos','Proteção e seguros básicos','Metas de médio prazo','Reuniões mensais'],prazo:'90 dias',rec:r===1},
+    {nome:'Planejamento Patrimonial',faixa:'Score acima de 3,5',itens:['Revisão e otimização da carteira','Planejamento de aposentadoria','Metas de longo prazo','Revisão de seguros','Diversificação','Acompanhamento trimestral'],prazo:'90 dias + revisões',rec:r===2},
   ];
 }
 
@@ -652,7 +649,7 @@ function renderPlano(){
 }
 
 // ══ GERAR RESULTADO ══
-const BASE_URL_RESULTADO = 'https://www.tonusconsultoria.com.br/diagnostico-resultado.html';
+const BASE_URL_RESULTADO = 'https://tonusconsultoria.com.br/diagnostico-resultado.html';
 const EDGE_ENVIAR = 'https://iqjimkiwyixxtvpgwdun.supabase.co/functions/v1/enviar-resultado';
 
 function gerarCodigoResultado(){
@@ -719,7 +716,7 @@ function gerarCodigoResultado(){
 
 function abrirPreviewResultado(){
   const { codigo } = gerarCodigoResultado();
-  const BASE = 'https://www.tonusconsultoria.com.br/diagnostico-resultado.html';
+  const BASE = 'https://tonusconsultoria.com.br/diagnostico-resultado.html';
   const link = `${BASE}?codigo=${encodeURIComponent(codigo)}`;
   window.open(link, '_blank');
 }
@@ -814,7 +811,7 @@ function textoAcao(id,v,t){
   const acoes=t==='pj'?acoesPJ:acoesPF;
   const a=acoes[id];
   if(!a) return '—';
-  return v<=2.5?a.c:v<=3.5?a.a:a.b;
+  return v<=2.0?a.c:v<=3.5?a.a:a.b;
 }
 const acoesPJ={
   b6:{c:'Criação imediata de metas, indicadores e rotina de planejamento mensal',a:'Estruturação do ciclo de planejamento e implantação de KPIs por área',b:'Evolução para planejamento estratégico com OKRs e revisão trimestral'},

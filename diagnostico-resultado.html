@@ -309,11 +309,9 @@ const DIMS_PF=[
 function getDIMS(t){return t==='pj'?DIMS_PJ:DIMS_PF;}
 
 function descScore(v){
-  if(v<=1.5) return ['Crítico','critico'];
-  if(v<=2.5) return ['Atenção','atencao'];
-  if(v<=3.5) return ['Moderado','atencao'];
-  if(v<=4.5) return ['Bom','bom'];
-  return ['Excelente','bom'];
+  if(v<=2.0) return ['Crítico','critico'];
+  if(v<=3.5) return ['Atenção','atencao'];
+  return ['Bom','bom'];
 }
 
 function importar(rawParam){
@@ -407,7 +405,7 @@ function renderResultado(){
   sorted.forEach(d=>{
     const v=parseFloat(scores[d.id]);
     const pct=(v/5*100).toFixed(0);
-    const cor=v<=2.5?'#b84b28':v<=3.5?'#c8973a':'#1B3A5C';
+    const cor=v<=2.0?'#b84b28':v<=3.5?'#c8973a':'#1B3A5C';
     barras.innerHTML+=`<div class="bar-row">
       <div class="bar-label">${d.emoji} ${d.label}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${cor}"></div></div>
@@ -535,19 +533,19 @@ function gerarPlano(id,v,t){
 }
 
 function pacotesPJ(t){
-  const r=t<=2.5?0:t<=3.8?1:2;
+  const r=t<=2.0?0:t<=3.5?1:2;
   return [
-    {nome:'Diagnóstico & Estabilização',faixa:'Indicado para scores até 2,5 — situação crítica',itens:['Diagnóstico completo em 6 dimensões','Plano de emergência financeira','Separação PF/PJ e fluxo de caixa','Processos mínimos documentados','Reuniões semanais de acompanhamento'],prazo:'60 a 90 dias',rec:r===0},
-    {nome:'Estruturação & Crescimento',faixa:'Indicado para scores entre 2,5 e 3,8',itens:['Diagnóstico e plano de ação completo','Gestão financeira e precificação','Processos e delegação estruturada','Planejamento estratégico 12 meses','Indicadores e rotina de gestão','Reuniões quinzenais'],prazo:'90 a 120 dias',rec:r===1},
-    {nome:'Otimização & Escala',faixa:'Indicado para scores acima de 3,8',itens:['Diagnóstico de oportunidades','Planejamento estratégico de médio prazo','Estruturação para crescimento','Indicadores avançados e OKRs','Reuniões mensais de acompanhamento'],prazo:'90 dias + acompanhamento contínuo',rec:r===2},
+    {nome:'Diagnóstico & Estabilização',faixa:'Indicado para scores até 2,0 — situação crítica',itens:['Diagnóstico completo em 6 dimensões','Plano de emergência financeira','Separação PF/PJ e fluxo de caixa','Processos mínimos documentados','Reuniões semanais de acompanhamento'],prazo:'60 a 90 dias',rec:r===0},
+    {nome:'Estruturação & Crescimento',faixa:'Indicado para scores entre 2,0 e 3,5',itens:['Diagnóstico e plano de ação completo','Gestão financeira e precificação','Processos e delegação estruturada','Planejamento estratégico 12 meses','Indicadores e rotina de gestão','Reuniões quinzenais'],prazo:'90 a 120 dias',rec:r===1},
+    {nome:'Otimização & Escala',faixa:'Indicado para scores acima de 3,5',itens:['Diagnóstico de oportunidades','Planejamento estratégico de médio prazo','Estruturação para crescimento','Indicadores avançados e OKRs','Reuniões mensais de acompanhamento'],prazo:'90 dias + acompanhamento contínuo',rec:r===2},
   ];
 }
 function pacotesPF(t){
-  const r=t<=2.5?0:t<=3.8?1:2;
+  const r=t<=2.0?0:t<=3.5?1:2;
   return [
-    {nome:'Reestruturação Financeira',faixa:'Indicado para scores até 2,5 — situação crítica',itens:['Mapeamento completo de dívidas','Plano de renegociação e quitação','Orçamento mensal estruturado','Fundo de emergência — primeiros passos','Acompanhamento intensivo mensal'],prazo:'60 a 90 dias',rec:r===0},
-    {nome:'Organização & Educação',faixa:'Indicado para scores entre 2,5 e 3,8',itens:['Diagnóstico financeiro completo','Orçamento e controle de gastos','Primeiros investimentos adequados','Proteção e seguros básicos','Metas de médio prazo','Reuniões mensais de revisão'],prazo:'90 dias',rec:r===1},
-    {nome:'Planejamento Patrimonial',faixa:'Indicado para scores acima de 3,8',itens:['Revisão e otimização da carteira','Planejamento de aposentadoria','Metas de longo prazo','Revisão de seguros e proteção','Estratégia de diversificação','Acompanhamento trimestral'],prazo:'90 dias + revisões periódicas',rec:r===2},
+    {nome:'Reestruturação Financeira',faixa:'Indicado para scores até 2,0 — situação crítica',itens:['Mapeamento completo de dívidas','Plano de renegociação e quitação','Orçamento mensal estruturado','Fundo de emergência — primeiros passos','Acompanhamento intensivo mensal'],prazo:'60 a 90 dias',rec:r===0},
+    {nome:'Organização & Educação',faixa:'Indicado para scores entre 2,0 e 3,5',itens:['Diagnóstico financeiro completo','Orçamento e controle de gastos','Primeiros investimentos adequados','Proteção e seguros básicos','Metas de médio prazo','Reuniões mensais de revisão'],prazo:'90 dias',rec:r===1},
+    {nome:'Planejamento Patrimonial',faixa:'Indicado para scores acima de 3,5',itens:['Revisão e otimização da carteira','Planejamento de aposentadoria','Metas de longo prazo','Revisão de seguros e proteção','Estratégia de diversificação','Acompanhamento trimestral'],prazo:'90 dias + revisões periódicas',rec:r===2},
   ];
 }
 
