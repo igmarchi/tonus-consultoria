@@ -1149,6 +1149,10 @@ async function fazerLogin() {
 
   renderTelaLista();
   carregarLista();
+
+  // Deep link vindo do painel admin do site (?id=...) — abre o lead direto na análise
+  const idUrl = new URLSearchParams(window.location.search).get('id');
+  if (idUrl) selecionarDiagnostico(idUrl);
 }
 
 async function fazerLogout() {

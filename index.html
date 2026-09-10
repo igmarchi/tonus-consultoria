@@ -1760,6 +1760,10 @@ footer{background:var(--dark);padding:60px 52px 36px;}
       style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(247,244,239,.4);padding:12px 28px;font-size:10px;letter-spacing:2.5px;cursor:pointer;transition:all .2s;">
       DÚVIDAS FAQ
     </button>
+    <button class="admin-aba" id="aba-diagnosticos" onclick="trocarAba('diagnosticos')"
+      style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(247,244,239,.4);padding:12px 28px;font-size:10px;letter-spacing:2.5px;cursor:pointer;transition:all .2s;">
+      DIAGNÓSTICOS
+    </button>
   </div>
 
   <!-- ══ PAINEL LEADS ══ -->
@@ -1797,6 +1801,35 @@ footer{background:var(--dark);padding:60px 52px 36px;}
     <div id="duvidas-loading" class="admin-loading">Carregando dúvidas...</div>
     <div id="duvidas-lista"></div>
     <div id="duvidas-empty" class="admin-empty" style="display:none;">Nenhuma dúvida recebida ainda.</div>
+  </div>
+
+  <!-- ══ PAINEL DIAGNÓSTICOS (somente leitura — análise acontece no Painel do Consultor) ══ -->
+  <div id="painel-diagnosticos" style="display:none;">
+    <div class="admin-stats">
+      <div class="admin-stat"><div class="as-num" id="statDiagTotal">0</div><div class="as-label">TOTAL RECEBIDOS</div></div>
+      <div class="admin-stat"><div class="as-num" id="statDiagNovo">0</div><div class="as-label">NOVOS</div></div>
+      <div class="admin-stat"><div class="as-num" id="statDiagAnalise">0</div><div class="as-label">EM ANÁLISE</div></div>
+      <div class="admin-stat"><div class="as-num" id="statDiagConcluido">0</div><div class="as-label">CONCLUÍDOS</div></div>
+    </div>
+    <div class="admin-actions">
+      <button class="admin-btn" onclick="window.open('diagnostico-consultor.html','_blank')"><i class="ti ti-external-link"></i> Abrir Painel do Consultor</button>
+      <button class="admin-btn" onclick="carregarDiagnosticosAdmin()"><i class="ti ti-refresh"></i> Atualizar</button>
+    </div>
+    <div style="font-size:12px;color:rgba(247,244,239,.35);margin-bottom:16px;">
+      Visualização somente leitura. Pra pontuar, gerar o plano e enviar o resultado, clique em "Analisar" — isso abre o lead já selecionado no Painel do Consultor.
+    </div>
+    <div class="admin-table-wrap">
+      <div class="admin-loading" id="diagLoading">Carregando diagnósticos...</div>
+      <table class="admin-table" id="diagTable" style="display:none;">
+        <thead>
+          <tr>
+            <th>DATA</th><th>NOME</th><th>TIPO</th><th>SEGMENTO</th><th>CIDADE</th><th>STATUS</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="diagTbody"></tbody>
+      </table>
+      <div class="admin-empty" id="diagEmpty" style="display:none;">Nenhum diagnóstico recebido ainda.</div>
+    </div>
   </div>
 </div>
 
@@ -2456,10 +2489,73 @@ function trocarAba(aba) {
   btn.style.color = 'var(--gold)';
 
   // Painéis
-  document.getElementById('painel-leads').style.display   = aba === 'leads'   ? 'block' : 'none';
-  document.getElementById('painel-duvidas').style.display = aba === 'duvidas' ? 'block' : 'none';
+  document.getElementById('painel-leads').style.display       = aba === 'leads'        ? 'block' : 'none';
+  document.getElementById('painel-duvidas').style.display     = aba === 'duvidas'      ? 'block' : 'none';
+  document.getElementById('painel-diagnosticos').style.display = aba === 'diagnosticos' ? 'block' : 'none';
 
   if (aba === 'duvidas') carregarDuvidas();
+  if (aba === 'diagnosticos') carregarDiagnosticosAdmin();
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ADMIN — DIAGNÓSTICOS (somente leitura; análise fica no Painel do Consultor)
+════════════════════════════════════════════════════════════════════ */
+async function carregarDiagnosticosAdmin() {
+  const loading = document.getElementById('diagLoading');
+  const table   = document.getElementById('diagTable');
+  const tbody   = document.getElementById('diagTbody');
+  const empty   = document.getElementById('diagEmpty');
+
+  loading.style.display = 'block';
+  table.style.display   = 'none';
+  empty.style.display   = 'none';
+
+  try {
+    const { data, error } = await db
+      .from('diagnosticos')
+      .select('id, created_at, tipo, nome, segmento, cidade, status')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    loading.style.display = 'none';
+
+    const STATUS_LABEL = { novo:'Novo', em_analise:'Em análise', concluido:'Concluído', aguardando_retorno:'Aguardando retorno' };
+    const STATUS_COLOR = { novo:'#f87171', em_analise:'#c8973a', concluido:'#4ade80', aguardando_retorno:'rgba(247,244,239,.4)' };
+
+    document.getElementById('statDiagTotal').textContent    = (data || []).length;
+    document.getElementById('statDiagNovo').textContent     = (data || []).filter(d => d.status === 'novo').length;
+    document.getElementById('statDiagAnalise').textContent  = (data || []).filter(d => d.status === 'em_analise' || d.status === 'aguardando_retorno').length;
+    document.getElementById('statDiagConcluido').textContent = (data || []).filter(d => d.status === 'concluido').length;
+
+    if (!data || data.length === 0) {
+      empty.style.display = 'block';
+      return;
+    }
+
+    const esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    tbody.innerHTML = data.map(d => {
+      const dataFmt = d.created_at ? new Date(d.created_at).toLocaleDateString('pt-BR') : '—';
+      const cor = STATUS_COLOR[d.status] || 'rgba(247,244,239,.4)';
+      const label = STATUS_LABEL[d.status] || d.status || '—';
+      return `<tr>
+        <td>${esc(dataFmt)}</td>
+        <td>${esc(d.nome)}</td>
+        <td>${d.tipo === 'pj' ? 'PJ' : 'PF'}</td>
+        <td>${esc(d.segmento)}</td>
+        <td>${esc(d.cidade)}</td>
+        <td><span style="background:${cor}20;color:${cor};border:1px solid ${cor}40;padding:3px 10px;font-size:9px;letter-spacing:1.5px;border-radius:2px;">${esc(label).toUpperCase()}</span></td>
+        <td><button onclick="window.open('diagnostico-consultor.html?id=${encodeURIComponent(d.id)}','_blank')"
+              style="background:none;border:1px solid rgba(200,151,58,.35);color:var(--gold);padding:5px 12px;font-size:9px;letter-spacing:1.5px;cursor:pointer;white-space:nowrap;">ANALISAR →</button></td>
+      </tr>`;
+    }).join('');
+    table.style.display = 'table';
+  } catch (e) {
+    loading.style.display = 'none';
+    empty.style.display = 'block';
+    empty.textContent = 'Erro ao carregar diagnósticos.';
+    console.error('Erro ao carregar diagnósticos:', e);
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -2764,7 +2860,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- Subtítulo -->
     <p style="color:rgba(247,244,239,.55);font-size:13px;line-height:1.7;margin-bottom:24px;">
-      Um e-book pra você avaliar sozinho o seu negócio: os 13 sinais de que a empresa
+      Um e-book pra você avaliar sozinho o seu negócio: os 13 sinais de que a sua empresa
       pode estar fora do tônus, com placar e plano de ação para cada um.<br>
       Gratuito, sem enrolação, direto no seu e-mail.
     </p>
