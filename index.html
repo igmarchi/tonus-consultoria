@@ -64,6 +64,8 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Tonus Consultoria",
+  "legalName": "Tonus Apoio Empresarial LTDA",
+  "taxID": "69.533.080/0001-47",
   "description": "Consultoria empresarial especializada em diagnóstico, gestão financeira e planejamento estratégico para MEI e PME no interior paulista.",
   "url": "https://www.tonusconsultoria.com.br",
   "logo": "https://www.tonusconsultoria.com.br/logo.png",
@@ -687,6 +689,7 @@ footer{background:var(--dark);padding:60px 52px 36px;}
 .footer-col a:hover{color:var(--gold);}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
 .footer-copy{font-size:10px;color:rgba(247,244,239,.16);letter-spacing:1px;}
+.footer-cnpj{font-size:10px;color:rgba(247,244,239,.24);letter-spacing:.5px;margin-top:6px;line-height:1.6;}
 .footer-legal{display:flex;gap:20px;}
 .footer-legal a{font-size:10px;color:rgba(247,244,239,.16);}
 
@@ -1668,7 +1671,10 @@ footer{background:var(--dark);padding:60px 52px 36px;}
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2026 TONUS CONSULTORIA · PIRASSUNUNGA E REGIÃO, SP</div>
+    <div>
+      <div class="footer-copy">© 2026 TONUS CONSULTORIA · PIRASSUNUNGA E REGIÃO, SP</div>
+      <div class="footer-cnpj">Tonus Consultoria é uma marca de Tonus Apoio Empresarial LTDA · CNPJ 69.533.080/0001-47 · Santa Rita do Passa Quatro – SP</div>
+    </div>
     <div class="footer-legal">
       <a href="/privacidade.html">Política de privacidade</a>
       <a href="/termos.html">Termos de uso</a>
@@ -2831,21 +2837,33 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- ═══════════════════════════════════════════
      POPUP DE SAÍDA — E-book "13 Sinais"
 ═══════════════════════════════════════════ -->
-<div id="exitPopup"
+<style>
+@media (max-width:600px){
+  #exitPopup{padding:12px !important;align-items:flex-end !important;}
+  #exitPopup .exit-card{padding:36px 22px 22px !important;max-height:92vh;overflow-y:auto;border-radius:14px 14px 0 0;}
+  #exitPopup .exit-card h3{font-size:23px !important;}
+  #exitPopup .exit-card p{font-size:13px !important;margin-bottom:18px !important;}
+  #exitPopup .exit-icon{font-size:34px !important;margin-bottom:10px !important;}
+  #exitPopup #exitEmail{font-size:16px !important;}           /* evita zoom automático no iPhone */
+  #exitPopup #exitBtnFechar{top:8px !important;right:8px !important;width:44px;height:44px;font-size:22px !important;}
+  #exitPopup #exitBtnCTA,#exitPopup #exitBtnRecusar{padding:15px 10px !important;line-height:1.5;}
+}
+</style>
+<div id="exitPopup" role="dialog" aria-modal="true" aria-label="Autodiagnóstico gratuito"
   style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(13,17,23,.9);
          backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#1B3A5C;border:1px solid rgba(200,151,58,.3);max-width:480px;
+  <div class="exit-card" style="background:#1B3A5C;border:1px solid rgba(200,151,58,.3);max-width:480px;
               width:100%;padding:48px 40px;text-align:center;position:relative;">
 
     <!-- Botão X fechar -->
-    <button id="exitBtnFechar"
+    <button id="exitBtnFechar" aria-label="Fechar"
       style="position:absolute;top:16px;right:18px;background:none;border:none;
              color:rgba(247,244,239,.4);font-size:20px;cursor:pointer;transition:color .2s;"
       onmouseover="this.style.color='#F7F4EF'"
       onmouseout="this.style.color='rgba(247,244,239,.4)'">✕</button>
 
     <!-- Ícone presente -->
-    <div style="font-size:42px;margin-bottom:16px;">🎁</div>
+    <div class="exit-icon" style="font-size:42px;margin-bottom:16px;">🎁</div>
 
     <!-- Eyebrow -->
     <div style="font-size:10px;letter-spacing:3px;color:#C8973A;margin-bottom:10px;">
@@ -2914,37 +2932,134 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
   const SUBSCRIBE_EDGE = SUPABASE_URL + '/functions/v1/subscribe-brevo';
 
-  let disparado = false;
+  /* ── Controle de exibição ─────────────────────────────────────────
+     • Aparece no máximo 1 vez por visita (sessão).
+     • Quem fechou/recusou não vê de novo por 7 dias.
+     • Quem deixou o e-mail não vê mais.                                */
+  const CHAVE      = 'tonus_exit_popup';
+  const DIAS_PAUSA = 7;
+  const inicio     = Date.now();
+  let disparado    = false;
 
-  function mostrarPopup() {
-    if (disparado) return;
+  function lerEstado() {
+    try { return JSON.parse(localStorage.getItem(CHAVE) || 'null'); } catch (e) { return null; }
+  }
+  function gravarEstado(status) {
+    try { localStorage.setItem(CHAVE, JSON.stringify({ status: status, ts: Date.now() })); } catch (e) {}
+  }
+  function bloqueado() {
+    try { if (sessionStorage.getItem(CHAVE)) return true; } catch (e) {}
+    const st = lerEstado();
+    if (!st) return false;
+    if (st.status === 'convertido') return true;
+    return (Date.now() - st.ts) < DIAS_PAUSA * 864e5;
+  }
+  function outraJanelaAberta() {
+    // não interrompe quem está digitando num formulário do site
+    const el = document.activeElement;
+    return !!(el && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) && el.id !== 'exitEmail');
+  }
+
+  function mostrarPopup(gatilho) {
+    if (disparado || bloqueado() || outraJanelaAberta()) return;
     disparado = true;
+    try { sessionStorage.setItem(CHAVE, '1'); } catch (e) {}
     document.getElementById('exitPopup').style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    if (typeof gtag === 'function') gtag('event', 'exit_popup_exibido');
+    if (typeof gtag === 'function') gtag('event', 'exit_popup_exibido', { gatilho: gatilho || 'desconhecido' });
   }
 
   function fecharPopup() {
     document.getElementById('exitPopup').style.display = 'none';
     document.body.style.overflow = '';
   }
+  function recusarPopup() {
+    gravarEstado('fechado');
+    fecharPopup();
+  }
 
-  // Desktop: mouse sai pelo topo da página
+  /* ── Desktop: mouse sai pelo topo da página (rumo ao X / abas) ── */
   document.addEventListener('mouseleave', function (e) {
-    if (e.clientY <= 10) mostrarPopup();
+    if (e.clientY <= 10) mostrarPopup('desktop_mouse');
   });
 
-  // Mobile: 40s de inatividade (sem gesto de "sair" no celular)
-  let timerMobile = setTimeout(mostrarPopup, 40000);
-  document.addEventListener('touchstart', function () {
-    clearTimeout(timerMobile);
-    timerMobile = setTimeout(mostrarPopup, 40000);
-  });
+  /* ── Celular / tablet ───────────────────────────────────────────── */
+  const ehToque = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+
+  if (ehToque) {
+    const MIN_TEMPO = 12000;  // não aparece nos primeiros 12s
+    function profundidade() {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      return h > 0 ? window.scrollY / h : 0;
+    }
+    let maxProf = 0;
+
+    // 1) Rolagem rápida para cima depois de ter lido parte da página
+    //    (gesto típico de quem vai para a barra de endereço / fechar a aba)
+    let amostras = [];
+    window.addEventListener('scroll', function () {
+      const y = window.scrollY, t = Date.now();
+      maxProf = Math.max(maxProf, profundidade());
+      amostras.push([t, y]);
+      while (amostras.length && t - amostras[0][0] > 300) amostras.shift();
+      const subiu = amostras[0][1] - y;              // px subidos nos últimos 300ms
+      if (subiu > Math.max(450, window.innerHeight * 0.7) &&
+          maxProf > 0.3 && (t - inicio) > MIN_TEMPO && y > 200) {
+        mostrarPopup('mobile_rolagem_rapida');
+      }
+    }, { passive: true });
+
+    // 2) Botão "voltar" do navegador / gesto de voltar
+    //    Cria um passo extra no histórico; ao voltar, mostra o popup uma vez.
+    let armadilhaArmada = false;
+    function armarVoltar() {
+      if (armadilhaArmada || bloqueado()) return;
+      armadilhaArmada = true;
+      try {
+        history.replaceState(Object.assign({}, history.state, { tonusBase: true }), '');
+        history.pushState({ tonusExit: true }, '');
+      } catch (e) {}
+    }
+    // só arma depois da primeira interação (exigência dos navegadores)
+    ['touchstart', 'scroll'].forEach(function (ev) {
+      window.addEventListener(ev, function () {
+        if ((Date.now() - inicio) > 3000) armarVoltar();
+      }, { passive: true });
+    });
+    window.addEventListener('popstate', function (e) {
+      if (e.state && e.state.tonusBase && !disparado && !bloqueado()) {
+        mostrarPopup('mobile_voltar');
+      }
+    });
+
+    // 3) Saiu para outro app/aba e voltou
+    let saiuEm = 0;
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') {
+        saiuEm = Date.now();
+      } else if (saiuEm && (Date.now() - saiuEm) > 3000 && (saiuEm - inicio) > MIN_TEMPO) {
+        mostrarPopup('mobile_retorno_aba');
+      }
+    });
+
+    // 4) Reserva: 45s na página com pelo menos 35% lido
+    const verificador = setInterval(function () {
+      if (disparado) { clearInterval(verificador); return; }
+      if ((Date.now() - inicio) > 45000 && maxProf > 0.35) {
+        clearInterval(verificador);
+        mostrarPopup('mobile_tempo_leitura');
+      }
+    }, 3000);
+  }
 
   document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('exitBtnFechar') .addEventListener('click', fecharPopup);
-    document.getElementById('exitBtnRecusar').addEventListener('click', fecharPopup);
+    document.getElementById('exitBtnFechar') .addEventListener('click', recusarPopup);
+    document.getElementById('exitBtnRecusar').addEventListener('click', recusarPopup);
     document.getElementById('exitBtnCTA')    .addEventListener('click', submeterEmail);
+    // tocar fora do cartão também fecha
+    document.getElementById('exitPopup').addEventListener('click', function (e) {
+      if (e.target === this) recusarPopup();
+    });
   });
 
   async function submeterEmail() {
@@ -2977,6 +3092,7 @@ document.addEventListener('DOMContentLoaded', function () {
       msg.style.color = '#4ade80';
       btn.textContent = '✓ ENVIADO COM SUCESSO!';
       if (typeof gtag === 'function') gtag('event', 'exit_popup_email_capturado', { supabase: supabaseOk, brevo: brevoOk });
+      gravarEstado('convertido');
       setTimeout(fecharPopup, 2500);
     } else {
       msg.textContent = '⚠ Erro ao enviar. Tente pelo WhatsApp.';
