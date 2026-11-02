@@ -115,7 +115,6 @@
     ]
   },
   "priceRange": "$$",
-  "openingHours": "Mo-Fr 08:00-18:00",
   "sameAs": [
     "https://instagram.com/tonus.consultoria",
     "https://linkedin.com/company/tonus-consultoria/about/",
@@ -258,7 +257,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/tabler-icons.min.css">
 
 <!-- ══════════════════════════════════════════════════════════════════
      SUPABASE SDK
@@ -1182,6 +1181,26 @@ footer{background:var(--dark);padding:60px 52px 36px;}
 .publico{background:#ECE5D8;}
 @media (max-width:640px){.hero-logo{width:92%;right:4%;top:auto;bottom:3%;transform:none;opacity:.16;}}
 </style>
+<style>
+/* ===== Acabamento fino (nov/2026) ===== */
+html{scroll-behavior:smooth;}
+section[id],div[id="contato"]{scroll-margin-top:80px;}
+body{font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased;}
+.hc-num,.num-n,.diag-num,.etapa h3,.step-n{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;}
+.hero-sub{color:rgba(247,244,239,.78);}
+.hc-text p{color:rgba(247,244,239,.72);font-size:12.5px;}
+.diag-card p{color:rgba(247,244,239,.72);}
+.serv-item p{color:rgba(247,244,239,.68);}
+.num-label{color:rgba(247,244,239,.66);}
+.num-desc{color:rgba(247,244,239,.5);}
+.comum li{color:rgba(247,244,239,.62);}
+.agenda-legal{color:rgba(247,244,239,.6);}
+.agenda-alt{color:rgba(247,244,239,.7);}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.btn-primary,.btn-burg,.agenda-form button{transition:transform .15s ease,box-shadow .15s ease,opacity .15s;}
+.btn-primary:hover,.btn-burg:hover,.agenda-form button:hover{transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(0,0,0,.5);}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none!important;animation:none!important;}}
+</style>
 </head>
 
 <body>
@@ -1749,25 +1768,7 @@ footer{background:var(--dark);padding:60px 52px 36px;}
     <div class="footer-legal">
       <a href="/privacidade.html">Política de privacidade</a>
       <a href="/termos.html">Termos de uso</a>
-      <a href="diagnostico-consultor.html"
-         title="Painel do Consultor"
-         aria-label="Painel do consultor"
-         style="color:rgba(247,244,239,0.12);font-size:9px;letter-spacing:1px;transition:color .2s;position:relative;cursor:pointer;"
-         onmouseover="this.style.color='rgba(200,151,58,0.5)';this.querySelector('span').style.opacity='1'"
-         onmouseout="this.style.color='rgba(247,244,239,0.12)';this.querySelector('span').style.opacity='0'">
-        &#9632;
-        <span style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(15,37,64,.95);color:rgba(247,244,239,.7);font-size:10px;font-weight:500;letter-spacing:.5px;padding:5px 10px;border-radius:5px;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;border:1px solid rgba(200,151,58,.2);">Painel do Consultor</span>
-      </a>
-      <a href="#"
-         onclick="event.preventDefault();openAdmin();"
-         title="Área Administrativa"
-         aria-label="Acesso administrativo restrito"
-         style="color:rgba(247,244,239,0.12);font-size:9px;letter-spacing:1px;transition:color .2s;position:relative;cursor:pointer;"
-         onmouseover="this.style.color='rgba(200,151,58,0.5)';this.querySelector('span').style.opacity='1'"
-         onmouseout="this.style.color='rgba(247,244,239,0.12)';this.querySelector('span').style.opacity='0'">
-        &#9679;
-        <span style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(15,37,64,.95);color:rgba(247,244,239,.7);font-size:10px;font-weight:500;letter-spacing:.5px;padding:5px 10px;border-radius:5px;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;border:1px solid rgba(200,151,58,.2);">Área Administrativa</span>
-      </a>
+
     </div>
   </div>
 </footer>
@@ -2007,6 +2008,7 @@ async function doAdminLogin(){
   document.getElementById('adminContent').style.display = 'block';
   carregarLeads();
 }
+window.addEventListener('load',function(){ if(location.hash==='#admin'){ openAdmin(); } });
 function closeAdmin(){
   adminAutenticado = false;
   if(db) db.auth.signOut().catch(()=>{});
@@ -2109,228 +2111,7 @@ function exportCSV(){
   showToast('CSV exportado com sucesso.');
 }
 
-/* ══════════════════════════════════════════════════════════════════
-   NOTÍCIAS — RSS
-════════════════════════════════════════════════════════════════════ */
-const newsCache = {};
-const RSS2JSON_KEY = 'sqk9kodackbt8u70ez3a59xcc7vqfssygwyfotrb';
-const newsFeeds = {
-  mundo: [ 'https://feeds.bbci.co.uk/portuguese/rss.xml', 'https://br.reuters.com/news/rss' ],
-  brasil: [ 'https://g1.globo.com/rss/g1/economia/', 'https://agenciabrasil.ebc.com.br/rss/economia/feed.xml' ],
-  mei: [ 'https://exame.com/feed/', 'https://agenciasebrae.com.br/feed/' ],
-  financeiro: [ 'https://www.infomoney.com.br/feed/', 'https://valor.globo.com/rss/financas/' ]
-};
-function fmtData(dateStr){
-  if(!dateStr) return '';
-  return new Date(dateStr).toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase();
-}
-function dominio(url){ try{ return new URL(url).hostname.replace('www.',''); } catch{ return ''; } }
-function renderNews(tab, articles){
-  const panel = document.getElementById('tab-'+tab);
-  if(!panel) return;
-  if(!articles || articles.length === 0){
-    panel.innerHTML = '<div class="news-loading">Nenhuma notícia encontrada no momento.</div>';
-    return;
-  }
-  const big = articles.slice(0,2);
-  const small = articles.slice(2,5);
-  const bigHTML = big.map((a,i) => `
-    <a href="${a.link}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
-      <div class="nc-big${i===1?' alt':''}">
-        <div class="nc-source">${a.author || dominio(a.link)}</div>
-        <h3>${a.title}</h3>
-        <p>${(a.description||'').replace(/<[^>]*>/g,'').slice(0,160)}...</p>
-        <div class="nc-date">${fmtData(a.pubDate)}</div>
-      </div>
-    </a>`).join('');
-  const smallHTML = small.map(a => `
-    <a href="${a.link}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
-      <div class="nc-sm">
-        <div class="nc-source">${a.author || dominio(a.link)}</div>
-        <h3>${a.title}</h3>
-        <p>${(a.description||'').replace(/<[^>]*>/g,'').slice(0,120)}...</p>
-        <div class="nc-date">${fmtData(a.pubDate)}</div>
-      </div>
-    </a>`).join('');
-  panel.innerHTML = `<div class="news-featured">${bigHTML}</div><div class="news-row">${smallHTML}</div>`;
-}
-function fetchComTimeout(url, ms){
-  return new Promise((resolve, reject) => {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), ms);
-    fetch(url, { signal: controller.signal })
-      .then(r => { clearTimeout(timer); resolve(r); })
-      .catch(e => { clearTimeout(timer); reject(e); });
-  });
-}
-async function fetchFeed(rssUrl){
-  const url = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&api_key=${RSS2JSON_KEY}&count=5`;
-  const resp = await fetchComTimeout(url, 10000);
-  if(!resp.ok) throw new Error('HTTP '+resp.status);
-  const data = await resp.json();
-  if(data.status !== 'ok') throw new Error('RSS error: '+data.message);
-  return data.items || [];
-}
-async function fetchNews(tab){
-  if(newsCache[tab]){ renderNews(tab, newsCache[tab]); return; }
-  const feeds = newsFeeds[tab];
-  const panel = document.getElementById('tab-'+tab);
-  try{
-    const results = await Promise.allSettled(feeds.map(f => fetchFeed(f)));
-    let articles = [];
-    results.forEach(r => { if(r.status === 'fulfilled') articles = articles.concat(r.value); });
-    articles.sort((a,b) => new Date(b.pubDate) - new Date(a.pubDate));
-    if(articles.length === 0){
-      panel.innerHTML = '<div class="news-loading">Nenhuma notícia encontrada no momento.</div>';
-      return;
-    }
-    newsCache[tab] = articles;
-    renderNews(tab, articles);
-    const hoje = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase();
-    const badge = document.getElementById('newsBadge');
-    if(badge) badge.textContent = 'CURADORIA DIÁRIA · ' + hoje;
-  } catch(err){
-    console.warn('RSS erro:', err.message);
-    panel.innerHTML = '<div class="news-loading">Não foi possível carregar as notícias. Tente novamente em instantes.</div>';
-  }
-}
-function switchTab(tab, btn){
-  document.querySelectorAll('.news-tab').forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
-  document.querySelectorAll('.news-panel').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
-  btn.setAttribute('aria-selected','true');
-  const panel = document.getElementById('tab-'+tab);
-  if(panel) panel.classList.add('active');
-  fetchNews(tab);
-}
-// Notícias removidas da home (nov/2026).
-
-/* ══════════════════════════════════════════════════════════════════
-   DATA/HORA AO VIVO
-════════════════════════════════════════════════════════════════════ */
-function updateTime(){
-  const now = new Date();
-  const d = now.toLocaleDateString('pt-BR');
-  const h = now.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' });
-  const el = document.getElementById('indUpdateTime');
-  if(el) el.textContent = 'ATUALIZADO EM ' + d + ' · ' + h;
-}
-updateTime();
-setInterval(updateTime, 60000);
-
-/* ══════════════════════════════════════════════════════════════════
-   ÍNDICES FINANCEIROS — HG BRASIL (IBOV, Dólar, Euro, Selic, IPCA)
-════════════════════════════════════════════════════════════════════ */
-const HG_KEY = '11238adb';
-function fmtChg(val, prefix=''){
-  if(val == null) return '—';
-  const sinal = val >= 0 ? '▲ +' : '▼ ';
-  return prefix + sinal + val.toFixed(2).replace('.',',') + '%';
-}
-function chgClass(val){ if(val == null) return 't-flat'; return val >= 0 ? 't-up' : 't-down'; }
-function icClass(val){ if(val == null) return 'ic-flat'; return val >= 0 ? 'ic-up' : 'ic-down'; }
-function icIcon(val){
-  if(val == null) return '';
-  return val >= 0 ? '<i class="ti ti-trending-up" aria-hidden="true"></i> ' : '<i class="ti ti-trending-down" aria-hidden="true"></i> ';
-}
-function setTicker(id, val, chg, prefix=''){
-  const v = document.getElementById('t-'+id);
-  const c = document.getElementById('tc-'+id);
-  const v2 = document.getElementById('t-'+id+'2');
-  const c2 = document.getElementById('tc-'+id+'2');
-  if(v) v.textContent = val;
-  if(c){ c.textContent = fmtChg(chg); c.className = 't-chg ' + chgClass(chg); }
-  if(v2) v2.textContent = val;
-  if(c2){ c2.textContent = fmtChg(chg); c2.className = 't-chg ' + chgClass(chg); }
-}
-function setCard(id, val, chg, sub=''){
-  const v = document.getElementById('ind-'+id);
-  const c = document.getElementById('indc-'+id);
-  const s = document.getElementById('inds-'+id);
-  if(v) v.textContent = val;
-  if(c){ c.innerHTML = icIcon(chg) + (chg != null ? (chg>=0?'+':'') + chg.toFixed(2).replace('.',',') + '%' : '—'); c.className = 'ind-chg ' + icClass(chg); }
-  if(s) s.textContent = sub;
-}
-let indicesCache = null;
-async function buscarIndices(){
-  const hgUrl = `https://api.hgbrasil.com/finance?format=json&key=${HG_KEY}`;
-  const edgeUrl = SUPABASE_URL + '/functions/v1/hg-indices';
-  const proxies = [
-    `https://api.allorigins.win/get?url=${encodeURIComponent(hgUrl)}`,
-    `https://corsproxy.io/?${encodeURIComponent(hgUrl)}`,
-    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(hgUrl)}`,
-  ];
-  let data = null;
-  try{
-    const resp = await fetchComTimeout(edgeUrl, 6000);
-    if(resp.ok){
-      const json = await resp.json();
-      if(json?.results){ data = json; console.info('Índices via Edge Function ✓'); }
-    }
-  } catch(e){ console.warn('Edge Function falhou, tentando proxies...'); }
-  if(!data?.results){
-    for(const proxy of proxies){
-      try{
-        const resp = await fetchComTimeout(proxy, 5000);
-        if(!resp.ok) continue;
-        const json = await resp.json();
-        const parsed = json.contents ? JSON.parse(json.contents) : json;
-        if(parsed?.results){ data = parsed; console.info('Índices via proxy ✓'); break; }
-      } catch(e){ continue; }
-    }
-  }
-  if(!data?.results){
-    console.warn('HG Brasil: todas as fontes falharam');
-    if(indicesCache) console.info('Mantendo valores em cache.');
-    return;
-  }
-  indicesCache = data;
-  const r = data.results;
-
-  // ── IBOVESPA ──
-  const ibov = r.stocks?.IBOVESPA;
-  if(ibov){
-    const val = ibov.points?.toLocaleString('pt-BR', {maximumFractionDigits:0}) || '—';
-    setTicker('ibov', val, ibov.variation);
-    setCard('ibov', val, ibov.variation, 'B3 · Bolsa de Valores');
-  }
-
-  // ── DÓLAR ──
-  const dolar = r.currencies?.USD;
-  if(dolar){
-    const val = 'R$ ' + dolar.buy?.toFixed(2).replace('.',',');
-    setTicker('dolar', val, dolar.variation);
-    setCard('dolar', val, dolar.variation, 'Câmbio comercial');
-  }
-
-  // ── EURO ──
-  const euro = r.currencies?.EUR;
-  if(euro){
-    const val = 'R$ ' + euro.buy?.toFixed(2).replace('.',',');
-    setTicker('euro', val, euro.variation);
-  }
-
-  // ── SELIC ──
-  const taxas = r.taxes?.[0];
-  if(taxas?.selic != null){
-    const val = taxas.selic.toFixed(2).replace('.',',') + '%';
-    const el1 = document.getElementById('t-selic');
-    const el2 = document.getElementById('t-selic2');
-    if(el1) el1.textContent = val;
-    if(el2) el2.textContent = val;
-    const cardVal = document.getElementById('ind-selic');
-    if(cardVal) cardVal.textContent = taxas.selic.toFixed(2).replace('.',',') + '% a.a.';
-  }
-
-  // ── IPCA 12M (estático — não disponível em tempo real na API) ──
-  const ipca1 = document.getElementById('t-ipca');
-  const ipca2 = document.getElementById('t-ipca2');
-  if(ipca1) ipca1.textContent = '4,83%';
-  if(ipca2) ipca2.textContent = '4,83%';
-
-  updateTime();
-}
-// Índices de mercado removidos da home (nov/2026).
+// Notícias, relógio e índices de mercado removidos (nov/2026).
 
 /* ══════════════════════════════════════════════════════════════════
    MODAIS — SAIBA MAIS
@@ -3246,6 +3027,12 @@ async function enviarAgendamento(e){
       }
     }
   }catch(err){ console.error('Supabase agendamento:', err); }
+  // Aviso por e-mail para a Tonus (edge function notificar-agendamento). Não trava o visitante se falhar.
+  try{
+    fetch(SUPABASE_URL+'/functions/v1/notificar-agendamento',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({nome:dados.nome,whatsapp:dados.whatsapp,empresa:dados.empresa,porte:dados.porte,cidade:dados.cidade,desafio:dados.desafio,formato:dados.formato,fonte:origemVisita()}),
+      keepalive:true}).catch(function(err){console.warn('Aviso de agendamento não enviado:',err);});
+  }catch(_){}
   if(typeof gtag==='function') gtag('event','generate_lead',{origem:'agendar_conversa',porte:dados.porte,fonte:origemVisita()});
   var msg='Olá! Sou '+dados.nome+', da '+dados.empresa+' ('+dados.porte+', '+dados.cidade+'). Quero agendar a conversa de diagnóstico da Tonus. '+
           'O que mais está pegando hoje: '+dados.desafio+'. Prefiro conversar: '+dados.formato+'.';
