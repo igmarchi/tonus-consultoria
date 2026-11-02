@@ -14,25 +14,24 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-512.png" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<!-- X-Content-Type-Options, X-Frame-Options e Permissions-Policy não
-     funcionam via <meta> (navegador exige cabeçalho HTTP de verdade) —
-     ficam configurados como Transform Rule na Cloudflare, pra todo o
-     site. Referrer-Policy é o único dos 4 que funciona via <meta>. -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 
 <title>Diagnóstico Empresarial — Tonus Consultoria | Pirassununga e Região, SP</title>
 <meta name="description" content="Diagnóstico empresarial completo em 6 dimensões (financeiro, operacional, comercial, pessoas, estratégia e gestão) para MEI e PME em Pirassununga e região. Relatório objetivo com prioridades de ação.">
 <meta name="keywords" content="diagnóstico empresarial, diagnóstico de negócio, consultoria empresarial Pirassununga, avaliação de negócio MEI PME">
 <meta name="author" content="Tonus Consultoria">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.tonusconsultoria.com.br/servicos/diagnostico-empresarial.html">
+<link rel="canonical" href="https://tonusconsultoria.com.br/servicos/diagnostico-empresarial.html">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.tonusconsultoria.com.br/servicos/diagnostico-empresarial.html">
+<meta property="og:url" content="https://tonusconsultoria.com.br/servicos/diagnostico-empresarial.html">
 <meta property="og:title" content="Diagnóstico Empresarial — Tonus Consultoria">
 <meta property="og:description" content="Diagnóstico empresarial completo em 6 dimensões (financeiro, operacional, comercial, pessoas, estratégia e gestão) para MEI e PME em Pirassununga e região. Relatório objetivo com prioridades de ação.">
-<meta property="og:image" content="https://www.tonusconsultoria.com.br/og-image.jpg">
+<meta property="og:image" content="https://tonusconsultoria.com.br/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="pt_BR">
@@ -41,7 +40,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Diagnóstico Empresarial — Tonus Consultoria">
 <meta name="twitter:description" content="Diagnóstico empresarial completo em 6 dimensões (financeiro, operacional, comercial, pessoas, estratégia e gestão) para MEI e PME em Pirassununga e região. Relatório objetivo com prioridades de ação.">
-<meta name="twitter:image" content="https://www.tonusconsultoria.com.br/og-image.jpg">
+<meta name="twitter:image" content="https://tonusconsultoria.com.br/og-image.jpg">
 
 <script type="application/ld+json">
 {
@@ -50,11 +49,11 @@
   "serviceType": "Diagnóstico Empresarial",
   "name": "Diagnóstico Empresarial — Tonus Consultoria",
   "description": "Diagnóstico empresarial completo em 6 dimensões (financeiro, operacional, comercial, pessoas, estratégia e gestão) para MEI e PME em Pirassununga e região. Relatório objetivo com prioridades de ação.",
-  "url": "https://www.tonusconsultoria.com.br/servicos/diagnostico-empresarial.html",
+  "url": "https://tonusconsultoria.com.br/servicos/diagnostico-empresarial.html",
   "provider": {
     "@type": "LocalBusiness",
     "name": "Tonus Consultoria",
-    "url": "https://www.tonusconsultoria.com.br",
+    "url": "https://tonusconsultoria.com.br",
     "telephone": "+5519992486831",
     "address": {
       "@type": "PostalAddress",
@@ -196,19 +195,19 @@
       "@type": "ListItem",
       "position": 1,
       "name": "Início",
-      "item": "https://www.tonusconsultoria.com.br/"
+      "item": "https://tonusconsultoria.com.br/"
     },
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Serviços",
-      "item": "https://www.tonusconsultoria.com.br/#servicos"
+      "name": "Onde atuamos",
+      "item": "https://tonusconsultoria.com.br/#servicos"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "Diagnóstico Empresarial",
-      "item": "https://www.tonusconsultoria.com.br/servicos/diagnostico-empresarial.html"
+      "item": "https://tonusconsultoria.com.br/servicos/diagnostico-empresarial.html"
     }
   ]
 }
@@ -220,10 +219,10 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Quanto tempo leva o diagnóstico empresarial?",
+      "name": "Quanto tempo leva o diagnóstico?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "O diagnóstico é feito em 6 dimensões — financeiro, operacional, comercial, pessoas, estratégia e gestão — e termina com um relatório objetivo e a apresentação das prioridades de ação. Atualmente ele está disponível gratuitamente por tempo limitado para os primeiros interessados."
+        "text": "A conversa dura de 1h a 1h30. A devolutiva, com a nossa leitura, o plano sugerido e a proposta, é apresentada em até 5 dias úteis, numa data combinada na própria reunião."
       }
     },
     {
@@ -231,7 +230,7 @@
       "name": "O diagnóstico é pago?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Por tempo limitado, o diagnóstico completo é oferecido gratuitamente para os primeiros interessados, sem compromisso de contratação posterior."
+        "text": "Não. A conversa e a devolutiva são gratuitas e sem compromisso. A etapa 2 (plano de 90 dias) é paga, e o valor vem por escrito na proposta antes de você decidir."
       }
     }
   ]
@@ -360,49 +359,47 @@ footer{background:var(--dark);padding:52px 52px 32px;margin-top:0;}
   .wa-tooltip{display:none;}
 }
 </style>
+<style>
+.servico-entra{background:#fff;border:1px solid rgba(27,58,92,.1);border-left:3px solid var(--navy);padding:18px 22px;margin-bottom:28px;border-radius:4px;}
+.servico-entra .bloco-label{color:var(--navy);}
+.servico-entra p{font-size:15px;line-height:1.7;color:#3d4a5c;margin:0;}
+.cta-nota{font-size:13px;color:#7A8090;margin:14px 0 40px;line-height:1.6;}
+</style>
 </head>
 <body>
 
 <nav role="navigation" aria-label="Navegação principal">
   <a class="nav-logo" href="/" aria-label="Tonus Consultoria">TONUS<span>CONSULTORIA</span></a>
   <div class="nav-links" role="menubar">
-    <a href="/#sobre" role="menuitem">Sobre</a>
+    <a href="/#metodo" role="menuitem">Como funciona</a>
+    <a href="/#servicos" role="menuitem">Onde atuamos</a>
+    <a href="/#confianca" role="menuitem">Clientes</a>
     <a href="/#fundadores" role="menuitem">Quem somos</a>
-    <a href="/#diagnostico" role="menuitem">Diagnóstico</a>
-    <a href="/#servicos" role="menuitem">Serviços</a>
-    <a href="/#metodo" role="menuitem">Método</a>
-    <a href="/#confianca" role="menuitem">Confiança real</a>
     <a href="/#blog" role="menuitem">Blog</a>
-    <a href="/#noticias" role="menuitem">Notícias</a>
-    <a href="/#contato" role="menuitem">Contato</a>
   </div>
-  <a class="nav-cta" href="/diagnostico-cliente.html" aria-label="Começar diagnóstico">COMEÇAR DIAGNÓSTICO</a>
+  <a class="nav-cta" href="/#contato" aria-label="Agendar diagnóstico gratuito">AGENDAR DIAGNÓSTICO</a>
   <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="nav-mobile" id="navMobile" role="navigation" aria-label="Menu mobile">
-  <a href="/#sobre" onclick="closeMenu()">Sobre</a>
+  <a href="/#metodo" onclick="closeMenu()">Como funciona</a>
+  <a href="/#servicos" onclick="closeMenu()">Onde atuamos</a>
+  <a href="/#confianca" onclick="closeMenu()">Clientes</a>
   <a href="/#fundadores" onclick="closeMenu()">Quem somos</a>
-  <a href="/#diagnostico" onclick="closeMenu()">Diagnóstico</a>
-  <a href="/#servicos" onclick="closeMenu()">Serviços</a>
-  <a href="/#metodo" onclick="closeMenu()">Método</a>
-  <a href="/#confianca" onclick="closeMenu()">Confiança real</a>
   <a href="/#blog" onclick="closeMenu()">Blog</a>
-  <a href="/#noticias" onclick="closeMenu()">Notícias</a>
-  <a href="/#contato" onclick="closeMenu()">Contato</a>
-  <a class="nav-cta-mobile" href="/diagnostico-cliente.html">QUERO MEU DIAGNÓSTICO</a>
+  <a class="nav-cta-mobile" href="/#contato">AGENDAR MEU DIAGNÓSTICO GRATUITO</a>
 </div>
 
-<div class="breadcrumb"><a href="/">Início</a> / <a href="/#servicos">Serviços</a> / <span>Diagnóstico Empresarial</span></div>
+<div class="breadcrumb"><a href="/">Início</a> / <a href="/#servicos">Onde atuamos</a> / <span>Diagnóstico Empresarial</span></div>
 
 <header class="servico-hero">
   <div class="servico-hero-inner">
-    <div class="eyebrow">O QUE ENTREGAMOS</div>
+    <div class="eyebrow">ETAPA 1 · GRATUITA</div>
     <div class="servico-icone" aria-hidden="true">🩺</div>
     <h1>Diagnóstico Empresarial</h1>
-    <p class="servico-resumo">Avaliação completa em 6 dimensões com relatório detalhado e apresentação de resultado.</p>
+    <p class="servico-resumo">A primeira etapa da Tonus: uma conversa gratuita que vira leitura do negócio, plano sugerido e proposta em até 5 dias úteis.</p>
   </div>
 </header>
 
@@ -413,30 +410,31 @@ footer{background:var(--dark);padding:52px 52px 32px;margin-top:0;}
   </div>
   <div class="servico-bloco">
     <div class="bloco-label">O QUE A TONUS FAZ</div>
-    <p>Realizamos uma avaliação estruturada em 6 dimensões: financeiro, operacional, comercial, pessoas, estratégia e gestão. Entrevistamos o fundador, analisamos os números disponíveis e mapeamos os pontos críticos. Ao final, entregamos um relatório objetivo com os principais achados e apresentamos as prioridades de ação em ordem de impacto.</p>
+    <p>Uma conversa de 1h a 1h30 com um dos sócios, por vídeo ou presencial, passando pelos 6 pilares do negócio: financeiro, operação, estratégia, pessoas, clientes e vendas, gestão. A data da devolutiva é combinada na própria reunião. Em até 5 dias úteis apresentamos o que vimos, o plano sugerido para os próximos 90 dias e a proposta. Se fizer sentido seguir, a etapa 2 aprofunda tudo isso com os seus números reais.</p>
   </div>
   
   <div class="servico-resultado">
     <div class="bloco-label">RESULTADO ESPERADO</div>
     <p>Finalmente saber onde a energia está sendo gasta sem retorno — e onde agir primeiro para virar o jogo.</p>
   </div>
-  <a class="btn-cta" href="/diagnostico-cliente.html">QUERO COMEÇAR MEU DIAGNÓSTICO</a>
+  <a class="btn-cta" href="/#contato">AGENDAR MEU DIAGNÓSTICO GRATUITO</a>
+  <p class="cta-nota">Começa com uma conversa gratuita de 1h, por vídeo ou presencial. Em até 5 dias úteis você recebe a nossa leitura, o plano sugerido e a proposta.</p>
 </section>
 
 <section class="servico-faq">
   <h2>Dúvidas frequentes</h2>
   <div class="faq-item">
-      <button class="faq-pergunta" onclick="toggleFAQ(this)">Quanto tempo leva o diagnóstico empresarial?<span class="faq-seta">+</span></button>
-      <div class="faq-resposta"><p>O diagnóstico é feito em 6 dimensões — financeiro, operacional, comercial, pessoas, estratégia e gestão — e termina com um relatório objetivo e a apresentação das prioridades de ação. Atualmente ele está disponível gratuitamente por tempo limitado para os primeiros interessados.</p></div>
+      <button class="faq-pergunta" onclick="toggleFAQ(this)">Quanto tempo leva o diagnóstico?<span class="faq-seta">+</span></button>
+      <div class="faq-resposta"><p>A conversa dura de 1h a 1h30. A devolutiva, com a nossa leitura, o plano sugerido e a proposta, é apresentada em até 5 dias úteis, numa data combinada na própria reunião.</p></div>
     </div>
-    <div class="faq-item">
+  <div class="faq-item">
       <button class="faq-pergunta" onclick="toggleFAQ(this)">O diagnóstico é pago?<span class="faq-seta">+</span></button>
-      <div class="faq-resposta"><p>Por tempo limitado, o diagnóstico completo é oferecido gratuitamente para os primeiros interessados, sem compromisso de contratação posterior.</p></div>
+      <div class="faq-resposta"><p>Não. A conversa e a devolutiva são gratuitas e sem compromisso. A etapa 2 (plano de 90 dias) é paga, e o valor vem por escrito na proposta antes de você decidir.</p></div>
     </div>
 </section>
 
 <section class="servico-outros">
-  <h2>Outros serviços</h2>
+  <h2>Outras frentes</h2>
   <div class="outros-grid">
     <a class="outro-item" href="/servicos/gestao-financeira.html">
       <div class="oi-nome">📊 Gestão Financeira</div>
@@ -454,13 +452,13 @@ footer{background:var(--dark);padding:52px 52px 32px;margin-top:0;}
       <div class="oi-nome">👥 Gestão de Equipes</div>
       <div class="oi-resumo">Estrutura de papéis, delegação, cultura organizacional e redução da dependência do líder.</div>
     </a>
-    <a class="outro-item" href="/servicos/educacao-financeira-pessoal.html">
-      <div class="oi-nome">💡 Educação Financeira Pessoal</div>
-      <div class="oi-resumo">Para profissionais que querem organizar finanças, criar reservas e planejar o futuro. Sem produto financeiro.</div>
+    <a class="outro-item" href="/servicos/clientes-e-vendas.html">
+      <div class="oi-nome">🤝 Clientes e Vendas</div>
+      <div class="oi-resumo">Processo comercial, retenção, ticket médio e previsibilidade de receita.</div>
     </a>
-    <a class="outro-item" href="/servicos/sistema-de-gestao-sob-medida.html">
-      <div class="oi-nome">💻 Sistema de Gestão Sob Medida</div>
-      <div class="oi-resumo">Cadastro de clientes, estoque, financeiro e produtividade em um sistema só, construído pro seu negócio.</div>
+    <a class="outro-item" href="/servicos/gestao-e-governanca.html">
+      <div class="oi-nome">🧭 Gestão e Governança</div>
+      <div class="oi-resumo">Indicadores, rotinas de gestão e decisões combinadas entre sócios e família.</div>
     </a>
   </div>
 </section>
@@ -480,11 +478,14 @@ footer{background:var(--dark);padding:52px 52px 32px;margin-top:0;}
       <a href="/#contato">Contato</a>
     </div>
     <div class="footer-col">
-      <h4>SERVIÇOS</h4>
-      <a href="/servicos/diagnostico-empresarial.html">Diagnóstico</a>
+      <h4>ONDE ATUAMOS</h4>
+      <a href="/#metodo">Como funciona</a>
       <a href="/servicos/gestao-financeira.html">Gestão financeira</a>
+      <a href="/servicos/reestruturacao-operacional.html">Reestruturação operacional</a>
       <a href="/servicos/planejamento-estrategico.html">Planejamento estratégico</a>
-      <a href="/servicos/educacao-financeira-pessoal.html">Educação financeira</a>
+      <a href="/servicos/gestao-de-equipes.html">Gestão de equipes</a>
+      <a href="/servicos/clientes-e-vendas.html">Clientes e vendas</a>
+      <a href="/servicos/gestao-e-governanca.html">Gestão e governança</a>
     </div>
     <div class="footer-col">
       <h4>REDES</h4>
@@ -506,25 +507,6 @@ footer{background:var(--dark);padding:52px 52px 32px;margin-top:0;}
   <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16.004 3C9.377 3 4 8.373 4 15c0 2.31.64 4.47 1.75 6.31L4 29l7.86-1.7A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3Zm6.99 16.87c-.3.84-1.5 1.55-2.44 1.75-.65.14-1.5.25-4.36-.94-3.66-1.52-6.02-5.24-6.2-5.48-.18-.24-1.48-1.97-1.48-3.76 0-1.79.94-2.67 1.27-3.03.33-.36.72-.45.96-.45.24 0 .48 0 .69.01.22.01.52-.08.81.62.3.72 1.02 2.5 1.11 2.68.09.18.15.39.03.63-.12.24-.18.39-.36.6-.18.21-.38.47-.54.63-.18.18-.37.38-.16.74.21.36.94 1.55 2.02 2.51 1.39 1.24 2.56 1.62 2.92 1.8.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.81-.18.33.12 2.1.99 2.46 1.17.36.18.6.27.69.42.09.15.09.87-.21 1.71Z"/></svg>
   <span class="wa-tooltip">Fale no WhatsApp</span>
 </a>
-<script>
-(function(){
-  var wa = document.querySelector('.wa-float');
-  var bar = document.querySelector('.footer-bottom');
-  if(!wa || !bar) return;
-  function update(){
-    var rect = bar.getBoundingClientRect();
-    var vh = window.innerHeight;
-    if(rect.top < vh && rect.bottom > 0){
-      wa.style.transform = 'translateY(-' + (vh - rect.top + 16) + 'px)';
-    } else {
-      wa.style.transform = '';
-    }
-  }
-  window.addEventListener('scroll', update, {passive:true});
-  window.addEventListener('resize', update);
-  update();
-})();
-</script>
 
 <script>
 function toggleMenu(){
