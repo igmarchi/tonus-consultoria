@@ -708,37 +708,6 @@ footer{background:var(--dark);padding:60px 52px 36px;}
 .toast.show{transform:translateY(0);opacity:1;}
 
 /* ── ADMIN PANEL ───────────────────────────────────────────────────── */
-.admin-toggle{position:fixed;bottom:32px;left:32px;background:var(--navy);border:1px solid rgba(200,151,58,.3);color:var(--gold);padding:10px 16px;font-size:10px;letter-spacing:2px;z-index:999;display:flex;align-items:center;gap:8px;}
-.admin-panel{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(13,17,23,.96);z-index:1000;display:none;flex-direction:column;padding:48px 52px;overflow-y:auto;}
-.admin-panel.open{display:flex;}
-.admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;flex-wrap:wrap;gap:12px;}
-.admin-header h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--cream);}
-.admin-close{background:none;border:1px solid rgba(247,244,239,.15);color:rgba(247,244,239,.5);padding:8px 18px;font-size:11px;letter-spacing:2px;}
-.admin-close:hover{border-color:var(--gold);color:var(--gold);}
-.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
-.admin-stat{background:rgba(247,244,239,.04);border:1px solid rgba(247,244,239,.07);padding:20px 24px;}
-.admin-stat .as-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--gold);}
-.admin-stat .as-label{font-size:10px;letter-spacing:2px;color:rgba(247,244,239,.35);margin-top:4px;}
-.admin-table-wrap{background:rgba(247,244,239,.02);border:1px solid rgba(247,244,239,.07);overflow-x:auto;}
-.admin-table{width:100%;border-collapse:collapse;font-size:13px;}
-.admin-table th{padding:14px 20px;text-align:left;font-size:9px;letter-spacing:2px;color:var(--gold);border-bottom:1px solid rgba(247,244,239,.07);font-weight:500;}
-.admin-table td{padding:14px 20px;color:rgba(247,244,239,.65);border-bottom:1px solid rgba(247,244,239,.05);}
-.admin-table tr:hover td{background:rgba(247,244,239,.02);}
-.admin-table tr:last-child td{border-bottom:none;}
-.badge-tipo{display:inline-flex;padding:3px 9px;font-size:9px;letter-spacing:1.5px;border-radius:2px;}
-.bt-mei{background:rgba(200,151,58,.12);color:var(--gold);border:1px solid rgba(200,151,58,.2);}
-.bt-pme{background:rgba(27,58,92,.25);color:#7ab3e0;border:1px solid rgba(27,58,92,.4);}
-.bt-pf{background:rgba(92,31,58,.25);color:#d4779a;border:1px solid rgba(92,31,58,.4);}
-.bt-outro{background:rgba(247,244,239,.06);color:rgba(247,244,239,.45);border:1px solid rgba(247,244,239,.1);}
-.admin-empty{text-align:center;padding:60px;color:rgba(247,244,239,.2);font-size:14px;}
-.admin-actions{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
-.admin-btn{background:none;border:1px solid rgba(247,244,239,.12);color:rgba(247,244,239,.5);padding:8px 18px;font-size:10px;letter-spacing:2px;transition:all .2s;}
-.admin-btn:hover{border-color:var(--gold);color:var(--gold);}
-.admin-loading{text-align:center;padding:40px;color:rgba(247,244,239,.3);font-size:13px;}
-.admin-auth-form{display:flex;flex-direction:column;gap:12px;max-width:380px;margin:0 auto;}
-.admin-auth-form input{background:rgba(247,244,239,.06);border:1px solid rgba(247,244,239,.14);color:var(--cream);padding:13px 17px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;}
-.admin-auth-form input:focus{border-color:rgba(200,151,58,.45);}
-.admin-auth-form button{background:var(--gold);color:var(--navy);border:none;padding:13px;font-size:11px;letter-spacing:2.5px;font-weight:500;}
 
 /* ════════════════════════════════════════════════════════════════════
    RESPONSIVIDADE — TABLET (≤ 1024px)
@@ -804,8 +773,6 @@ footer{background:var(--dark);padding:60px 52px 36px;}
   footer{padding:52px 28px 32px;}
   .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
 
-  .admin-panel{padding:32px 28px;}
-  .admin-stats{grid-template-columns:repeat(2,1fr);}
   .porte-banner{padding:36px 28px;gap:28px;}
 }
 
@@ -927,17 +894,11 @@ footer{background:var(--dark);padding:60px 52px 36px;}
   .footer-bottom{flex-direction:column;align-items:flex-start;gap:10px;}
 
   /* Admin */
-  .admin-panel{padding:24px 16px;}
-  .admin-stats{grid-template-columns:repeat(2,1fr);gap:10px;}
-  .admin-stat{padding:14px 16px;}
-  .admin-stat .as-num{font-size:28px;}
-  .admin-header h2{font-size:22px;}
 
   /* Toast */
   .toast{right:16px;left:16px;bottom:20px;max-width:none;}
 
   /* Admin toggle */
-  .admin-toggle{bottom:20px;left:16px;font-size:9px;padding:8px 12px;}
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -956,7 +917,6 @@ footer{background:var(--dark);padding:60px 52px 36px;}
   .blog-home{padding:36px 16px;}
   .cta-section{padding:44px 16px;}
   footer{padding:36px 16px 24px;}
-  .admin-panel{padding:20px 12px;}
   .ticker-wrap{padding-left:88px;}
   .ticker-label{padding:0 8px;font-size:8px;}
   nav{padding:0 16px;}
@@ -1800,117 +1760,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 })();
 </script>
 
-<!-- PAINEL ADMINISTRATIVO (modal) -->
-<div class="admin-panel" id="adminPanel" role="dialog" aria-modal="true" aria-labelledby="admin-title">
-  <div class="admin-header">
-    <h2 id="admin-title">Painel de cadastros — Tonus Consultoria</h2>
-    <button class="admin-close" onclick="closeAdmin()">FECHAR ✕</button>
-  </div>
-  <div id="adminAuthScreen">
-    <div style="text-align:center;margin-bottom:28px;">
-      <div style="color:rgba(247,244,239,.4);font-size:12px;letter-spacing:2px;margin-bottom:8px;">ACESSO RESTRITO</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);">Informe sua senha de acesso</div>
-    </div>
-    <div class="admin-auth-form">
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <input type="email" id="adminEmailInput" placeholder="E-mail de administrador" autocomplete="username email" aria-label="E-mail do painel admin"
-               style="background:rgba(247,244,239,.06);border:1px solid rgba(247,244,239,.14);color:var(--cream);padding:13px 17px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;width:100%;transition:border .2s;"
-               onkeydown="if(event.key==='Enter') document.getElementById('adminPassInput').focus()">
-        <input type="password" id="adminPassInput" placeholder="Senha" autocomplete="current-password" aria-label="Senha do painel admin"
-               style="background:rgba(247,244,239,.06);border:1px solid rgba(247,244,239,.14);color:var(--cream);padding:13px 17px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;width:100%;transition:border .2s;"
-               onkeydown="if(event.key==='Enter') doAdminLogin()">
-      </div>
-      <button onclick="doAdminLogin()" style="background:var(--gold);color:var(--navy);border:none;padding:13px;font-size:11px;letter-spacing:2.5px;font-weight:500;cursor:pointer;">
-        ENTRAR
-      </button>
-      <div id="adminAuthError" style="display:none;color:rgba(248,113,113,.8);font-size:12px;text-align:center;"></div>
-    </div>
-  </div>
-  <div id="adminContent" style="display:none;">
-  <!-- ABAS DO PAINEL -->
-  <div style="display:flex;gap:0;border-bottom:1px solid rgba(247,244,239,.08);margin-bottom:32px;">
-    <button class="admin-aba active" id="aba-leads" onclick="trocarAba('leads')"
-      style="background:none;border:none;border-bottom:2px solid var(--gold);color:var(--gold);padding:12px 28px;font-size:10px;letter-spacing:2.5px;cursor:pointer;transition:all .2s;">
-      CADASTROS / LEADS
-    </button>
-    <button class="admin-aba" id="aba-duvidas" onclick="trocarAba('duvidas')"
-      style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(247,244,239,.4);padding:12px 28px;font-size:10px;letter-spacing:2.5px;cursor:pointer;transition:all .2s;">
-      DÚVIDAS FAQ
-    </button>
-    <button class="admin-aba" id="aba-diagnosticos" onclick="trocarAba('diagnosticos')"
-      style="background:none;border:none;border-bottom:2px solid transparent;color:rgba(247,244,239,.4);padding:12px 28px;font-size:10px;letter-spacing:2.5px;cursor:pointer;transition:all .2s;">
-      DIAGNÓSTICOS
-    </button>
-  </div>
 
-  <!-- ══ PAINEL LEADS ══ -->
-  <div id="painel-leads">
-    <div class="admin-stats">
-      <div class="admin-stat"><div class="as-num" id="statTotal">0</div><div class="as-label">TOTAL DE CADASTROS</div></div>
-      <div class="admin-stat"><div class="as-num" id="statMEI">0</div><div class="as-label">MEI</div></div>
-      <div class="admin-stat"><div class="as-num" id="statPME">0</div><div class="as-label">PME</div></div>
-      <div class="admin-stat"><div class="as-num" id="statPF">0</div><div class="as-label">PESSOA FÍSICA / OUTROS</div></div>
-    </div>
-    <div class="admin-actions">
-      <button class="admin-btn" onclick="exportCSV()"><i class="ti ti-download"></i> Exportar CSV</button>
-      <button class="admin-btn" onclick="refreshLeads()"><i class="ti ti-refresh"></i> Atualizar</button>
-    </div>
-    <div class="admin-table-wrap">
-      <div class="admin-loading" id="adminLoading">Carregando cadastros...</div>
-      <table class="admin-table" id="adminTable" style="display:none;">
-        <thead>
-          <tr>
-            <th>#</th><th>DATA/HORA</th><th>NOME</th><th>E-MAIL</th>
-            <th>WHATSAPP</th><th>EMPRESA</th><th>PERFIL</th><th>DESAFIO</th>
-          </tr>
-        </thead>
-        <tbody id="adminTbody"></tbody>
-      </table>
-      <div class="admin-empty" id="adminEmpty" style="display:none;">Nenhum cadastro recebido ainda.</div>
-    </div>
-  </div>
-
-  <!-- ══ PAINEL DÚVIDAS FAQ ══ -->
-  <div id="painel-duvidas" style="display:none;">
-    <div class="admin-actions">
-      <button class="admin-btn" onclick="carregarDuvidas()"><i class="ti ti-refresh"></i> Atualizar</button>
-    </div>
-    <div id="duvidas-loading" class="admin-loading">Carregando dúvidas...</div>
-    <div id="duvidas-lista"></div>
-    <div id="duvidas-empty" class="admin-empty" style="display:none;">Nenhuma dúvida recebida ainda.</div>
-  </div>
-
-  <!-- ══ PAINEL DIAGNÓSTICOS (somente leitura — análise acontece no Painel do Consultor) ══ -->
-  <div id="painel-diagnosticos" style="display:none;">
-    <div class="admin-stats">
-      <div class="admin-stat"><div class="as-num" id="statDiagTotal">0</div><div class="as-label">TOTAL RECEBIDOS</div></div>
-      <div class="admin-stat"><div class="as-num" id="statDiagNovo">0</div><div class="as-label">NOVOS</div></div>
-      <div class="admin-stat"><div class="as-num" id="statDiagAnalise">0</div><div class="as-label">EM ANÁLISE</div></div>
-      <div class="admin-stat"><div class="as-num" id="statDiagConcluido">0</div><div class="as-label">CONCLUÍDOS</div></div>
-    </div>
-    <div class="admin-actions">
-      <button class="admin-btn" onclick="window.open('diagnostico-consultor.html','_blank')"><i class="ti ti-external-link"></i> Abrir Painel do Consultor</button>
-      <button class="admin-btn" onclick="carregarDiagnosticosAdmin()"><i class="ti ti-refresh"></i> Atualizar</button>
-    </div>
-    <div style="font-size:12px;color:rgba(247,244,239,.35);margin-bottom:16px;">
-      Visualização somente leitura. Pra pontuar, gerar o plano e enviar o resultado, clique em "Analisar" — isso abre o lead já selecionado no Painel do Consultor.
-    </div>
-    <div class="admin-table-wrap">
-      <div class="admin-loading" id="diagLoading">Carregando diagnósticos...</div>
-      <table class="admin-table" id="diagTable" style="display:none;">
-        <thead>
-          <tr>
-            <th>DATA</th><th>NOME</th><th>TIPO</th><th>SEGMENTO</th><th>CIDADE</th><th>STATUS</th><th></th>
-          </tr>
-        </thead>
-        <tbody id="diagTbody"></tbody>
-      </table>
-      <div class="admin-empty" id="diagEmpty" style="display:none;">Nenhum diagnóstico recebido ainda.</div>
-    </div>
-  </div>
-</div>
-
-</div>
 
 <script>
 /* ══════════════════════════════════════════════════════════════════
@@ -1961,158 +1811,6 @@ function showToast(msg){
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   ADMIN — AUTENTICAÇÃO
-════════════════════════════════════════════════════════════════════ */
-let adminAutenticado = false;
-function openAdmin(){
-  document.getElementById('adminAuthScreen').style.display = 'block';
-  document.getElementById('adminContent').style.display = 'none';
-  document.getElementById('adminAuthError').style.display = 'none';
-  document.getElementById('adminEmailInput').value = '';
-  document.getElementById('adminPassInput').value = '';
-  document.getElementById('adminPanel').classList.add('open');
-  setTimeout(()=> document.getElementById('adminEmailInput').focus(), 100);
-}
-async function doAdminLogin(){
-  const email = document.getElementById('adminEmailInput').value.trim();
-  const senha = document.getElementById('adminPassInput').value;
-  const errEl = document.getElementById('adminAuthError');
-  errEl.style.display = 'none';
-  if(!email || !senha){
-    errEl.textContent = 'Preencha e-mail e senha.';
-    errEl.style.display = 'block';
-    return;
-  }
-  if(!db || SUPABASE_URL === 'COLE_AQUI_SUA_PROJECT_URL'){
-    errEl.textContent = 'Supabase não configurado. Configure SUPABASE_URL e SUPABASE_KEY.';
-    errEl.style.display = 'block';
-    return;
-  }
-  const { data, error } = await db.auth.signInWithPassword({ email, password: senha });
-  if(error){
-    errEl.textContent = 'E-mail ou senha incorretos. Tente novamente.';
-    errEl.style.display = 'block';
-    document.getElementById('adminPassInput').value = '';
-    return;
-  }
-  const ADMIN_EMAIL = 'consultoriatonus@gmail.com';
-  if(data.user.email !== ADMIN_EMAIL){
-    await db.auth.signOut();
-    errEl.textContent = 'Acesso não autorizado para este e-mail.';
-    errEl.style.display = 'block';
-    return;
-  }
-  adminAutenticado = true;
-  document.getElementById('adminAuthScreen').style.display = 'none';
-  document.getElementById('adminContent').style.display = 'block';
-  carregarLeads();
-}
-window.addEventListener('load',function(){ if(location.hash==='#admin'){ openAdmin(); } });
-function closeAdmin(){
-  adminAutenticado = false;
-  if(db) db.auth.signOut().catch(()=>{});
-  document.getElementById('adminPanel').classList.remove('open');
-}
-
-/* ══════════════════════════════════════════════════════════════════
-   ADMIN — CARREGAR LEADS
-════════════════════════════════════════════════════════════════════ */
-let leadsCache = [];
-async function carregarLeads(){
-  const loading = document.getElementById('adminLoading');
-  const table   = document.getElementById('adminTable');
-  const empty   = document.getElementById('adminEmpty');
-  loading.style.display = 'block';
-  table.style.display = 'none';
-  empty.style.display = 'none';
-  try {
-    if(SUPABASE_URL === 'COLE_AQUI_SUA_PROJECT_URL'){
-      leadsCache = JSON.parse(localStorage.getItem('tonus_leads')||'[]');
-    } else {
-      if(!db){
-        leadsCache = JSON.parse(localStorage.getItem('tonus_leads')||'[]');
-        renderAdmin(leadsCache);
-        return;
-      }
-      const { data, error } = await db.from('leads').select('*').order('created_at', { ascending: false });
-      if(error) throw error;
-      leadsCache = data || [];
-    }
-    renderAdmin(leadsCache);
-  } catch(err){
-    console.error('Erro ao carregar leads:', err);
-    loading.textContent = 'Erro ao carregar dados. Tente novamente.';
-  }
-}
-function refreshLeads(){ carregarLeads(); }
-function renderAdmin(dados){
-  const tbody   = document.getElementById('adminTbody');
-  const loading = document.getElementById('adminLoading');
-  const table   = document.getElementById('adminTable');
-  const empty   = document.getElementById('adminEmpty');
-  loading.style.display = 'none';
-  tbody.innerHTML = '';
-  const total = dados.length;
-  const mei   = dados.filter(d=>d.tipo==='MEI').length;
-  const pme   = dados.filter(d=>d.tipo==='PME').length;
-  const pf    = dados.filter(d=>d.tipo==='Pessoa Física'||d.tipo==='Outro'||d.tipo==='Grande Empresa').length;
-  document.getElementById('statTotal').textContent = total;
-  document.getElementById('statMEI').textContent   = mei;
-  document.getElementById('statPME').textContent   = pme;
-  document.getElementById('statPF').textContent    = pf;
-  if(total === 0){
-    empty.style.display = 'block';
-    table.style.display = 'none';
-    return;
-  }
-  empty.style.display = 'none';
-  table.style.display = 'table';
-  const badgeClass = { 'MEI':'bt-mei','PME':'bt-pme','Pessoa Física':'bt-pf','Grande Empresa':'bt-outro','Outro':'bt-outro' };
-  dados.forEach((d, i) => {
-    const tr = document.createElement('tr');
-    const bc = badgeClass[d.tipo] || 'bt-outro';
-    const dataFmt = d.created_at ? new Date(d.created_at).toLocaleString('pt-BR') : (d.data || '—');
-    const desafioShort = (d.desafio||'').length > 60 ? d.desafio.substring(0,60)+'...' : (d.desafio || '—');
-    const esc = s => String(s||'—').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    tr.innerHTML = `
-      <td style="color:rgba(247,244,239,.3);font-family:'DM Mono',monospace;font-size:11px;">${total - i}</td>
-      <td style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(247,244,239,.35);">${esc(dataFmt)}</td>
-      <td style="font-weight:500;color:var(--cream);">${esc(d.nome)}</td>
-      <td>${esc(d.email)}</td>
-      <td>${esc(d.whatsapp)}</td>
-      <td>${esc(d.empresa)}</td>
-      <td><span class="badge-tipo ${bc}">${esc(d.tipo)}</span></td>
-      <td style="max-width:220px;font-size:12px;" title="${esc(d.desafio)}">${esc(desafioShort)}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-/* ══════════════════════════════════════════════════════════════════
-   EXPORTAR CSV
-════════════════════════════════════════════════════════════════════ */
-function exportCSV(){
-  const dados = leadsCache;
-  if(!dados.length){ showToast('Nenhum cadastro para exportar.'); return; }
-  const header = ['#','Data','Nome','Email','WhatsApp','Empresa','Perfil','Desafio'];
-  const rows = dados.map((d, i) => {
-    const dataFmt = d.created_at ? new Date(d.created_at).toLocaleString('pt-BR') : (d.data || '—');
-    return [ i+1, dataFmt, d.nome, d.email, d.whatsapp, d.empresa || '—', d.tipo, '"'+(d.desafio||'').replace(/"/g,'""')+'"' ];
-  });
-  const csv = [header, ...rows].map(r => r.join(';')).join('\n');
-  const blob = new Blob(['\uFEFF'+csv], { type:'text/csv;charset=utf-8;' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href = url;
-  a.download = 'tonus_leads_' + new Date().toISOString().slice(0,10) + '.csv';
-  a.click();
-  URL.revokeObjectURL(url);
-  showToast('CSV exportado com sucesso.');
-}
-
-// Notícias, relógio e índices de mercado removidos (nov/2026).
-
-/* ══════════════════════════════════════════════════════════════════
    MODAIS — SAIBA MAIS
 ════════════════════════════════════════════════════════════════════ */
 // Conteúdo dos modais removido (nov/2026): continha depoimentos de exemplo, não reais.
@@ -2152,90 +1850,70 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape') fecharModal()
 ════════════════════════════════════════════════════════════════════ */
 // Mostra na tela as perguntas do schema estático (#faq-schema) quando
 // ainda não há dúvidas publicadas no Supabase — evita a seção vazia.
-function renderFAQEstatico(lista){
+// Perguntas fixas: vêm do schema estático (#faq-schema) escrito no próprio HTML.
+// Lidas uma única vez, antes de qualquer atualização do schema.
+const FAQ_FIXAS = (function(){
   try{
-    const itens = JSON.parse(document.getElementById('faq-schema').textContent).mainEntity || [];
-    const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    lista.innerHTML = itens.map(q => `
-      <div class="faq-item">
-        <button class="faq-pergunta" onclick="toggleFAQ(this)">
-          ${esc(q.name)}
-          <span class="faq-seta">+</span>
-        </button>
-        <div class="faq-resposta"><p>${esc(q.acceptedAnswer && q.acceptedAnswer.text)}</p></div>
-      </div>`).join('');
-  }catch(e){ lista.innerHTML = ''; }
-}
+    return (JSON.parse(document.getElementById('faq-schema').textContent).mainEntity || [])
+      .map(q => ({ pergunta: q.name, resposta: q.acceptedAnswer && q.acceptedAnswer.text }));
+  }catch(e){ return []; }
+})();
 
-async function carregarFAQ(){
-  const lista = document.getElementById('faq-lista');
-  if(!lista) return;
-
-  if(typeof db === 'undefined' || !db){
-    renderFAQEstatico(lista);
-    return;
-  }
-
-  try{
-    const { data, error } = await db
-      .from('duvidas')
-      .select('*')
-      .eq('publicar_faq', true)
-      .order('ordem', { ascending: true });
-
-    if(error) throw error;
-
-    if(!data || data.length === 0){
-      renderFAQEstatico(lista);
-      // Não mexe no schema estático (fallback) — sem dados publicados, ele continua valendo.
-      return;
-    }
-
-    const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-
-    lista.innerHTML = data.map(item => `
+function renderFAQ(lista, itens){
+  const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  lista.innerHTML = itens.map(item => `
       <div class="faq-item">
         <button class="faq-pergunta" onclick="toggleFAQ(this)">
           ${esc(item.pergunta)}
           <span class="faq-seta">+</span>
         </button>
-        <div class="faq-resposta">
-          <p>${esc(item.resposta)}</p>
-        </div>
-      </div>
-    `).join('');
+        <div class="faq-resposta"><p>${esc(item.resposta)}</p></div>
+      </div>`).join('');
+}
 
-    atualizarSchemaFAQ(data);
-
+// Mostra sempre as perguntas fixas e acrescenta, embaixo, as dúvidas
+// publicadas no Supabase (tabela duvidas, publicar_faq = true, com resposta).
+async function carregarFAQ(){
+  const lista = document.getElementById('faq-lista');
+  if(!lista) return;
+  renderFAQ(lista, FAQ_FIXAS);
+  if(typeof db === 'undefined' || !db) return;
+  try{
+    const { data, error } = await db
+      .from('duvidas')
+      .select('pergunta, resposta, ordem')
+      .eq('publicar_faq', true)
+      .order('ordem', { ascending: true });
+    if(error) throw error;
+    const norm = t => String(t||'').trim().toLowerCase();
+    const jaTem = new Set(FAQ_FIXAS.map(q => norm(q.pergunta)));
+    const extras = (data || []).filter(d => d.pergunta && d.resposta && !jaTem.has(norm(d.pergunta)));
+    if(extras.length === 0) return;
+    const todas = FAQ_FIXAS.concat(extras.map(d => ({ pergunta: d.pergunta, resposta: d.resposta })));
+    renderFAQ(lista, todas);
+    atualizarSchemaFAQ(todas);
   } catch(err){
-    console.error('Erro ao carregar FAQ:', err);
-    renderFAQEstatico(lista);
+    console.error('Erro ao carregar FAQ publicadas:', err);
   }
 }
 
-// Reescreve o JSON-LD FAQPage pra bater exatamente com o que está
-// sendo exibido na tela (Google exige que o schema reflita o conteúdo
-// visível — sem isso, o rich result pode ser ignorado ou penalizado).
+// Mantém o JSON-LD FAQPage igual ao que aparece na tela (fixas + publicadas).
 function atualizarSchemaFAQ(itens){
   const script = document.getElementById('faq-schema');
   if(!script) return;
   const validos = (itens || []).filter(item => item.pergunta && item.resposta);
-  if(validos.length === 0) return; // mantém o fallback estático
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": validos.map(item => ({
-      "@type": "Question",
-      "name": String(item.pergunta),
-      "acceptedAnswer": { "@type": "Answer", "text": String(item.resposta) }
-    }))
-  };
+  if(validos.length === 0) return;
   try{
-    script.textContent = JSON.stringify(schema);
-  }catch(e){
-    console.error('Erro ao atualizar schema do FAQ:', e);
-  }
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": validos.map(item => ({
+        "@type": "Question",
+        "name": String(item.pergunta),
+        "acceptedAnswer": { "@type": "Answer", "text": String(item.resposta) }
+      }))
+    });
+  }catch(e){ console.error('Erro ao atualizar schema do FAQ:', e); }
 }
 
 function toggleFAQ(botao){
@@ -2295,7 +1973,16 @@ async function enviarDuvida(e) {
 
     if (error) throw error;
 
-    msg.textContent = '✓ Dúvida enviada! Em breve responderemos.';
+    // Aviso por e-mail para a Tonus (mesma função dos agendamentos). Não trava o visitante se falhar.
+    try {
+      fetch(SUPABASE_URL + '/functions/v1/notificar-agendamento', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+        body: JSON.stringify({ tipo: 'duvida', nome: nome, whatsapp: whatsapp, pergunta: pergunta })
+      }).catch(function (err) { console.warn('Aviso de dúvida não enviado:', err); });
+    } catch (_) {}
+    if (typeof gtag === 'function') gtag('event', 'enviar_duvida');
+
+    msg.textContent = '✓ Dúvida enviada! Respondemos pelo WhatsApp em até 1 dia útil.';
     msg.style.color = '#4ade80';
     e.target.reset();
 
@@ -2311,312 +1998,6 @@ async function enviarDuvida(e) {
 
 
 document.addEventListener('DOMContentLoaded', carregarFAQ);
-
-/* ══════════════════════════════════════════════════════════════════
-   ADMIN — ABAS
-════════════════════════════════════════════════════════════════════ */
-function trocarAba(aba) {
-  // Botões
-  document.querySelectorAll('.admin-aba').forEach(b => {
-    b.style.borderBottomColor = 'transparent';
-    b.style.color = 'rgba(247,244,239,.4)';
-  });
-  const btn = document.getElementById('aba-' + aba);
-  btn.style.borderBottomColor = 'var(--gold)';
-  btn.style.color = 'var(--gold)';
-
-  // Painéis
-  document.getElementById('painel-leads').style.display       = aba === 'leads'        ? 'block' : 'none';
-  document.getElementById('painel-duvidas').style.display     = aba === 'duvidas'      ? 'block' : 'none';
-  document.getElementById('painel-diagnosticos').style.display = aba === 'diagnosticos' ? 'block' : 'none';
-
-  if (aba === 'duvidas') carregarDuvidas();
-  if (aba === 'diagnosticos') carregarDiagnosticosAdmin();
-}
-
-/* ══════════════════════════════════════════════════════════════════
-   ADMIN — DIAGNÓSTICOS (somente leitura; análise fica no Painel do Consultor)
-════════════════════════════════════════════════════════════════════ */
-async function carregarDiagnosticosAdmin() {
-  const loading = document.getElementById('diagLoading');
-  const table   = document.getElementById('diagTable');
-  const tbody   = document.getElementById('diagTbody');
-  const empty   = document.getElementById('diagEmpty');
-
-  loading.style.display = 'block';
-  table.style.display   = 'none';
-  empty.style.display   = 'none';
-
-  try {
-    const { data, error } = await db
-      .from('diagnosticos')
-      .select('id, created_at, tipo, nome, segmento, cidade, status')
-      .order('created_at', { ascending: false });
-
-    if (error) throw error;
-
-    loading.style.display = 'none';
-
-    const STATUS_LABEL = { novo:'Novo', em_analise:'Em análise', concluido:'Concluído', aguardando_retorno:'Aguardando retorno' };
-    const STATUS_COLOR = { novo:'#f87171', em_analise:'#c8973a', concluido:'#4ade80', aguardando_retorno:'rgba(247,244,239,.4)' };
-
-    document.getElementById('statDiagTotal').textContent    = (data || []).length;
-    document.getElementById('statDiagNovo').textContent     = (data || []).filter(d => d.status === 'novo').length;
-    document.getElementById('statDiagAnalise').textContent  = (data || []).filter(d => d.status === 'em_analise' || d.status === 'aguardando_retorno').length;
-    document.getElementById('statDiagConcluido').textContent = (data || []).filter(d => d.status === 'concluido').length;
-
-    if (!data || data.length === 0) {
-      empty.style.display = 'block';
-      return;
-    }
-
-    const esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    tbody.innerHTML = data.map(d => {
-      const dataFmt = d.created_at ? new Date(d.created_at).toLocaleDateString('pt-BR') : '—';
-      const cor = STATUS_COLOR[d.status] || 'rgba(247,244,239,.4)';
-      const label = STATUS_LABEL[d.status] || d.status || '—';
-      return `<tr>
-        <td>${esc(dataFmt)}</td>
-        <td>${esc(d.nome)}</td>
-        <td>${d.tipo === 'pj' ? 'PJ' : 'PF'}</td>
-        <td>${esc(d.segmento)}</td>
-        <td>${esc(d.cidade)}</td>
-        <td><span style="background:${cor}20;color:${cor};border:1px solid ${cor}40;padding:3px 10px;font-size:9px;letter-spacing:1.5px;border-radius:2px;">${esc(label).toUpperCase()}</span></td>
-        <td><button onclick="window.open('diagnostico-consultor.html?id=${encodeURIComponent(d.id)}','_blank')"
-              style="background:none;border:1px solid rgba(200,151,58,.35);color:var(--gold);padding:5px 12px;font-size:9px;letter-spacing:1.5px;cursor:pointer;white-space:nowrap;">ANALISAR →</button></td>
-      </tr>`;
-    }).join('');
-    table.style.display = 'table';
-  } catch (e) {
-    loading.style.display = 'none';
-    empty.style.display = 'block';
-    empty.textContent = 'Erro ao carregar diagnósticos.';
-    console.error('Erro ao carregar diagnósticos:', e);
-  }
-}
-
-/* ══════════════════════════════════════════════════════════════════
-   ADMIN — GERENCIAR DÚVIDAS FAQ
-════════════════════════════════════════════════════════════════════ */
-async function carregarDuvidas() {
-  const loading = document.getElementById('duvidas-loading');
-  const lista   = document.getElementById('duvidas-lista');
-  const empty   = document.getElementById('duvidas-empty');
-
-  loading.style.display = 'block';
-  lista.innerHTML = '';
-  empty.style.display = 'none';
-
-  try {
-    const { data, error } = await db
-      .from('duvidas')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) throw error;
-
-    loading.style.display = 'none';
-
-    if (!data || data.length === 0) {
-      empty.style.display = 'block';
-      return;
-    }
-
-    lista.innerHTML = data.map(d => {
-      const esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      const dataFmt = d.created_at ? new Date(d.created_at).toLocaleString('pt-BR') : '—';
-      const statusBadge = d.publicar_faq
-        ? `<span style="background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.25);padding:3px 10px;font-size:9px;letter-spacing:1.5px;border-radius:2px;">PUBLICADO</span>`
-        : `<span style="background:rgba(248,113,113,.1);color:#f87171;border:1px solid rgba(248,113,113,.2);padding:3px 10px;font-size:9px;letter-spacing:1.5px;border-radius:2px;">PENDENTE</span>`;
-
-      return `
-        <div id="duvida-${d.id}" style="background:rgba(247,244,239,.03);border:1px solid rgba(247,244,239,.07);padding:24px 28px;margin-bottom:12px;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
-            <div>
-              ${statusBadge}
-              <span style="font-size:10px;color:rgba(247,244,239,.25);margin-left:12px;font-family:'DM Mono',monospace;">${esc(dataFmt)}</span>
-            </div>
-            <button onclick="excluirDuvida('${d.id}')"
-              style="background:none;border:1px solid rgba(248,113,113,.25);color:rgba(248,113,113,.6);padding:5px 12px;font-size:9px;letter-spacing:1.5px;cursor:pointer;transition:all .2s;"
-              onmouseover="this.style.borderColor='#f87171';this.style.color='#f87171'"
-              onmouseout="this.style.borderColor='rgba(248,113,113,.25)';this.style.color='rgba(248,113,113,.6)'">
-              <i class="ti ti-trash"></i> EXCLUIR
-            </button>
-          </div>
-
-          <div style="margin-bottom:8px;">
-            <div style="font-size:9px;letter-spacing:2px;color:var(--gold);margin-bottom:4px;">PERGUNTA</div>
-            <div style="font-size:14px;color:var(--cream);font-weight:500;line-height:1.5;">${esc(d.pergunta)}</div>
-          </div>
-
-          <div style="font-size:11px;color:rgba(247,244,239,.3);margin-bottom:16px;">
-            De: <strong style="color:rgba(247,244,239,.5);">${esc(d.nome)}</strong>
-            ${d.whatsapp ? `· WhatsApp: <strong style="color:rgba(247,244,239,.5);">${esc(d.whatsapp)}</strong>` : ''}
-          </div>
-
-          <div style="margin-bottom:12px;">
-            <div style="font-size:9px;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">RESPOSTA</div>
-            <textarea id="resp-${d.id}" placeholder="Digite a resposta aqui..."
-              style="width:100%;background:rgba(247,244,239,.05);border:1px solid rgba(247,244,239,.12);color:var(--cream);padding:12px 14px;font-size:13px;font-family:'DM Sans',sans-serif;resize:vertical;min-height:80px;outline:none;"
-              onfocus="this.style.borderColor='rgba(200,151,58,.4)'"
-              onblur="this.style.borderColor='rgba(247,244,239,.12)'"
-            >${esc(d.resposta || '')}</textarea>
-          </div>
-
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-
-  <!-- BOTÃO 1: Responder via WhatsApp (sem publicar) -->
-  <button onclick="responderWhatsApp('${d.id}')"
-    style="background:none;border:1px solid rgba(37,211,102,.3);color:rgba(37,211,102,.7);padding:9px 18px;font-size:10px;letter-spacing:2px;cursor:pointer;transition:all .2s;"
-    onmouseover="this.style.borderColor='#25d366';this.style.color='#25d366'"
-    onmouseout="this.style.borderColor='rgba(37,211,102,.3)';this.style.color='rgba(37,211,102,.7)'">
-    <i class="ti ti-brand-whatsapp"></i> RESPONDER VIA WHATSAPP
-  </button>
-
-  <!-- BOTÃO 2: Salvar sem publicar -->
-  <button onclick="salvarResposta('${d.id}', false)"
-    style="background:none;border:1px solid rgba(247,244,239,.15);color:rgba(247,244,239,.6);padding:9px 18px;font-size:10px;letter-spacing:2px;cursor:pointer;transition:all .2s;"
-    onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'"
-    onmouseout="this.style.borderColor='rgba(247,244,239,.15)';this.style.color='rgba(247,244,239,.6)'">
-    <i class="ti ti-device-floppy"></i> SALVAR SEM PUBLICAR
-  </button>
-
-  <!-- BOTÃO 3: Salvar e publicar no site -->
-  <button onclick="salvarResposta('${d.id}', true)"
-    style="background:var(--gold);border:none;color:var(--navy);padding:9px 18px;font-size:10px;letter-spacing:2px;cursor:pointer;font-weight:600;transition:opacity .2s;"
-    onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-    <i class="ti ti-check"></i> SALVAR E PUBLICAR NO SITE
-  </button>
-
-  <!-- BOTÃO 4: Despublicar (aparece só se já publicado) -->
-  ${d.publicar_faq ? `
-  <button onclick="despublicarDuvida('${d.id}')"
-    style="background:none;border:1px solid rgba(248,113,113,.25);color:rgba(248,113,113,.6);padding:9px 18px;font-size:10px;letter-spacing:2px;cursor:pointer;transition:all .2s;"
-    onmouseover="this.style.borderColor='#f87171';this.style.color='#f87171'"
-    onmouseout="this.style.borderColor='rgba(248,113,113,.25)';this.style.color='rgba(248,113,113,.6)'">
-    <i class="ti ti-eye-off"></i> DESPUBLICAR
-  </button>` : ''}
-
-</div>
-        </div>
-      `;
-    }).join('');
-
-  } catch (err) {
-    console.error('Erro ao carregar dúvidas:', err);
-    loading.textContent = 'Erro ao carregar dúvidas. Tente novamente.';
-  }
-}
-
-async function salvarResposta(id, publicar) {
-  const textarea = document.getElementById('resp-' + id);
-  const resposta = textarea?.value.trim();
-
-  if (!resposta) {
-    showToast('⚠ Digite uma resposta antes de salvar.');
-    return;
-  }
-
-  try {
-    const { error } = await db
-      .from('duvidas')
-      .update({
-        resposta:     resposta,
-        publicar_faq: publicar,
-        status:       publicar ? 'publicado' : 'respondido',
-        ordem:        publicar ? 99 : null
-      })
-      .eq('id', id);
-
-    if (error) throw error;
-
-    showToast(publicar ? '✓ Resposta publicada no site!' : '✓ Resposta salva (não publicada).');
-    carregarDuvidas();
-
-  } catch (err) {
-    console.error('Erro ao salvar resposta:', err);
-    showToast('⚠ Erro ao salvar. Verifique o console.');
-  }
-}
-
-async function despublicarDuvida(id) {
-  try {
-    const { error } = await db
-      .from('duvidas')
-      .update({ publicar_faq: false, status: 'respondido' })
-      .eq('id', id);
-
-    if (error) throw error;
-    showToast('Dúvida removida do FAQ público.');
-    carregarDuvidas();
-  } catch (err) {
-    showToast('⚠ Erro ao despublicar.');
-  }
-}
-
-async function excluirDuvida(id) {
-  if (!confirm('Tem certeza que deseja excluir esta dúvida permanentemente?')) return;
-
-  try {
-    const { error } = await db.from('duvidas').delete().eq('id', id);
-    if (error) throw error;
-    showToast('Dúvida excluída.');
-    carregarDuvidas();
-  } catch (err) {
-    showToast('⚠ Erro ao excluir.');
-  }
-}
-
-async function responderWhatsApp(id) {
-  const textarea = document.getElementById('resp-' + id);
-  const resposta = textarea?.value.trim();
-
-  if (!resposta) {
-    showToast('⚠ Digite a resposta antes de enviar pelo WhatsApp.');
-    return;
-  }
-
-  // Busca os dados da dúvida no cache (já carregada na tela)
-  const card = document.getElementById('duvida-' + id);
-  const perguntaEl = card?.querySelector('[style*="font-size:14px"]');
-  const pergunta = perguntaEl?.textContent?.trim() || '';
-
-  // Busca o WhatsApp do cliente direto do DOM
-  const infoEl = card?.querySelector('[style*="font-size:11px"]');
-  let whatsapp = '';
-  if (infoEl) {
-    const match = infoEl.textContent.match(/WhatsApp:\s*([\d\s\(\)\-\+]+)/);
-    if (match) whatsapp = match[1].replace(/\D/g, '');
-  }
-
-  if (!whatsapp) {
-    // Se não tiver WhatsApp, abre só com a mensagem pra copiar
-    showToast('⚠ Este cliente não informou WhatsApp. Copie a resposta manualmente.');
-    textarea.select();
-    return;
-  }
-
-  // Monta a mensagem formatada
-  const msg = `Olá! Aqui é da *Tonus Consultoria* 🙂\n\nVocê nos enviou a seguinte dúvida:\n_"${pergunta}"_\n\nSua resposta:\n${resposta}\n\nSe tiver mais dúvidas, estamos à disposição!`;
-
-  // Salva a resposta no banco (sem publicar) antes de abrir o WhatsApp
-  try {
-    await db.from('duvidas').update({
-      resposta: resposta,
-      status: 'respondido',
-      publicar_faq: false
-    }).eq('id', id);
-  } catch (err) {
-    console.warn('Aviso: não foi possível salvar antes de abrir o WhatsApp.', err);
-  }
-
-  // Abre o WhatsApp Web/App com a mensagem pronta
-  const url = `https://wa.me/55${whatsapp}?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
-
-  showToast('✓ WhatsApp aberto! Resposta salva como "respondido".');
-  carregarDuvidas();
-}
 
 /* ══════════════════════════════════════════════════════════════════
    MÁSCARA — WhatsApp FAQ (bloqueio total de não-numéricos)
