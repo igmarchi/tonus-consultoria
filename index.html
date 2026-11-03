@@ -3041,5 +3041,27 @@ async function enviarAgendamento(e){
   document.getElementById('agendaOk').style.display='block';
 }
 </script>
+<script>
+/* ══ MEDIÇÃO (Google Analytics): cliques que importam ══════════════
+   clique_whatsapp  → qualquer botão/link de WhatsApp (topo, flutuante, rodapé)
+   clique_agendar   → qualquer botão que leva ao formulário de agendamento
+   generate_lead    → envio do formulário (já existia, dentro de enviarAgendamento)
+════════════════════════════════════════════════════════════════════ */
+(function(){
+  function local(el){
+    if(el.closest('.hero')) return 'topo';
+    if(el.closest('nav,.nav-mobile')) return 'menu';
+    if(el.classList.contains('wa-float')) return 'botao_flutuante';
+    if(el.closest('footer')) return 'rodape';
+    var sec=el.closest('section'); return sec ? (sec.id||sec.className||'secao') : 'outro';
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a || typeof gtag!=='function') return;
+    var href=a.getAttribute('href')||'';
+    if(href.indexOf('wa.me')>-1) gtag('event','clique_whatsapp',{local:local(a)});
+    else if(href==='#contato'||href==='/#contato') gtag('event','clique_agendar',{local:local(a)});
+  },true);
+})();
+</script>
 </body>
 </html>
